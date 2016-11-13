@@ -1,8 +1,12 @@
 #!/bin/bash
 
-
-# Adding PPA's repositories
-
+# Welcome message
+echo "Welcome"
+echo "That's my installer for Ubuntu"
+echo "My name is Hernandes"
+echo "You can find me here: github.com/mhernandes"
+echo "Ok, let's play"
+echo "Adding PPA's repositories"
 
 # Add Sublime Text 3
 echo "Adding Sublime Text 3.."
@@ -38,6 +42,7 @@ sudo apt-add-repository ppa:brightbox/ruby-ng -y
 echo "Updating and upgrading.."
 sudo apt-get update && sudo apt-get upgrade -y
 
+echo "Installing applications"
 
 # Installing Sublime Text
 if ! hash subl; then
@@ -152,12 +157,10 @@ fi
 
 # ----------------------------
 
-#
 # Settings
 
+echo "Setting things"
 
 # Git
 git config --global user.email "midia.matheus@gmail.com"
 git config --global user.name "Matheus Hernandes"
-
-
