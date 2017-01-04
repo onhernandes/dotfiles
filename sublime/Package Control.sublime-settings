@@ -1,0 +1,38 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Additional PHP Snippets",
+		"All Autocomplete",
+		"Babel",
+		"Color Highlighter",
+		"CSS3",
+		"EditorConfig",
+		"EJS 2",
+		"Emmet",
+		"JavaScript & NodeJS Snippets",
+		"Markdown Extended",
+		"Markdown Preview",
+		"Material Theme",
+		"Numix Theme",
+		"Origami",
+		"Package Control",
+		"PHP Completions Kit",
+		"PHP Source",
+		"php-grammar",
+		"php-snippets",
+		"SASS Snippets",
+		"SCSS",
+		"SCSS Snippets",
+		"SideBarEnhancements",
+		"Siteleaf Liquid Syntax",
+		"SublimeGit",
+		"Theme - Phoenix",
+		"WakaTime",
+		"WordCount",
+		"Xdebug Client"
+	]
+}

@@ -164,3 +164,6 @@ echo "Setting things"
 # Git
 git config --global user.email "midia.matheus@gmail.com"
 git config --global user.name "Matheus Hernandes"
+
+# Sublime Text
+sudo cp ./sublime/* ~/.config/sublime-text-3/Packages/User/

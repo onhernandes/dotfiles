@@ -1,0 +1,20 @@
+{
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"font_size": 9,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"PHP",
+		"Vintage"
+	],
+	"indent_guide_options": true,
+	"material_theme_accent_cyan": true,
+	"material_theme_bold_tab": true,
+	"material_theme_panel_separator": true,
+	"predawn_tabs_active_underline": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"theme": "Material-Theme.sublime-theme",
+	"word_wrap": true
+}
