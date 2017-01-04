@@ -167,3 +167,5 @@ git config --global user.name "Matheus Hernandes"
 
 # Sublime Text
 sudo cp ./sublime/* ~/.config/sublime-text-3/Packages/User/
+
+sudo chmod +x commands/updg && sudo mv commands/* /bin/
