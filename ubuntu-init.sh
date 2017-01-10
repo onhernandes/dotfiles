@@ -155,6 +155,15 @@ else
 fi
 
 
+# Installing Getme
+if ! hash getme; then
+	echo "Installing Getme.."
+	sudo npm install -g getme
+else
+	echo "Getme already installed"
+fi
+
+
 # ----------------------------
 
 # Settings
