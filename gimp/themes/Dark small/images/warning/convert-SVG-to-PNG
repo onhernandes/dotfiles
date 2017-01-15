@@ -1,0 +1,14 @@
+#!/bin/sh
+# Script for exporting SVGs to PNGs with Inkscape.
+# Based on code found in:
+# http://askubuntu.com/questions/209449/is-there-a-way-to-batch-export-svgs-to-pngs
+ 
+# for each file ending with .svg
+for file in *.svg
+do
+    # strip the .svg part and save output as $filename
+    filename=`echo "${file}" | sed s/.svg//`
+   
+    # export current file to .png
+    /usr/bin/inkscape -z -f "${file}" -e "$filename.png"
+done
