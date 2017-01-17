@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+# Open basic programs
+# Open Google Chrom
+echo "Opening Google Chrome..."
+google-chrome
+
+# Open Sublime Text
+echo "Opening Sublime Text..."
+subl

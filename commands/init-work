@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+# Open basic programs
+# Open Google Chrom
+echo "Opening Google Chrome..."
+google-chrome
+
+# Open Sublime Text
+echo "Opening Sublime Text..."
+subl
+
+# Open FileZilla
+echo "Opening FileZilla..."
+filezilla
+
+# Open Spotify
+echo "Opening Spotify..."
+spotify
