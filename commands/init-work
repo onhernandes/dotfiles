@@ -4,16 +4,16 @@
 # Open basic programs
 # Open Google Chrom
 echo "Opening Google Chrome..."
-google-chrome
+google-chrome &
 
 # Open Sublime Text
 echo "Opening Sublime Text..."
 subl
 
-# Open FileZilla
-echo "Opening FileZilla..."
-filezilla
-
 # Open Spotify
 echo "Opening Spotify..."
-spotify
+spotify &
+
+# Open Filezilla
+echo "Opening FileZilla..."
+filezilla &
