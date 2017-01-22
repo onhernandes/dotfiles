@@ -10,6 +10,14 @@ That's my dotfiles folder with many things that I can't live without them.
 
 ## List of apps to install
 
+1. Google Chrome
+	- Keep Note
+1. Filezilla
+1. Spotify
+1. GIMP
+1. InkScape
+1. Natron
+1. TeamViewer
 1. Sublime Text 3
 1. PHP 7
 1. MySQL 5.7
