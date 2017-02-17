@@ -2,6 +2,13 @@
 
 That's my dotfiles folder with many things that I can't live without them.
 
+# TODO List
+- [ ] Create manjaro-commands
+- [ ] Create git-commands
+- [ ] Create manjaro-install
+- [ ] Create `gulpfile.js` init(or npm, both)
+- [ ] Update sublime preferences
+
 ## One line execute
 
 ```
