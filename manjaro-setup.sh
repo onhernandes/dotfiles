@@ -5,8 +5,8 @@ echo "Starting..."
 echo "Installing Apache..."
 sudo pacman -S --noconfirm apache
 
-echo "Installing PHP..."
-sudo pacman -S --noconfirm php php-apache
+echo "Installing PHP and Composer..."
+sudo pacman -S --noconfirm php php-apache composer
 
 echo "Installing MySQL..."
 sudo pacman -S --noconfirm mysql
@@ -20,11 +20,19 @@ sudo pacman -S --noconfirm easytag
 echo "Installing Git..."
 sudo pacman -S --noconfirm git
 
+echo "Installing FileZilla..."
+sudo pacman -S --noconfirm filezilla
+
+echo "Installing NPM globals..."
+
 echo "Installing Gulp..."
 sudo npm install -g gulp
 
 echo "Installing getme..."
-sudo npm install getme
+sudo npm install -g getme
+
+echo "Installing ruby..."
+sudo pacman -S --noconfirm ruby
 
 echo "Installing SASS..."
 sudo gem install sass
@@ -33,4 +41,5 @@ echo "Installing Jekyll..."
 sudo gem install jekyll
 
 echo "Now, the next programs will be installed from AUR"
+
 
