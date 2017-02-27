@@ -36,5 +36,6 @@ That's my dotfiles folder with many things that I can't live without them.
 1. NPM
 	- Gulp
 	- getme
+	- jshint
 1. EasyTag
 1. Git
