@@ -32,6 +32,7 @@ That's my dotfiles folder with many things that I can't live without them.
 1. Ruby 2.2
 	- SASS
 	- Jekyll
+	- scss_lint
 1. NodeJS
 1. NPM
 	- Gulp
