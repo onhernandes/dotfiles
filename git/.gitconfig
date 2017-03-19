@@ -1,0 +1,27 @@
+[user]
+	email = midia.matheus@gmail.com
+	name = Matheus Hernandes
+
+[alias]
+	gp	= push
+	gpm 	= push origin master
+	gpd	= push origin dev
+	gpo	= push origin
+	gc	= commit -m
+	ga	= add -A
+	gca	= !git add -A && git commit -m
+	gb	= branch
+	gc	= checkout
+	gcb	= checkout -b
+	gcd	= checkout -b dev
+	gpl	= pull
+	gplm	= pull origin master
+	gpld	= pull origin dev
+	gplo	= pull origin
+
+[push]
+	default = current
+
+[core]
+	excludefiles = ~/.gitignore_global
+

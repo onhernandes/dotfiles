@@ -7,6 +7,7 @@
 	[
 		"Additional PHP Snippets",
 		"All Autocomplete",
+		"AutoFileName",
 		"Babel",
 		"Color Highlighter",
 		"CSS3",
@@ -17,22 +18,21 @@
 		"Markdown Extended",
 		"Markdown Preview",
 		"Material Theme",
-		"Numix Theme",
-		"Origami",
 		"Package Control",
 		"PHP Completions Kit",
 		"PHP Source",
 		"php-grammar",
 		"php-snippets",
-		"SASS Snippets",
+		"QuickGotoAnything",
 		"SCSS",
-		"SCSS Snippets",
 		"SideBarEnhancements",
 		"Siteleaf Liquid Syntax",
 		"SublimeGit",
-		"Theme - Phoenix",
+		"SublimeLinter",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-jshint",
 		"WakaTime",
-		"WordCount",
-		"Xdebug Client"
+		"WordPress",
+		"Zeal"
 	]
 }

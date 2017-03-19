@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# setup my basic project like my blog
+
+GIT_USER_CUSTOM="mhernandes"
+BASE_DEV_DIR="/var/www/"
+
+echo "Checking if base dev dir exists..."
+
+if [[ ! -d  "$BASE_DEV_DIR" ]]; then
+	echo "Create base dev dir..."	
+	mkdir /var/www/
+fi
+
+echo "Base dev dir exists, going there.."
+
+cd /var/www/
+
+echo "Checking if git is installed..."
+
+if ! type git > /dev/null; then
+	echo "Git is not installed, so, let's do it"
+	sudo pacman -S --noconfirm git
+fi
+
+echo "Cloning basic projects"
+
+echo "Cloning my blog..."
+
+git clone git@github.com:$GIT_USER_CUSTOM/$GIT_USER_CUSTOM.git

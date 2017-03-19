@@ -1,0 +1,11 @@
+#!/bin/bash
+# Copy a MIT License from my dev folder to current
+
+echo "Creating a MIT License file..."
+
+cp ~/dev-ontonight/LICENSE.md ./
+
+echo "License created"
+echo
+
+ls -l LICENSE.md

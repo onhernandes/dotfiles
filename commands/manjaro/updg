@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+# Update and Upgrade
+echo "Updating everything..."
+sudo pacman -Syyu

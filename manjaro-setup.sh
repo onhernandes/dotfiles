@@ -31,15 +31,22 @@ sudo npm install -g gulp
 echo "Installing getme..."
 sudo npm install -g getme
 
+echo "Installing jshint..."
+sudo npm install -g jshint
+
 echo "Installing ruby..."
 sudo pacman -S --noconfirm ruby
 
 echo "Installing SASS..."
 sudo gem install sass
 
+echo "Installing scss_lint..."
+sudo gem install scss_lint
+
 echo "Installing Jekyll..."
 sudo gem install jekyll
 
 echo "Now, the next programs will be installed from AUR"
 
-
+echo "Installing SublimeText3..."
+yaourt -S --noconfirm sublime-text-dev
