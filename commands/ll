@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Alias for ls -lf
+
+ls -lf
