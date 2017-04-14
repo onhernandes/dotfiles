@@ -3,21 +3,21 @@
 	name = Matheus Hernandes
 
 [alias]
-	gp	= push
-	gpm 	= push origin master
-	gpd	= push origin dev
-	gpo	= push origin
-	gc	= commit -m
-	ga	= add -A
-	gca	= !git add -A && git commit -m
-	gb	= branch
-	gc	= checkout
-	gcb	= checkout -b
-	gcd	= checkout -b dev
-	gpl	= pull
-	gplm	= pull origin master
-	gpld	= pull origin dev
-	gplo	= pull origin
+	p	= push
+	pm 	= push origin master
+	pd	= push origin dev
+	po	= push origin
+	c	= commit -m
+	a	= add -A
+	ca	= !git add -A && git commit -m
+	b	= branch
+	ck	= checkout
+	cb	= checkout -b
+	cbd	= checkout -b dev
+	pl	= pull
+	plm	= pull origin master
+	pld	= pull origin dev
+	plo	= pull origin
 
 [push]
 	default = current

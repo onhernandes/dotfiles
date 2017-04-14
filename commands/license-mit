@@ -3,7 +3,7 @@
 
 echo "Creating a MIT License file..."
 
-cp ~/dev-ontonight/LICENSE.md ./
+cp $CUSTOM_USER/LICENSE.md ./
 
 echo "License created"
 echo
