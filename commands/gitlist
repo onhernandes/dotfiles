@@ -1,0 +1,19 @@
+#!/bin/bash
+# show a list of git aliases
+
+echo "List of Git Aliases"
+echo "git push == git p"
+echo "git push origin == git po"
+echo "git push origin master == git pm"
+echo "git push origin dev == git pd"
+echo "git add -A == git a"
+echo "git commit -m == git c"
+echo "git add -A && git commit -m == git ca"
+echo "git branch == git b"
+echo "git checkout == git checkout"
+echo "git checkout -b == git cb"
+echo "git checkout -b dev == git cbd"
+echo "git pull == git pl"
+echo "git pull origin == git plo"
+echo "git pull origin dev == git pld"
+echo "git pull origin master == git plm"
