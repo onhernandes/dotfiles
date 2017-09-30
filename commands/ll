@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Alias for ls -l
-
-ls -l

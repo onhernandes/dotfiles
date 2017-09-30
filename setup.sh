@@ -26,12 +26,3 @@ sudo mv ./commands/* /usr/bin/
 
 # Move my git files to user root(such as .gitconfig)
 mv ./git/* ~/
-
-# Create a server folder(for create an instant-server using NPM and etc)
-mkdir $CUSTOM_USER/server
-
-# Call the server script to install things(i. e. setup BrowserSync, Gulp, Gulp-sass, Uglify, etc)
-source ./base/server-test.sh
-
-
-# TODO: create some basic frameworks for developing websites, static-blogs, basic gulpfile and etc
