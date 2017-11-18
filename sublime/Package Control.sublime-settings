@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"A File Icon",
 		"Additional PHP Snippets",
 		"All Autocomplete",
 		"AutoFileName",
@@ -23,6 +24,7 @@
 		"PHP Source",
 		"php-grammar",
 		"php-snippets",
+		"Pretty JSON",
 		"QuickGotoAnything",
 		"Sassy Comments",
 		"SCSS",

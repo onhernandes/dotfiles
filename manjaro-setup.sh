@@ -2,8 +2,11 @@ echo "Welcome"
 echo "This setup works for Arch-based distro(I only used in Manjaro, never tested on Arch-x distro)"
 echo "Starting..."
 
-echo "Installing ST"
-sudo pacman -S --noconfirm sublime-text
+echo "Installing OpenSSH"
+sudo pacman -S --noconfirm openssh
+
+echo "Installing CURL"
+sudo pacman -S --noconfirm curl
 
 echo "Installing Apache..."
 sudo pacman -S --noconfirm apache
@@ -26,6 +29,24 @@ sudo pacman -S --noconfirm git
 echo "Installing FileZilla..."
 sudo pacman -S --noconfirm filezilla
 
+echo "Installing xclip..."
+sudo pacman -S --noconfirm xclip
+
+echo "Installing GoogleChrome..."
+sudo yaourt -S google-chrome --noconfirm
+
+echo "Installing synaptics-input..."
+sudo pacman -S --noconfirm xf86-input-synaptics
+
+echo "Installing ST3.."
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A 
+&& rm sublimehq-pub.gpg
+echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu --noconfirm sublime-text
+
+echo "Installing Spotify..."
+yaourt -S spotify --noconfirm
+
 echo "Installing NPM globals..."
 
 echo "Installing Gulp, getme, forever, nodemon..."
@@ -39,3 +60,11 @@ sudo gem install sass
 
 echo "Installing Jekyll..."
 sudo gem install jekyll
+
+
+echo "Setting ST3"
+curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/sublime/Package%20Control.sublime-settings > 
+~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
+subl
+
+# Wait for install all of the packages, then close and download Preferences
