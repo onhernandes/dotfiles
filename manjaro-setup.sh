@@ -17,6 +17,9 @@ sudo pacman -S --noconfirm php php-apache composer
 echo "Installing MySQL..."
 sudo pacman -S --noconfirm mariadb
 
+echo "Installing MongoDB"
+sudo pacman -S --noconfirm mongodb mongodb-tools php-mongodb
+
 echo "Installing NPM and NodeJS..."
 sudo pacman -S --noconfirm npm nodejs
 
