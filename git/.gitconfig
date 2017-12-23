@@ -18,10 +18,12 @@
 	plm	= pull origin master
 	pld	= pull origin dev
 	plo	= pull origin
+	st = stash
+	sp = stash pop
+	undo = reset HEAD~1
 
 [push]
 	default = current
 
 [core]
 	excludefiles = ~/.gitignore_global
-
