@@ -4,6 +4,118 @@
 		"selected_items":
 		[
 			[
+				"boo",
+				"bookmark"
+			],
+			[
+				"get",
+				"getElementsByClassName\t(List.vue)"
+			],
+			[
+				"book",
+				"bookmark"
+			],
+			[
+				"border-bott",
+				"border-bottom-width"
+			],
+			[
+				"Spoti",
+				"Spotify"
+			],
+			[
+				"pla",
+				"playlists"
+			],
+			[
+				"not",
+				"not-found"
+			],
+			[
+				"spotif",
+				"spotify_status"
+			],
+			[
+				"snap",
+				"snapshot_id\t(spotify-web-api.js)"
+			],
+			[
+				"use",
+				"user"
+			],
+			[
+				"filter",
+				"filtered_tracks"
+			],
+			[
+				"play",
+				"playlist"
+			],
+			[
+				"add",
+				"addToPlaylist"
+			],
+			[
+				"playl",
+				"playlist"
+			],
+			[
+				"valid",
+				"validateToken"
+			],
+			[
+				"find",
+				"findInSpotify"
+			],
+			[
+				"Spotif",
+				"SpotifyWrapper"
+			],
+			[
+				"local",
+				"localPlaylists"
+			],
+			[
+				"musi",
+				"musicList"
+			],
+			[
+				"user",
+				"userid"
+			],
+			[
+				"spo",
+				"spotifyApi"
+			],
+			[
+				"to",
+				"toSpotifySearch"
+			],
+			[
+				"file_",
+				"file_name\t(utils.js)"
+			],
+			[
+				"searc",
+				"searchTracks"
+			],
+			[
+				"spoti",
+				"spotifyApi"
+			],
+			[
+				"spot",
+				"spotifyApi"
+			],
+			[
+				"getP",
+				"getUserPlaylists"
+			],
+			[
+				"acc",
+				"access_token\t(route.js)"
+			],
+			[
 				"spotify",
 				"spotify_access\t(credentials.js)"
 			],
@@ -24,10 +136,19 @@
 	"buffers":
 	[
 		{
-			"file": "/var/www/soundman/public/login-spotify.html",
+			"file": "/var/www/soundman/cli/download.js",
 			"settings":
 			{
-				"buffer_size": 181,
+				"buffer_size": 1715,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/soundman/api/utils.js",
+			"settings":
+			{
+				"buffer_size": 4390,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -36,16 +157,8 @@
 			"file": "/var/www/soundman/app.js",
 			"settings":
 			{
-				"buffer_size": 863,
+				"buffer_size": 801,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/var/www/soundman/api/spotify.json",
-			"settings":
-			{
-				"buffer_size": 251,
 				"line_ending": "Unix"
 			}
 		}
@@ -57,10 +170,58 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "close",
+		"height": 344.0,
+		"last_filter": "json",
 		"selected_items":
 		[
+			[
+				"json",
+				"Pretty JSON: Minify (compress) JSON"
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"dupli",
+				"File: Duplicate"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"open",
+				"File: Open In Browser - Production Server"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"sublimelinter",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"next",
+				"SublimeLinter: Next Error"
+			],
+			[
+				"",
+				"A File Icon: Changelog"
+			],
+			[
+				"next err",
+				"SublimeLinter: Next Error"
+			],
 			[
 				"close",
 				"Project: Close"
@@ -68,10 +229,6 @@
 			[
 				"reinde",
 				"Indentation: Reindent Lines"
-			],
-			[
-				"dupli",
-				"File: Duplicate"
 			],
 			[
 				"new",
@@ -94,16 +251,8 @@
 				"Preferences: SublimeLinter Settings"
 			],
 			[
-				"add",
-				"Project: Add Folder"
-			],
-			[
 				"package",
 				"Package Control: List Packages"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 479.0
@@ -129,28 +278,52 @@
 	[
 		"/var/www/soundman",
 		"/var/www/soundman/api",
-		"/var/www/soundman/public"
+		"/var/www/soundman/cli",
+		"/var/www/soundman/music"
 	],
 	"file_history":
 	[
-		"/var/www/soundman/api/credentials.js",
+		"/var/www/soundman/api/utils.js",
+		"/var/www/soundman-chrome/js/App.vue",
+		"/var/www/soundman-chrome/js/components/Bookmarks.vue",
+		"/var/www/soundman-chrome/js/components/List.vue",
+		"/var/www/soundman-chrome/.gitignore",
+		"/var/www/soundman-chrome/index.html",
+		"/var/www/soundman-chrome/manifest.json",
 		"/var/www/soundman/api/route.js",
+		"/var/www/soundman-chrome/js/app.js",
+		"/var/www/soundman-chrome/webpack.config.js",
+		"/var/www/soundman-chrome/package.json",
+		"/home/onhernandes/Desktop/palette.scss",
+		"/var/www/soundman/app.js",
+		"/var/www/soundman-chrome/js/vuex/bookmarks.js",
+		"/var/www/soundman-chrome/js/vuex/musics.js",
+		"/var/www/soundman-chrome/js/vuex/store.js",
+		"/var/www/hello-vue/webpack.config.js",
+		"/var/www/hello-vue/package.json",
+		"/var/www/soundman-chrome/src/options/index.html",
+		"/var/www/soundman/api/schema.js",
+		"/var/www/soundman/README.md",
+		"/var/www/soundman/cli/download.js",
+		"/var/www/soundman/api/spotify.js",
+		"/var/www/soundman/cli/send-to-spotify.js",
+		"/var/www/soundman/log/debug.log",
+		"/var/www/soundman/node_modules/bson/browser_build/bson.js",
+		"/var/www/soundman/node_modules/spotify-web-api-node/src/spotify-web-api.js",
+		"/var/www/soundman/log/error.log",
+		"/var/www/soundman/node_modules/spotify-web-api-node/src/server-methods.js",
+		"/var/www/soundman/api/download.js",
 		"/var/www/soundman/api/spotify.json",
+		"/var/www/soundman/public/login-spotify.html",
+		"/var/www/soundman/api/credentials.js",
 		"/var/www/soundman/api/login-spotify.html",
 		"/var/www/soundman/.gitignore",
-		"/var/www/soundman/api/schema.js",
-		"/var/www/soundman/app.js",
 		"/var/www/soundman/node_modules/mongoose/examples/express/connection-sharing/routes.js",
-		"/var/www/soundman/api/download.js",
-		"/var/www/soundman/api/utils.js",
-		"/var/www/soundman/README.md",
 		"/tmp/fz3temp-2/start.php",
 		"/tmp/fz3temp-2/actions.php",
 		"/tmp/fz3temp-2/debug.log",
 		"/var/www/soundman/Soundman.collection.json",
 		"/var/www/soundman/log/info.log",
-		"/var/www/soundman/log/debug.log",
-		"/var/www/soundman/log/error.log",
 		"/var/www/exploitme.sh",
 		"/home/onhernandes/exploitme",
 		"/var/www/cnovav2/app/models/PtNotifications.php",
@@ -162,7 +335,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -174,9 +347,75 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"file",
+			"data",
+			"./",
+			"public-encrypt",
+			"playlist",
+			"argument",
+			"createElement",
+			"enable_bookmarks",
+			"required",
+			"search",
+			"<li",
+			"30px",
+			"<a>",
+			"button",
+			"span",
+			"<span",
+			";",
+			"px",
+			"0",
+			"products",
+			"photos",
+			"dist",
+			"spotify",
+			"console",
+			"Soundman",
+			"_",
+			"playlist",
+			": (",
+			"_self",
+			"validateToken",
+			"spotify_created",
+			"Spotify.prototype",
+			") {",
+			"function",
+			"self",
+			"this",
+			"findInSpotify",
+			"_self",
+			"this",
+			"protoype",
+			"refreshToken",
+			"data.",
+			"spotifyApi",
+			"getSpotifyInstance",
+			"sp",
+			"local",
+			"function ",
+			"argument",
+			"findInSpotify",
+			"onhernandes",
+			"_",
+			"\"\"spotify\":\"artist\":",
+			"[Object]",
+			"'",
+			"\"https\"",
+			":",
+			",",
+			"artist",
+			"file",
+			"Date.now()",
+			"music.title",
+			"playlists",
+			"getUserId",
+			"data",
+			"credentials",
+			"Credentials",
 			"send",
 			"access",
 			"credentials",
@@ -218,6 +457,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"spotify:artist:",
+			"\"\"",
+			"\"",
+			"https"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -228,54 +471,82 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/var/www/soundman/public/login-spotify.html",
+					"file": "/var/www/soundman/cli/download.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 181,
+						"buffer_size": 1715,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								181
+								741,
+								741
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 165.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/var/www/soundman/api/utils.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4390,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3271,
+								3271
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1682.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "/var/www/soundman/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 863,
+						"buffer_size": 801,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								387,
-								387
+								665,
+								665
 							]
 						],
 						"settings":
@@ -287,34 +558,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/var/www/soundman/api/spotify.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 251,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -369,6 +612,46 @@
 		"selected_items":
 		[
 			[
+				"app.js",
+				"soundman-chrome/js/app.js"
+			],
+			[
+				"app",
+				"soundman/app.js"
+			],
+			[
+				"webpack",
+				"soundman-chrome/webpack.config.js"
+			],
+			[
+				"manife",
+				"soundman-chrome/manifest.json"
+			],
+			[
+				"rea",
+				"README.md"
+			],
+			[
+				"schema",
+				"api/schema.js"
+			],
+			[
+				"schem",
+				"api/schema.js"
+			],
+			[
+				"schema.j",
+				"api/schema.js"
+			],
+			[
+				"route",
+				"api/route.js"
+			],
+			[
+				"utils",
+				"api/utils.js"
+			],
+			[
 				"credenti",
 				"api/credentials.js"
 			],
@@ -385,16 +668,8 @@
 				"api/spotify.json"
 			],
 			[
-				"app",
-				"app.js"
-			],
-			[
 				".git",
 				".gitignore"
-			],
-			[
-				"route",
-				"api/route.js"
 			],
 			[
 				"routes",
@@ -403,18 +678,6 @@
 			[
 				"",
 				"app.js"
-			],
-			[
-				"rea",
-				"README.md"
-			],
-			[
-				"schem",
-				"soundman/api/schema.js"
-			],
-			[
-				"utils",
-				"soundman/api/utils.js"
 			],
 			[
 				"app.",
@@ -442,9 +705,25 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
+		"last_filter": "sd",
 		"selected_items":
 		[
+			[
+				"sd",
+				"/var/www/dotfiles/meli-sdk.sublime-project"
+			],
+			[
+				"on",
+				"/var/www/dotfiles/hernands.sublime-project"
+			],
+			[
+				"meli",
+				"/var/www/dotfiles/meli-sdk.sublime-project"
+			],
+			[
+				"her",
+				"/var/www/dotfiles/hernands.sublime-project"
+			]
 		],
 		"width": 380.0
 	},

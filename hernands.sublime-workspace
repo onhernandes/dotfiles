@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"in",
+				"inc\tinclude"
+			],
+			[
 				"b",
 				"bs"
 			],
@@ -19,6 +23,24 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/var/www/articles/series/trabalhando-dados-hierarquicos-mysql/part1.md",
+			"settings":
+			{
+				"buffer_size": 7651,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/articles/README.md",
+			"settings":
+			{
+				"buffer_size": 80,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -27,20 +49,12 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "project",
+		"height": 310.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"project",
-				"Project: Save As"
-			],
-			[
-				"html",
-				"Set Syntax: HTML"
-			],
-			[
-				"delete",
+				"delte",
 				"File: Delete"
 			],
 			[
@@ -48,12 +62,56 @@
 				"Project: Add Folder"
 			],
 			[
-				"save",
-				"Project: Save As"
+				"ren",
+				"File: Rename"
+			],
+			[
+				"dupl",
+				"File: Duplicate"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"handl",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"dup",
+				"File: Duplicate"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"rename",
 				"File: Rename"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"quic",
+				"AutoFileName: Quick Settings"
+			],
+			[
+				"project",
+				"Project: Save As"
+			],
+			[
+				"delete",
+				"File: Delete"
+			],
+			[
+				"save",
+				"Project: Save As"
 			],
 			[
 				"new file",
@@ -66,17 +124,9 @@
 			[
 				"sublime",
 				"Preferences: SublimeLinter Settings"
-			],
-			[
-				"package",
-				"Package Control: List Packages"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
-		"width": 497.0
+		"width": 479.0
 	},
 	"console":
 	{
@@ -97,14 +147,44 @@
 	},
 	"expanded_folders":
 	[
+		"/var/www/articles",
+		"/var/www/articles/series",
+		"/var/www/articles/series/trabalhando-dados-hierarquicos-mysql"
 	],
 	"file_history":
 	[
-		"/var/www/onhernandes.github.io/src/main.scss",
-		"/var/www/onhernandes.github.io/gulpfile.js",
-		"/var/www/onhernandes.github.io/src/files/index.md",
+		"/var/www/articles/mover.sh",
+		"/var/www/onhernandes.github.io/src/files/como-trabalhar-dados-hierarquicos-mysql.md",
+		"/var/www/onhernandes.github.io/src/0main.js",
 		"/var/www/onhernandes.github.io/src/layouts/index.html",
+		"/var/www/onhernandes.github.io/src/layouts/index-en.html",
+		"/var/www/onhernandes.github.io/src/modules/header/header.html",
+		"/var/www/onhernandes.github.io/src/files/en.md",
+		"/var/www/onhernandes.github.io/src/modules/articles/article-list.html",
+		"/var/www/onhernandes.github.io/metalsmith.js",
+		"/var/www/onhernandes.github.io/src/modules/articles/articles.scss",
+		"/var/www/onhernandes.github.io/src/files/test.md",
+		"/var/www/onhernandes.github.io/src/files/index.md",
+		"/var/www/onhernandes.github.io/src/modules/articles/article-layout.scss",
+		"/var/www/onhernandes.github.io/gulpfile.js",
+		"/var/www/onhernandes.github.io/lib/date.js",
 		"/var/www/onhernandes.github.io/src/layouts/article.html",
+		"/var/www/onhernandes.github.io/package.json",
+		"/var/www/onhernandes.github.io/src/modules/index.scss",
+		"/var/www/onhernandes.github.io/src/files/index.html",
+		"/var/www/onhernandes.github.io/src/global/section.scss",
+		"/var/www/onhernandes.github.io/src/main.scss",
+		"/var/www/onhernandes.github.io/src/modules/projects/projects.scss",
+		"/var/www/onhernandes.github.io/src/modules/about/about.scss",
+		"/var/www/onhernandes.github.io/src/pages/about/about.scss",
+		"/var/www/onhernandes.github.io/src/modules/projects/projects.html",
+		"/var/www/onhernandes.github.io/src/modules/spacer/spacer.html",
+		"/var/www/onhernandes.github.io/src/modules/spacer/spacer.scss",
+		"/var/www/onhernandes.github.io/src/pages/index.scss",
+		"/var/www/onhernandes.github.io/src/modules/intro/intro.scss",
+		"/var/www/onhernandes.github.io/src/utils/index.scss",
+		"/var/www/onhernandes.github.io/node_modules/extend/index.js",
+		"/var/www/onhernandes.github.io/src/modules/header/header.scss",
 		"/var/www/onhernandes.github.io/src/index.html",
 		"/var/www/php-sdk/index.php",
 		"/var/www/php-sdk/Meli/Meli.php",
@@ -131,7 +211,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -146,6 +226,46 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"nested_category",
+			"node",
+			"nested_category",
+			"cat",
+			"nested_category",
+			"node",
+			"lev",
+			"lev1",
+			"t4",
+			"t3",
+			"t2",
+			"t1",
+			"category",
+			"Theme",
+			"customdate",
+			"assets",
+			"h4",
+			"h3",
+			"article",
+			"#f1e309",
+			"class",
+			"about",
+			"projects",
+			"span",
+			"posts",
+			"spacer",
+			"footer",
+			"projects",
+			"var",
+			"files",
+			"fc(",
+			"px",
+			"__projects_list",
+			"9rem",
+			"10rem",
+			"8rem",
+			"9",
+			">",
+			"h3",
+			"15rem",
 			"dev.",
 			"build",
 			"js",
@@ -200,8 +320,65 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/var/www/articles/series/trabalhando-dados-hierarquicos-mysql/part1.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								57,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/var/www/articles/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 80,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								80,
+								80
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -254,6 +431,26 @@
 		"selected_items":
 		[
 			[
+				"gulpfil",
+				"gulpfile.js"
+			],
+			[
+				"index.html",
+				"src/layouts/index.html"
+			],
+			[
+				"m",
+				"metalsmith.js"
+			],
+			[
+				"pac",
+				"package.json"
+			],
+			[
+				"about",
+				"src/pages/about/about.scss"
+			],
+			[
 				"meli",
 				"Meli/Meli.php"
 			],
@@ -304,6 +501,18 @@
 		[
 			[
 				"",
+				"/var/www/dotfiles/soundman.sublime-project"
+			],
+			[
+				"m",
+				"/var/www/dotfiles/meli-sdk.sublime-project"
+			],
+			[
+				"dot",
+				"/var/www/dotfiles/dotfiles.sublime-project"
+			],
+			[
+				"mel",
 				"/var/www/dotfiles/meli-sdk.sublime-project"
 			]
 		],

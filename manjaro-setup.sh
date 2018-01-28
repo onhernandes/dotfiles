@@ -64,10 +64,17 @@ sudo gem install sass
 echo "Installing Jekyll..."
 sudo gem install jekyll
 
+echo "Setting MySQL, Apache and MongoDB"
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo systemctl enable mysqld
+sudo systemctl start mysqld
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo systemctl enable mongodb
+sudo systemctl start mongodb
 
 echo "Setting ST3"
 curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/sublime/Package%20Control.sublime-settings > 
 ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
-subl
 
 # Wait for install all of the packages, then close and download Preferences

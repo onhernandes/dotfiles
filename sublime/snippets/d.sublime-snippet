@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+echo "<pre>"; var_dump(\$var); die;
+]]></content>
+	<tabTrigger>d</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+	<description>Debugging within PHP</description>
+</snippet>

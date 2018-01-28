@@ -3,6 +3,15 @@
 	[
 		{
 			"path": "/var/www/soundman"
+		},
+		{
+			"path": "/var/www/soundman-chrome"
+		},
+		{
+			"path": "/var/www/hello-vue"
+		},
+		{
+			"path": "/var/www/photos"
 		}
 	]
 }

@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+/**
+* Summary
+* 
+* @param string $var
+* 
+* @throws Exception if whatever
+* 
+* @return void
+*/
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>doc</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

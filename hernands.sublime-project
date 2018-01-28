@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "/var/www/onhernandes.github.io"
+		},
+		{
+			"path": "/var/www/articles"
 		}
 	]
 }

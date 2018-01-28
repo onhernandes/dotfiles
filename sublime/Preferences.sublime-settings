@@ -1,11 +1,10 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 	"font_size": 9,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"PHP",
 		"Vintage"
 	],
 	"indent_guide_options": true,
@@ -15,5 +14,6 @@
 	"show_encoding": true,
 	"show_line_endings": true,
 	"theme": "Adaptive.sublime-theme",
-	"word_wrap": true
+	"word_wrap": true,
+	"translate_tabs_to_spaces": true
 }
