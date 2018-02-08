@@ -4,23 +4,25 @@
 
 [alias]
 	p	= push
+	po	= push origin
 	pm 	= push origin master
 	pd	= push origin dev
-	po	= push origin
-	c	= commit -m
 	a	= add -A
+	c	= commit -m
 	ca	= !git add -A && git commit -m
 	b	= branch
 	ck	= checkout
 	cb	= checkout -b
 	cbd	= checkout -b dev
 	pl	= pull
-	plm	= pull origin master
-	pld	= pull origin dev
 	plo	= pull origin
+	pld	= pull origin dev
+	plm	= pull origin master
 	st = stash
 	sp = stash pop
 	undo = reset HEAD~1
+	f = fetch
+	fo = fetch origin
 
 [push]
 	default = current

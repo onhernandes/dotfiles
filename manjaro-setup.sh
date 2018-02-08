@@ -1,5 +1,10 @@
 echo "Welcome"
 echo "This setup works for Arch-based distro(I only used in Manjaro, never tested on Arch-x distro)"
+
+if [[ ! -d $HOME/.onhernandes ]]; then
+    mkdir $HOME/.onhernandes
+fi
+
 echo "Starting..."
 
 echo "Installing OpenSSH"
@@ -28,6 +33,7 @@ sudo pacman -S --noconfirm easytag
 
 echo "Installing Git..."
 sudo pacman -S --noconfirm git
+curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/git/.gitconfig > $HOME/.gitconfig
 
 echo "Installing FileZilla..."
 sudo pacman -S --noconfirm filezilla
@@ -74,7 +80,9 @@ sudo systemctl enable mongodb
 sudo systemctl start mongodb
 
 echo "Setting ST3"
-curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/sublime/Package%20Control.sublime-settings > 
-~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
+if [[ -d $HOME/.config/sublime-text-3/Packages/User ]]; then
+    cp ./sublime/Package\ Control.sublime-settings > $HOME/.config/sublime-text-3/Packages/User
+    cp ./sublime/Preferences.sublime-settings > $HOME/.config/sublime-text-3/Packages/User
+fi
 
 # Wait for install all of the packages, then close and download Preferences

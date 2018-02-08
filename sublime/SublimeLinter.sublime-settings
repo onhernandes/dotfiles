@@ -11,7 +11,7 @@
                 "@disable": false,
                 "args": [
                     "--config",
-                    "/home/matheus/onhernandes/jshint.json"
+                    "/home/matheus/.onhernandes/jshint.json"
                 ],
                 "excludes": []
             },

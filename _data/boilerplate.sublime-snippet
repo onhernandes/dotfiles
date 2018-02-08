@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+Hello, ${1:this} is a ${2:snippet}.
+]]></content>
+    <tabTrigger>hello</tabTrigger>
+    <scope>source.python</scope>
+    <description>I'm a fucking pickle, I'm the Pickle Rick!</description>
+</snippet>

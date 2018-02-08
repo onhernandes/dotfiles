@@ -1,0 +1,26 @@
+#!/bin/bash
+
+SNIPPET_NAME=$1
+BOILERPLATE=$HOME/.onhernandes/dotfiles/_data/boilerplate.sublime-snippet
+
+if [[ ! -d $HOME/.config/sublime-text-3/Packages/User ]]; then
+    echo "SublimeText folder does not exists!"
+    exit 0
+fi
+
+if [[ -f $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet ]]; then
+    echo "This snippet already exists!"
+    exit 0
+fi
+
+if [ -d $HOME/.onhernandes ] && [ -f $BOILERPLATE ]; then
+    cat $BOILERPLATE > $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet
+else
+    echo "" > $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet
+fi
+
+echo "Done!"
+
+if [ -d $HOME/.onhernandes/dotfiles ] && [ ! -f $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet ]; then
+    cp $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet
+fi
