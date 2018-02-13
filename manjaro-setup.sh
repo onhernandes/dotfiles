@@ -1,88 +1,113 @@
 echo "Welcome"
-echo "This setup works for Arch-based distro(I only used in Manjaro, never tested on Arch-x distro)"
+echo "This setup works for Arch-based distro(I only used in Manjaro, never tested on others distros)"
+DOTFILES=$HOME/.onhernandes/dotfiles
+SUBLIME_USER_PACKAGE=$HOME/.config/sublime-text-3/Packages/User
 
-if [[ ! -d $HOME/.onhernandes ]]; then
-    mkdir $HOME/.onhernandes
-fi
+ensure_home_folder() {
+    if [[ ! -d $HOME/.onhernandes ]]; then
+        mkdir $HOME/.onhernandes
+    fi
+}
 
-echo "Starting..."
+pacman_install() {
+    echo "Installing Pacman Packages"
 
-echo "Installing OpenSSH"
-sudo pacman -S --noconfirm openssh
+    wget https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A 
+    && rm sublimehq-pub.gpg
+    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-echo "Installing CURL"
-sudo pacman -S --noconfirm curl
+    PACMAN_PACKAGES=(
+        openssh
+        curl
+        apache
+        php
+        php-apache
+        composer
+        mariadb
+        mongodb
+        mongodb-tools
+        php-mongodb
+        npm
+        nodejs
+        easytag
+        git
+        filezilla
+        xclip
+        xf86-input-synaptics
+        ruby
+        sublime-text
+    )
 
-echo "Installing Apache..."
-sudo pacman -S --noconfirm apache
+    for pack in ${PACMAN_PACKAGES[@]}; do
+        echo "Installing ${pack}"
+        pacman -S --noconfirm $pack
+    done
+}
 
-echo "Installing PHP and Composer..."
-sudo pacman -S --noconfirm php php-apache composer
+yaourt_install() {
+    echo "Installing Yaourt Packages"
 
-echo "Installing MySQL..."
-sudo pacman -S --noconfirm mariadb
+    YAOURT_PACKAGES=(
+        google-chrome
+        spotify
+    )
 
-echo "Installing MongoDB"
-sudo pacman -S --noconfirm mongodb mongodb-tools php-mongodb
+    for pack in ${YAOURT_PACKAGES[@]}; do
+        echo "Installing ${pack}"
+        yaourt -S --noconfirm $pack
+    done
+}
 
-echo "Installing NPM and NodeJS..."
-sudo pacman -S --noconfirm npm nodejs
+npm_packages_setup() {
+    echo "Installing NPM Packages..."
+    sudo npm install -g gulp getme forever nodemon standard
+}
 
-echo "Installing EasyTag..."
-sudo pacman -S --noconfirm easytag
+ruby_gems_setup() {
+    echo "Installing Ruby gems..."
+    sudo gem install sass
+}
 
-echo "Installing Git..."
-sudo pacman -S --noconfirm git
-curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/git/.gitconfig > $HOME/.gitconfig
+services_setup() {
+    echo "Setting some services"
+    SERVICES=(mysqld httpd mongodb)
+    sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-echo "Installing FileZilla..."
-sudo pacman -S --noconfirm filezilla
+    for serv in ${SERVICES[@]}; do
+        systemctl enable $serv
+        systemctl start $serv
+    done
+}
 
-echo "Installing xclip..."
-sudo pacman -S --noconfirm xclip
+dotfiles_setup() {
+    echo "Setting misc dotfiles"
 
-echo "Installing GoogleChrome..."
-sudo yaourt -S google-chrome --noconfirm
+    # Set .gitconfig
+    if [[ -f $DOTFILES/commands/git/.gitconfig ]]; then
+        cp $DOTFILES/commands/git/.gitconfig > $HOME/.gitconfig
+    fi
 
-echo "Installing synaptics-input..."
-sudo pacman -S --noconfirm xf86-input-synaptics
+    # Setting ST3 files
+    if [[ -d $SUBLIME_USER_PACKAGE ]]; then
+        cp $DOTFILES/sublime/Package\ Control.sublime-settings > $SUBLIME_USER_PACKAGE
+        cp $DOTFILES/sublime/Preferences.sublime-settings > $SUBLIME_USER_PACKAGE
+    fi
 
-echo "Installing ST3.."
-curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A 
-&& rm sublimehq-pub.gpg
-echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
-sudo pacman -Syu --noconfirm sublime-text
+    # Setting custom commands
+    chmod +x $DOTFILES/commands/gitlist && cp $DOTFILES/commands/gitlist /usr/bin
+    chmod +x $DOTFILES/commands/license-mit && cp $DOTFILES/commands/license-mit /usr/bin
+    chmod +x $DOTFILES/commands/subl-snippet && cp $DOTFILES/commands/subl-snippet /usr/bin
+}
 
-echo "Installing Spotify..."
-yaourt -S spotify --noconfirm
+initialize_me() {
+    ensure_home_folder()
+    pacman_install()
+    yaourt_install()
 
-echo "Installing NPM globals..."
+    git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
 
-echo "Installing Gulp, getme, forever, nodemon..."
-sudo npm install -g gulp getme forever nodemon jshint
-
-echo "Installing ruby..."
-sudo pacman -S --noconfirm ruby
-
-echo "Installing SASS..."
-sudo gem install sass
-
-echo "Installing Jekyll..."
-sudo gem install jekyll
-
-echo "Setting MySQL, Apache and MongoDB"
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
-sudo systemctl enable httpd
-sudo systemctl start httpd
-sudo systemctl enable mongodb
-sudo systemctl start mongodb
-
-echo "Setting ST3"
-if [[ -d $HOME/.config/sublime-text-3/Packages/User ]]; then
-    cp ./sublime/Package\ Control.sublime-settings > $HOME/.config/sublime-text-3/Packages/User
-    cp ./sublime/Preferences.sublime-settings > $HOME/.config/sublime-text-3/Packages/User
-fi
-
-# Wait for install all of the packages, then close and download Preferences
+    npm_packages_setup()
+    ruby_gems_setup()
+    services_setup()
+    dotfiles_setup()
+}

@@ -23,6 +23,7 @@
 	undo = reset HEAD~1
 	f = fetch
 	fo = fetch origin
+	s = status
 
 [push]
 	default = current
