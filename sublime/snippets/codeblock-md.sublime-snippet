@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+{% codeblock [title] [lang:language] [url] [link text] %}
+{% endcodeblock %}
+]]></content>
+    <tabTrigger>co</tabTrigger>
+    <scope>text.md</scope>
+    <description>Compatible code block with HexoJS</description>
+</snippet>

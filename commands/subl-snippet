@@ -1,20 +1,29 @@
 #!/bin/bash
-
+# Create or edit a ST3 Snippet!
 SNIPPET_NAME=$1
 BOILERPLATE=$HOME/.onhernandes/dotfiles/_data/boilerplate.sublime-snippet
+DOTFILES=$HOME/.onhernandes/dotfiles
 SUBLIME_USER_PACKAGE=$HOME/.config/sublime-text-3/Packages/User
 
 # Check for ST folder
-if [[ ! -d $SUBLIME_USER_PACKAGE ]]; then
+if [ ! -d $SUBLIME_USER_PACKAGE ]; then
     echo "SublimeText folder does not exists!"
     exit 0
 fi
 
-# Check if snippet already exists
-if [[ -f $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet ]]; then
-    echo "This snippet already exists!"
+# Check if snippet already exists, then edit
+if [ -f $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet ]; then
+    nano $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet
+    cp $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet $DOTFILES/sublime/snippets/$SNIPPET_NAME.sublime-snippet
+    echo "This snippet already exists, was updated!"
+    exit 0
+elif [ -f $DOTFILES/sublime/snippets/$SNIPPET_NAME.sublime-snippet ]; then
+    nano $DOTFILES/sublime/snippets/$SNIPPET_NAME.sublime-snippet
+    cp $DOTFILES/sublime/snippets/$SNIPPET_NAME.sublime-snippet $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet
+    echo "This snippet already exists, was updated!"
     exit 0
 fi
+
 
 # Check if there's a boilerplate then copy
 if [[ -f $BOILERPLATE ]]; then

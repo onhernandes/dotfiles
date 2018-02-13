@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+{% blockquote [[author], [source]] [link] [source_link_title] %}$1
+{% endblockquote %}
+]]></content>
+    <tabTrigger>bl</tabTrigger>
+    <scope>text.md</scope>
+    <description>Compatible blockquote</description>
+</snippet>
