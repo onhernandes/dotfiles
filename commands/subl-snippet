@@ -2,25 +2,40 @@
 
 SNIPPET_NAME=$1
 BOILERPLATE=$HOME/.onhernandes/dotfiles/_data/boilerplate.sublime-snippet
+SUBLIME_USER_PACKAGE=$HOME/.config/sublime-text-3/Packages/User
 
-if [[ ! -d $HOME/.config/sublime-text-3/Packages/User ]]; then
+# Check for ST folder
+if [[ ! -d $SUBLIME_USER_PACKAGE ]]; then
     echo "SublimeText folder does not exists!"
     exit 0
 fi
 
-if [[ -f $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet ]]; then
+# Check if snippet already exists
+if [[ -f $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet ]]; then
     echo "This snippet already exists!"
     exit 0
 fi
 
-if [ -d $HOME/.onhernandes ] && [ -f $BOILERPLATE ]; then
-    cat $BOILERPLATE > $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet
+# Check if there's a boilerplate then copy
+if [[ -f $BOILERPLATE ]]; then
+    cp $BOILERPLATE $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet
+fi
+
+# Edit snippet either from .onhernandes or from ST User's folder
+if [[ -d $HOME/.onhernandes/dotfiles/sublime/snippets ]]; then
+    nano $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet
 else
-    echo "" > $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet
+    nano $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet
+fi
+
+# Copy from .onhernandes to ST User's folder
+if [[ -f $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet ]]; then
+    cp $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet
+fi
+
+# If the snippet exists within User's folder but not within .onhernandes, just copy
+if [ ! -f $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet ] && [ -f $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet ]; then
+    cp $SUBLIME_USER_PACKAGE/$SNIPPET_NAME.sublime-snippet $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet
 fi
 
 echo "Done!"
-
-if [ -d $HOME/.onhernandes/dotfiles ] && [ ! -f $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet ]; then
-    cp $HOME/.config/sublime-text-3/Packages/User/$SNIPPET_NAME.sublime-snippet $HOME/.onhernandes/dotfiles/sublime/snippets/$SNIPPET_NAME.sublime-snippet
-fi
