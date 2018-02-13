@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+hasOwnProperty('prop'$1)
+]]></content>
+    <tabTrigger>has</tabTrigger>
+    <scope>source.js</scope>
+    <description>Injects hasOwnProperty</description>
+</snippet>

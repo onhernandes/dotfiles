@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+try {
+
+} catch (e) {
+  console.log(`\${e.name} \${e.message}`)
+}
+]]></content>
+    <tabTrigger>try</tabTrigger>
+    <scope>source.js</scope>
+    <description>Injects a try{} catch(){} block</description>
+</snippet>

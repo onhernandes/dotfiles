@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+throw new Error('message'$1)
+]]></content>
+    <tabTrigger>th</tabTrigger>
+    <scope>source.js</scope>
+    <description>Throws new Error</description>
+</snippet>
