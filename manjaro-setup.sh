@@ -60,7 +60,7 @@ yaourt_install() {
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g gulp getme forever nodemon standard
+    sudo npm install -g gulp getme forever nodemon standard hexo-cli
 }
 
 ruby_gems_setup() {

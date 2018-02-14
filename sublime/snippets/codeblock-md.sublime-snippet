@@ -4,6 +4,6 @@
 {% endcodeblock %}
 ]]></content>
     <tabTrigger>co</tabTrigger>
-    <scope>text.md</scope>
+    <scope>text.html.markdown</scope>
     <description>Compatible code block with HexoJS</description>
 </snippet>
