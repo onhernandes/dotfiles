@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+return true$1
+]]></content>
+    <tabTrigger>r</tabTrigger>
+    <scope>source.js</scope>
+    <description>Adds a return true</description>
+</snippet>

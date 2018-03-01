@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+map(it => {
+  // Don't worry about the keys! $1
+})
+]]></content>
+    <tabTrigger>map</tabTrigger>
+    <scope>source.js</scope>
+    <description>Adds a map() for you</description>
+</snippet>

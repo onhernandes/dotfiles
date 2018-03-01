@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+delete $SELECTION
+]]></content>
+    <tabTrigger>d</tabTrigger>
+    <scope>source.js</scope>
+    <description>Adds delete this[selection]</description>
+</snippet>

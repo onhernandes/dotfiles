@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+if (Array.isArray($1)) {
+  // Know the unkown
+}
+]]></content>
+    <tabTrigger>isa</tabTrigger>
+    <scope>source.js</scope>
+    <description>Adds Array.isArray</description>
+</snippet>

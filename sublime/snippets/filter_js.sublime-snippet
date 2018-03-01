@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+filter(it => {
+  return true$!
+})
+]]></content>
+    <tabTrigger>fil</tabTrigger>
+    <scope>source.js</scope>
+    <description>Add filter()</description>
+</snippet>
