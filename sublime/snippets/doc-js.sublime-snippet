@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+/**
+ * Summary
+ * @param {string} varname - vardescription
+ * @throws {Error} if something goes wrong
+ * @returns {integer}
+ */
+]]></content>
+    <tabTrigger>doc</tabTrigger>
+    <scope>source.js</scope>
+    <description>Let's doc this thing!</description>
+</snippet>
