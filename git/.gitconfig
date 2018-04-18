@@ -24,6 +24,7 @@
 	f = fetch
 	fo = fetch origin
 	s = status
+	die = reset --hard
 
 [push]
 	default = current
