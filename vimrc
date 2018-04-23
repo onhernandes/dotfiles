@@ -27,7 +27,10 @@ let mapleader=" "
 
 nmap <leader>so :so ~/.vimrc<cr> 
 nmap <leader>rr :edit ~/.onhernandes/dotfiles/vimrc<cr>
-
+nmap <leader>s :split %<cr>
+nmap <leader>vs :vsplit %<cr>
+set splitright " Split new vertical windows right of current window .
+set splitbelow " Split new horizontal windows under current window.
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
