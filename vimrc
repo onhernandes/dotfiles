@@ -1,10 +1,9 @@
 set clipboard=unnamed
 
-
-nnoremap <c-H> <c-w>h
-nnoremap <c-L> <c-w>l
-nnoremap <c-J> <c-w>j
-nnoremap <c-K> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
 
 function! ClipboardYank()
   call system('pbcopy', @@)
@@ -27,6 +26,8 @@ set smartindent
 
 set virtualedit=all
 
+imap <c-k> <c-p>
+imap <c-j> <c-n>
 nnoremap ; :
 
 let mapleader=" "
@@ -38,7 +39,12 @@ nmap <leader>vs :vsplit %<cr>
 set splitright " Split new vertical windows right of current window .
 set splitbelow " Split new horizontal windows under current window.
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -46,8 +52,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+Plug 'roxma/nvim-completion-manager'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
 
 " Initialize plugin system
 call plug#end()
