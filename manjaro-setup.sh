@@ -1,3 +1,7 @@
+#!/bin/bash
+
+{
+
 echo "Welcome"
 echo "This setup works for Arch-based distro(I only used in Manjaro, never tested on others distros)"
 DOTFILES=$HOME/.onhernandes/dotfiles
@@ -7,6 +11,9 @@ ensure_home_folder() {
     if [[ ! -d $HOME/.onhernandes ]]; then
         mkdir $HOME/.onhernandes
     fi
+
+		pacman -S --noconfirm git
+		git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
 }
 
 pacman_install() {
@@ -16,61 +23,24 @@ pacman_install() {
     && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES=(
-        openssh
-        curl
-        apache
-        php
-        php-apache
-        composer
-        mariadb
-        mongodb
-        mongodb-tools
-        php-mongodb
-        npm
-        nodejs
-        easytag
-        git
-        filezilla
-        xclip
-        xf86-input-synaptics
-        ruby
-        sublime-text
-    )
-
-    for pack in ${PACMAN_PACKAGES[@]}; do
-        echo "Installing ${pack}"
-        pacman -S --noconfirm $pack
-    done
+    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs easytag git filezilla xclip xf86-input-synaptics ruby sublime-text nvim"
+		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-
-    YAOURT_PACKAGES=(
-        google-chrome
-        spotify
-    )
-
-    for pack in ${YAOURT_PACKAGES[@]}; do
-        echo "Installing ${pack}"
-        yaourt -S --noconfirm $pack
-    done
+    YAOURT_PACKAGES="google-chrome spotify postman rambox"
+    yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g gulp getme forever nodemon standard hexo-cli
-}
-
-ruby_gems_setup() {
-    echo "Installing Ruby gems..."
-    sudo gem install sass
+    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli
 }
 
 services_setup() {
     echo "Setting some services"
-    SERVICES=(mysqld httpd mongodb)
+    SERVICES=(mysqld mongodb)
     sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
     for serv in ${SERVICES[@]}; do
@@ -84,30 +54,39 @@ dotfiles_setup() {
 
     # Set .gitconfig
     if [[ -f $DOTFILES/commands/git/.gitconfig ]]; then
-        cp $DOTFILES/commands/git/.gitconfig > $HOME/.gitconfig
+        ln -s $DOTFILES/commands/git/.gitconfig $HOME/.gitconfig
     fi
 
     # Setting ST3 files
     if [[ -d $SUBLIME_USER_PACKAGE ]]; then
-        cp $DOTFILES/sublime/Package\ Control.sublime-settings > $SUBLIME_USER_PACKAGE
-        cp $DOTFILES/sublime/Preferences.sublime-settings > $SUBLIME_USER_PACKAGE
+        ln -s $DOTFILES/sublime/Package\ Control.sublime-settings $SUBLIME_USER_PACKAGE
+        ln -s $DOTFILES/sublime/Preferences.sublime-settings $SUBLIME_USER_PACKAGE
     fi
 
     # Setting custom commands
-    chmod +x $DOTFILES/commands/gitlist && cp $DOTFILES/commands/gitlist /usr/bin
-    chmod +x $DOTFILES/commands/license-mit && cp $DOTFILES/commands/license-mit /usr/bin
-    chmod +x $DOTFILES/commands/subl-snippet && cp $DOTFILES/commands/subl-snippet /usr/bin
+    chmod +x $DOTFILES/commands/gitlist && ln -s $DOTFILES/commands/gitlist /usr/bin
+    chmod +x $DOTFILES/commands/license-mit && ln -s $DOTFILES/commands/license-mit /usr/bin
+    chmod +x $DOTFILES/commands/subl-snippet && ln -s $DOTFILES/commands/subl-snippet /usr/bin
+
+		# Setting vim and tmux config
+		if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
+		  mkdir $HOME/.local/share/nvim/plugged
+    fi 
+
+		ln -s $DOTFILES/vimrc $HOME/.vimrc
+		ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
 }
 
 initialize_me() {
-    ensure_home_folder()
-    pacman_install()
-    yaourt_install()
+    ensure_home_folder
+    pacman_install
+    yaourt_install
 
-    git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
+    npm_packages_setup
+    services_setup
+    dotfiles_setup
+}
 
-    npm_packages_setup()
-    ruby_gems_setup()
-    services_setup()
-    dotfiles_setup()
+initialize_me
+
 }
