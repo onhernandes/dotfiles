@@ -71,14 +71,6 @@ nmap <leader>vs :vsplit %<cr>
 set splitright " Split new vertical windows right of current window .
 set splitbelow " Split new horizontal windows under current window.
 
-" Set UltiSnips triggers
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 " Begin vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -89,9 +81,12 @@ Plug 'tpope/vim-surround'
 Plug 'shime/vim-livedown'
 Plug 'honza/vim-snippets'
 
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
+let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " End vim-plug
 call plug#end()
