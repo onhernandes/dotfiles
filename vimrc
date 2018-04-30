@@ -119,7 +119,6 @@
 	noremap! <Right> <Esc>   
 """ }}}
 
-
 """ VimPlug {{{
 	call plug#begin('~/.local/share/nvim/plugged')
 
@@ -137,8 +136,7 @@
 	Plug 'itchyny/lightline.vim'
 
 	" Plugins' Settings
-	call neomake#configure#automake('nrwi')
-
+	
 	let g:UltiSnipsUsePythonVersion = 2
 	let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
 	let g:UltiSnipsEditSplit="vertical"
@@ -155,6 +153,9 @@
 		syntax enable
 	endif
 
+  " Neomake
+  call neomake#configure#automake('nrwi')
+    
 	" JellyBeans
 	let g:jellybeans_overrides = {
 	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
