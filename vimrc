@@ -134,6 +134,9 @@
 	Plug 'mhinz/vim-startify'
 	Plug 'neomake/neomake'
 	Plug 'itchyny/lightline.vim'
+  Plug 'junegunn/fzf.vim'
+  Plug 'mbbill/undotree'
+  Plug 'jdkanani/vim-material-theme'
 
 	" Plugins' Settings
 	
