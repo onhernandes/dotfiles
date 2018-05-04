@@ -33,6 +33,7 @@
 	set backspace=indent,eol,start
 	set cinkeys-=0#
 	set expandtab
+  set termguicolors
 
 	""" Wildmode/wildmenu command-line completion {{{
 		set wildignore+=*.bak,*.swp,*.swo
@@ -136,16 +137,28 @@
 	Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf.vim'
   Plug 'mbbill/undotree'
+  Plug 'junegunn/fzf'
   Plug 'jdkanani/vim-material-theme'
+  Plug 'AndrewRadev/switch.vim'
+  Plug 'stefandtw/quickfix-reflector.vim'
 
 	" Plugins' Settings
 	
+  " UltiSnips
 	let g:UltiSnipsUsePythonVersion = 2
 	let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
 	let g:UltiSnipsEditSplit="vertical"
 	let g:UltiSnipsExpandTrigger="<tab>"
 	let g:UltiSnipsJumpForwardTrigger="<tab>"
 	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+  " Switch
+  let g:switch_mapping="-"
+  let g:switch_custom_definitions =
+    \ [
+    \   ['true', 'false'],
+    \   ['map', 'forEach']
+    \ ]
 
 	call plug#end()
 """ }}}
@@ -159,13 +172,9 @@
   " Neomake
   call neomake#configure#automake('nrwi')
     
-	" JellyBeans
-	let g:jellybeans_overrides = {
-	\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-	\    'SignColumn': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-	\    'CursorLine': { 'ctermbg': '235'},
-	\}
-	silent! colorscheme jellybeans
+	set background=dark
+  colorscheme material-theme
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
   """ Force behavior and filetypes, and by extension highlighting {{{
 	  augroup FileTypeRules

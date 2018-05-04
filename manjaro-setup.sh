@@ -23,7 +23,8 @@ pacman_install() {
     && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs easytag git filezilla xclip xf86-input-synaptics ruby sublime-text nvim"
+    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs
+    easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
 		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
@@ -36,6 +37,7 @@ yaourt_install() {
 npm_packages_setup() {
     echo "Installing NPM Packages..."
     sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli
+    neovim
 }
 
 services_setup() {
