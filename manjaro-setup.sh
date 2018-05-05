@@ -23,8 +23,7 @@ pacman_install() {
     && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs
-    easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
+    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
 		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
@@ -73,9 +72,14 @@ dotfiles_setup() {
 		# Setting vim and tmux config
 		if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
 		  mkdir $HOME/.local/share/nvim/plugged
+    fi                            
+
+		if [[ ! -d $HOME/.config/nvim ]]; then
+		  mkdir $HOME/.config/nvim
     fi 
 
 		ln -s $DOTFILES/vimrc $HOME/.vimrc
+		ln -s $DOTFILES/vimrc $HOME/.config/nvim/init.vim
 		ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
 }
 
