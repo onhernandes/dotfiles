@@ -1,5 +1,6 @@
 """ Automatically create needed files and folders on first run (*nix only) {{{
 	call system('mkdir -p $HOME/.vim/{autoload,bundle,swap,undo}')
+  call system('mkdir $HOME/.local/share/nvim/plugged')
 """ }}}
 
 """ Neo/Vim Settings {{{
@@ -133,7 +134,6 @@
 	Plug 'bling/vim-bufferline'
 	Plug 'somini/vim-autoclose'
 	Plug 'mhinz/vim-startify'
-	Plug 'neomake/neomake'
 	Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf.vim'
   Plug 'mbbill/undotree'
@@ -142,40 +142,43 @@
   Plug 'AndrewRadev/switch.vim'
   Plug 'stefandtw/quickfix-reflector.vim'
 
-	" Plugins' Settings
-	
-  " UltiSnips
-	let g:UltiSnipsUsePythonVersion = 2
-	let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
-	let g:UltiSnipsEditSplit="vertical"
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumpForwardTrigger="<tab>"
-	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+	""" Plugins' Settings {{{
+    " UltiSnips
+    let g:UltiSnipsUsePythonVersion = 3
+    let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
+    let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-  " Switch
-  let g:switch_mapping="-"
-  let g:switch_custom_definitions =
-    \ [
-    \   ['true', 'false'],
-    \   ['map', 'forEach']
-    \ ]
+    " Switch
+    let g:switch_mapping="-"
+    let g:switch_custom_definitions =
+      \ [
+      \   ['true', 'false'],
+      \   ['map', 'forEach'],
+      \   ['let', 'const', 'var'],
+      \   ['exports', 'module.exports']
+      \ ]
+     
+    " Theme & Syntax
+    if !exists('g:syntax_on')
+      syntax enable
+    endif    
+    set background=dark
+    colorscheme material-theme
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+    " Statusline
+    let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
+  """ }}}
 
 	call plug#end()
 """ }}}
 
 """ Vim settings after plug install {{{
-	" https://stackoverflow.com/a/33380495/1076493
-	if !exists('g:syntax_on')
-		syntax enable
-	endif
-
-  " Neomake
-  call neomake#configure#automake('nrwi')
-    
-	set background=dark
-  colorscheme material-theme
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
   """ Force behavior and filetypes, and by extension highlighting {{{
 	  augroup FileTypeRules
 	 		autocmd!
