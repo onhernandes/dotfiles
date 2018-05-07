@@ -160,14 +160,6 @@
       \   ['let', 'const', 'var'],
       \   ['exports', 'module.exports']
       \ ]
-     
-    " Theme & Syntax
-    if !exists('g:syntax_on')
-      syntax enable
-    endif    
-    set background=dark
-    colorscheme material-theme
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     " Statusline
     let g:lightline = {
@@ -176,6 +168,14 @@
   """ }}}
 
 	call plug#end()
+     
+  " Theme & Syntax
+  if !exists('g:syntax_on')
+    syntax enable
+  endif    
+  set background=dark
+  colorscheme material-theme
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """ }}}
 
 """ Vim settings after plug install {{{
