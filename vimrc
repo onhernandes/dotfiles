@@ -24,6 +24,7 @@
 	set more
 	set scrolloff=3
 	set showcmd
+  set noshowmode
 	set title
 	set completeopt=menu,preview,longest
 	set laststatus=2
