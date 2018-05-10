@@ -106,6 +106,7 @@
 	" Map reload and edit for vimrc
 	nmap <leader>so :so ~/.vimrc<cr> 
 	nmap <leader>rr :edit ~/.onhernandes/dotfiles/vimrc<cr>
+	nmap <leader>w :w!<cr>
 
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
@@ -142,6 +143,7 @@
   Plug 'jdkanani/vim-material-theme'
   Plug 'AndrewRadev/switch.vim'
   Plug 'stefandtw/quickfix-reflector.vim'
+  Plug 'mhinz/vim-signify'
 
 	""" Plugins' Settings {{{
     " UltiSnips
@@ -167,6 +169,13 @@
       \ 'colorscheme': 'one',
       \ }
   """ }}}
+
+    " Signify
+    let g:signify_sign_add = '+'
+    let g:signify_sign_delete = '_'
+    let g:signify_sign_delete_first_line = '‾'
+    let g:signify_sign_change = '~'
+    let g:signify_sign_changedelete = g:signify_sign_change
 
 	call plug#end()
      
