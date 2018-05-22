@@ -104,8 +104,8 @@
 	vmap ; :
 
 	" Map reload and edit for vimrc
-	nmap <leader>so :so ~/.vimrc<cr> 
-	nmap <leader>rr :edit ~/.onhernandes/dotfiles/vimrc<cr>
+	nmap <leader>so :so $HOME/.vimrc<cr> 
+	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
 	nmap <leader>w :w!<cr>
 
 	" Map horizontal and vertical split of the same file
@@ -132,6 +132,8 @@
 	Plug 'tpope/vim-surround'
 	Plug 'shime/vim-livedown'
 	Plug 'honza/vim-snippets'
+  Plug 'rhysd/clever-f.vim'
+  Plug 'haya14busa/incsearch.vim'
 	Plug 'ervandew/supertab'
 	Plug 'bling/vim-bufferline'
 	Plug 'somini/vim-autoclose'
@@ -144,6 +146,15 @@
   Plug 'AndrewRadev/switch.vim'
   Plug 'stefandtw/quickfix-reflector.vim'
   Plug 'mhinz/vim-signify'
+  Plug 'jojoyuji/nerdtree-async'
+  Plug 'nerdtree-execute'
+  Plug 'leshill/vim-json'
+  Plug 'elzr/vim-json' 
+  Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
+  Plug 'tpope/vim-jdaddy', {'for': 'json'}
+  Plug 'zoubin/vim-gotofile'
+  Plug 'tpope/vim-sensible'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 	""" Plugins' Settings {{{
     " UltiSnips
@@ -159,10 +170,26 @@
     let g:switch_custom_definitions =
       \ [
       \   ['true', 'false'],
-      \   ['map', 'forEach'],
+      \   ['typeof', 'instanceof'],
+      \   ['unshift', 'push'],
+      \   ['log', 'error', 'debug', 'warn'],
+      \   ['null', 'undefined', 'NaN'],
+      \   ['map', 'forEach', 'filter'],
       \   ['let', 'const', 'var'],
       \   ['exports', 'module.exports']
       \ ]
+
+    " NerdTree
+    let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
+    let NERDTreeShowBookmarks=1
+    let NERDTreeDirArrows=1
+
+    " Prettier
+    let g:prettier#config#single_quote = 'true' 
+    let g:prettier#config#tab_width = 2
+    let g:prettier#config#use_tabs = 'false'
+    let g:prettier#config#trailing_comma = 'none'
+    let g:prettier#config#flatten_ternaries = 'true'
 
     " Statusline
     let g:lightline = {
@@ -177,6 +204,8 @@
     let g:signify_sign_change = '~'
     let g:signify_sign_changedelete = g:signify_sign_change
 
+    " Nerdtree
+    autocmd vimenter * NERDTree"
 	call plug#end()
      
   " Theme & Syntax
