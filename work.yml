@@ -1,0 +1,26 @@
+# ~/.tmuxinator/work.yml
+
+name: work
+root: /var/www/
+
+windows:
+  - work:
+      root: /var/www/wip/
+      layout: main-horizontal
+      panes:
+        - nvim
+        - 
+        - git
+  - tt: 
+      root: ~/
+      panes:
+        - source $HOME/venv/bin/activate
+  - app:
+      root: /var/www/app
+      panes:
+        - npm start
+  - laradock:
+      root: /var/www/laradock
+      panes: 
+        - 
+

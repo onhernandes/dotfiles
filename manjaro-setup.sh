@@ -75,15 +75,24 @@ dotfiles_setup() {
 		# Setting vim and tmux config
 		if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
 		  mkdir $HOME/.local/share/nvim/plugged
-    fi                            
+    fi                             
 
 		if [[ ! -d $HOME/.config/nvim ]]; then
 		  mkdir $HOME/.config/nvim
+    fi                            
+
+		if [[ ! -d $HOME/.tmux ]]; then
+		  mkdir -p $HOME/.tmux/plugins
     fi 
 
 		ln -s $DOTFILES/vimrc $HOME/.vimrc
 		ln -s $DOTFILES/vimrc $HOME/.config/nvim/init.vim
 		ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
+
+    curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash > $HOME/.tmux/tmuxinator.bash
+    echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
+    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles"' >> $HOME/.bashrc
+    echo -e 'export EDITOR=nvim' >> $HOME/.bashrc
 }
 
 initialize_me() {
