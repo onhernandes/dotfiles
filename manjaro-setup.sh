@@ -35,8 +35,11 @@ yaourt_install() {
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli
-    neovim
+    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier
+}
+
+ruby_gems_setup() {
+    gem install rdoc neovim tmuxinator
 }
 
 services_setup() {
@@ -89,6 +92,7 @@ initialize_me() {
     yaourt_install
 
     npm_packages_setup
+    ruby_gems_setup
     services_setup
     dotfiles_setup
 }
