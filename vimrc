@@ -106,7 +106,7 @@
 	" Map reload and edit for vimrc
 	nmap <leader>so :so $HOME/.vimrc<cr> 
 	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
-	nmap <leader>w :w!<cr>
+	nmap <leader>w :Prettier<cr>:w!<cr>
 
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
