@@ -183,6 +183,14 @@
     let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
     let NERDTreeShowBookmarks=1
     let NERDTreeDirArrows=1
+    let NERDTreeHijackNetrw=0
+
+    autocmd VimEnter *
+      \   if !argc()
+      \ |   Startify
+      \ |   NERDTree
+      \ |   wincmd w
+      \ | endif
 
     " Prettier
     let g:prettier#config#single_quote = 'true' 
