@@ -147,7 +147,7 @@
   Plug 'stefandtw/quickfix-reflector.vim'
   Plug 'mhinz/vim-signify'
   Plug 'jojoyuji/nerdtree-async'
-  Plug 'nerdtree-execute'
+  " Plug 'nerdtree-execute'
   Plug 'leshill/vim-json'
   Plug 'elzr/vim-json' 
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
@@ -215,16 +215,5 @@
   set background=dark
   colorscheme material-theme
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-""" }}}
-
-""" Vim settings after plug install {{{
-  """ Force behavior and filetypes, and by extension highlighting {{{
-	  augroup FileTypeRules
-	 		autocmd!
-	 		autocmd BufNewFile,BufRead *.md set ft=markdown tw=79
-	 		autocmd BufNewFile,BufRead *.tex set ft=tex tw=79
-	 		autocmd BufNewFile,BufRead *.txt set ft=sh tw=79
-	 	augroup END
-	""" }}}
 """ }}}
 

@@ -10,15 +10,16 @@ windows:
       panes:
         - nvim
         - 
-        - git
+        - 
   - tt: 
       root: ~/
       panes:
-        - source $HOME/venv/bin/activate
+        - source $HOME/venv/bin/activate && rainbowstream
   - app:
       root: /var/www/app
       panes:
         - npm start
+        - 
   - laradock:
       root: /var/www/laradock
       panes: 
