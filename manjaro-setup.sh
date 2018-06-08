@@ -29,13 +29,13 @@ pacman_install() {
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-    YAOURT_PACKAGES="google-chrome spotify postman rambox"
+    YAOURT_PACKAGES="google-chrome exercism-cli spotify postman rambox"
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier
+    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson
 }
 
 ruby_gems_setup() {
@@ -92,7 +92,7 @@ dotfiles_setup() {
     curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash > $HOME/.tmux/tmuxinator.bash
     echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
     echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles"' >> $HOME/.bashrc
-    echo -e 'export EDITOR=nvim' >> $HOME/.bashrc
+    echo -e 'export EDITOR=vi' >> $HOME/.bashrc
 }
 
 initialize_me() {
@@ -104,6 +104,8 @@ initialize_me() {
     ruby_gems_setup
     services_setup
     dotfiles_setup
+
+    source $HOME/.bashrc
 }
 
 initialize_me

@@ -147,7 +147,6 @@
   Plug 'stefandtw/quickfix-reflector.vim'
   Plug 'mhinz/vim-signify'
   Plug 'jojoyuji/nerdtree-async'
-  " Plug 'nerdtree-execute'
   Plug 'leshill/vim-json'
   Plug 'elzr/vim-json' 
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
