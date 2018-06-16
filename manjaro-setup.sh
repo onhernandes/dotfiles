@@ -23,13 +23,13 @@ pacman_install() {
     && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools npm nodejs easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
+    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools keepassxc npm nodejs easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
 		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-    YAOURT_PACKAGES="google-chrome spotify postman rambox"
+    YAOURT_PACKAGES="google-chrome woeusb spotify postman rambox"
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
