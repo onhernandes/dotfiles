@@ -57,12 +57,12 @@ dotfiles_setup() {
     echo "Setting misc dotfiles"
 
     # Set .gitconfig and .gitignore_global
-    if [[ -f $DOTFILES/commands/git/.gitconfig ]]; then
-        ln -s $DOTFILES/commands/git/.gitconfig /etc/gitconfig
+    if [[ -f $DOTFILES/commands/git/gitconfig ]]; then
+        ln -s $DOTFILES/commands/git/gitconfig /etc/gitconfig
     fi
 
-    if [[ -f $DOTFILES/commands/git/.gitignore_global ]]; then
-        ln -s $DOTFILES/commands/git/.gitignore_global /etc/gitignore_global
+    if [[ -f $DOTFILES/commands/git/gitignore_global ]]; then
+        ln -s $DOTFILES/commands/git/gitignore_global /etc/gitignore_global
     fi
 
     # Setting ST3 files
