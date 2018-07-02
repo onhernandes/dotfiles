@@ -10,7 +10,6 @@ windows:
       panes:
         - nvim
         - 
-        - 
   - tt: 
       root: ~/
       panes:
@@ -19,9 +18,8 @@ windows:
       root: /var/www/app
       panes:
         - npm start
-        - 
-  - laradock:
-      root: /var/www/laradock
+  - me:
+      root: $HOME/.onhernandes
       panes: 
-        - 
+        - nvim
 

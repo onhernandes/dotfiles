@@ -154,6 +154,7 @@
   Plug 'zoubin/vim-gotofile'
   Plug 'tpope/vim-sensible'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'heavenshell/vim-jsdoc'
 
 	""" Plugins' Settings {{{
     " UltiSnips
