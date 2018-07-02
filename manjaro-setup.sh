@@ -95,7 +95,7 @@ dotfiles_setup() {
 
     curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash > $HOME/.tmux/tmuxinator.bash
     echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
-    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles"' >> $HOME/.bashrc
+    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"' >> $HOME/.bashrc
     echo -e 'export EDITOR=vi' >> $HOME/.bashrc
 }
 
