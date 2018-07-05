@@ -144,6 +144,7 @@
   Plug 'jdkanani/vim-material-theme'
   Plug 'AndrewRadev/switch.vim'
   Plug 'stefandtw/quickfix-reflector.vim'
+  Plug 'junegunn/vim-emoji'
   Plug 'mhinz/vim-signify'
   Plug 'jojoyuji/nerdtree-async'
   Plug 'leshill/vim-json'
@@ -158,6 +159,14 @@
     \ }
   Plug 'heavenshell/vim-jsdoc'
   Plug 'wellle/targets.vim'
+  Plug 'mattn/emmet-vim'
+  Plug 'posva/vim-vue'
+  Plug 'ap/vim-css-color'
+  Plug '29decibel/vim-stringify'
+  Plug 'moll/vim-node', {'for': 'javascript'}
+  Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+  Plug 'othree/yajs.vim', {'for': 'javascript'}
+  Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 
 	""" Plugins' Settings {{{
     " JSDocs
@@ -171,8 +180,17 @@
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+    " JS Libs
+    let g:used_javascript_libs = 'underscore,vue,lodash,chai,jasmine'
+
+    " VueJS
+    let g:vue_disable_pre_processors = 1
+
     " Targets
     let g:targets_quotes = '"d ''q `'
+
+    " Emmet
+    let g:user_emmet_mode='a'
 
     " Switch
     let g:switch_mapping="-"
@@ -185,6 +203,8 @@
       \   ['null', 'undefined', 'NaN'],
       \   ['map', 'forEach', 'filter'],
       \   ['let', 'const', 'var'],
+      \   ['console.log', 'console.warn', 'console.error', 'debug'],
+      \   ['log', 'warn', 'error'],
       \   ['exports', 'module.exports']
       \ ]
 
