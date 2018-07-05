@@ -106,9 +106,15 @@
 	" Map reload and edit for vimrc
 	nmap <leader>so :so $HOME/.vimrc<cr> 
 	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
+
+  " Map leader save
 	nmap <leader>w :w!<cr>
-	nmap <leader>n :bn!<cr>
-	nmap <leader>p :bp!<cr>
+
+  " Map next and previous buffer
+	nmap <leader>l :bn<cr>
+	nmap <leader>h :bp<cr>
+
+  " Map :Buffers
   nnoremap <leader>b :Buffers<cr>
 
 	" Map horizontal and vertical split of the same file
