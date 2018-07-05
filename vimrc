@@ -109,6 +109,7 @@
 	nmap <leader>w :w!<cr>
 	nmap <leader>n :bn!<cr>
 	nmap <leader>p :bp!<cr>
+  nnoremap <leader>b :Buffers<cr>
 
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
@@ -134,13 +135,11 @@
 	Plug 'tpope/vim-surround'
 	Plug 'honza/vim-snippets'
   Plug 'rhysd/clever-f.vim'
-  " Plug 'ervandew/supertab'
 	Plug 'bling/vim-bufferline'
 	Plug 'somini/vim-autoclose'
 	Plug 'mhinz/vim-startify'
 	Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf.vim'
-  " Plug 'mbbill/undotree'
   Plug 'junegunn/fzf'
   Plug 'jdkanani/vim-material-theme'
   Plug 'AndrewRadev/switch.vim'
@@ -158,6 +157,7 @@
       \ 'for': ['javascript', 'json', 'vue', 'graphql']
     \ }
   Plug 'heavenshell/vim-jsdoc'
+  Plug 'wellle/targets.vim'
 
 	""" Plugins' Settings {{{
     " JSDocs
@@ -170,6 +170,9 @@
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+    " Targets
+    let g:targets_quotes = '"d ''q `'
 
     " Switch
     let g:switch_mapping="-"
@@ -204,6 +207,7 @@
     let g:prettier#config#use_tabs = 'false'
     let g:prettier#config#trailing_comma = 'none'
     let g:prettier#config#flatten_ternaries = 'true'
+    nmap <leader>c <Plug>(Prettier)
 
     " Statusline
     let g:lightline = {
