@@ -107,6 +107,8 @@
 	nmap <leader>so :so $HOME/.vimrc<cr> 
 	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
 	nmap <leader>w :w!<cr>
+	nmap <leader>n :bn!<cr>
+	nmap <leader>p :bp!<cr>
 
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
@@ -130,17 +132,15 @@
 	Plug 'roxma/nvim-completion-manager'
 	Plug 'SirVer/ultisnips'
 	Plug 'tpope/vim-surround'
-	Plug 'shime/vim-livedown'
 	Plug 'honza/vim-snippets'
   Plug 'rhysd/clever-f.vim'
-  Plug 'haya14busa/incsearch.vim'
-	Plug 'ervandew/supertab'
+  " Plug 'ervandew/supertab'
 	Plug 'bling/vim-bufferline'
 	Plug 'somini/vim-autoclose'
 	Plug 'mhinz/vim-startify'
 	Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf.vim'
-  Plug 'mbbill/undotree'
+  " Plug 'mbbill/undotree'
   Plug 'junegunn/fzf'
   Plug 'jdkanani/vim-material-theme'
   Plug 'AndrewRadev/switch.vim'
@@ -153,10 +153,16 @@
   Plug 'tpope/vim-jdaddy', {'for': 'json'}
   Plug 'zoubin/vim-gotofile'
   Plug 'tpope/vim-sensible'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'prettier/vim-prettier', { 
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'json', 'vue', 'graphql']
+    \ }
   Plug 'heavenshell/vim-jsdoc'
 
 	""" Plugins' Settings {{{
+    " JSDocs
+    g:jsdoc_enable_es6=1
+
     " UltiSnips
     let g:UltiSnipsUsePythonVersion = 3
     let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
