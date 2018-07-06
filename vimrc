@@ -180,7 +180,11 @@
     g:jsdoc_enable_es6=1
 
     " UltiSnips
-    let g:UltiSnipsUsePythonVersion = 3
+    if has('python3')
+      let g:UltiSnipsUsePythonVersion = 3
+    else
+      let g:UltiSnipsUsePythonVersion = 2
+    endif
     let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
     let g:UltiSnipsEditSplit="vertical"
     let g:UltiSnipsExpandTrigger="<tab>"
