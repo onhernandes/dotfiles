@@ -42,6 +42,7 @@
 		set wildignore+=*.a,*.o,*.so,*.pyc,*.class
 		set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.pdf
 		set wildignore+=*/.git*,*.tar,*.zip
+    set wildignore+=*/node_modules/*,*/dist/*,*/public/*,coverage,*/__pycache__/*
 		set wildmenu
 		set wildmode=longest:full,list:full
 	""" }}}
