@@ -177,7 +177,7 @@
 
 	""" Plugins' Settings {{{
     " JSDocs
-    g:jsdoc_enable_es6=1
+    let g:jsdoc_enable_es6=1
 
     " UltiSnips
     if has('python3')
