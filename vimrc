@@ -108,6 +108,9 @@
 	nmap <leader>so :so $HOME/.vimrc<cr> 
 	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
 
+  " Map :Files
+  nmap <leader>f :Files<cr>
+
   " Map leader save
 	nmap <leader>w :w!<cr>
 
