@@ -29,7 +29,7 @@ pacman_install() {
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-    YAOURT_PACKAGES="google-chrome exercism-cli spotify postman rambox"
+    YAOURT_PACKAGES="google-chrome exercism-cli spotify postman rambox megasync"
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
