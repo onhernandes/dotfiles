@@ -183,6 +183,7 @@
   Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
   Plug 'othree/yajs.vim', {'for': 'javascript'}
   Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
+  Plug 'wakatime/vim-wakatime'
 
 	""" Plugins' Settings {{{
     " JSDocs
