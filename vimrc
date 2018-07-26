@@ -8,6 +8,7 @@
 	set tabstop=2
 	set softtabstop=0
 	set shiftwidth=2
+  set foldmethod=indent
 
 	" Set indent and numbers
 	set number
@@ -36,6 +37,11 @@
 	set cinkeys-=0#
 	set expandtab
   set termguicolors
+  set incsearch
+  set hlsearch
+  set foldenable
+  set foldlevelstart=3
+  set foldnestmax=10
 
 	""" Wildmode/wildmenu command-line completion {{{
 		set wildignore+=*.bak,*.swp,*.swo
@@ -177,6 +183,7 @@
   Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
   Plug 'othree/yajs.vim', {'for': 'javascript'}
   Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
+  Plug 'wakatime/vim-wakatime'
 
 	""" Plugins' Settings {{{
     " JSDocs
@@ -258,6 +265,10 @@
 
     " Nerdtree
     autocmd vimenter * NERDTree"
+
+    " FZF Stuff
+    command! -bang -nargs=* GitAg
+      \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
 	call plug#end()
      
   " Theme & Syntax

@@ -9,11 +9,12 @@ windows:
       layout: main-horizontal
       panes:
         - nvim
-        - 
-  - tt: 
-      root: ~/
+        - DEBUG=mongoose npm run mon
+  - app-v2: 
+      root: /var/www/app-v2
       panes:
-        - source $HOME/venv/bin/activate && rainbowstream
+        - nvim
+        - yarn start
   - app:
       root: /var/www/app
       panes:
