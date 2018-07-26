@@ -42,6 +42,7 @@
 		set wildignore+=*.a,*.o,*.so,*.pyc,*.class
 		set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.pdf
 		set wildignore+=*/.git*,*.tar,*.zip
+    set wildignore+=*/node_modules/*,*/dist/*,*/public/*,coverage,*/__pycache__/*
 		set wildmenu
 		set wildmode=longest:full,list:full
 	""" }}}
@@ -106,7 +107,19 @@
 	" Map reload and edit for vimrc
 	nmap <leader>so :so $HOME/.vimrc<cr> 
 	nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
+
+  " Map :Files
+  nmap <leader>f :Files<cr>
+
+  " Map leader save
 	nmap <leader>w :w!<cr>
+
+  " Map next and previous buffer
+	nmap <leader>l :bn<cr>
+	nmap <leader>h :bp<cr>
+
+  " Map :Buffers
+  nnoremap <leader>b :Buffers<cr>
 
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
@@ -130,40 +143,68 @@
 	Plug 'roxma/nvim-completion-manager'
 	Plug 'SirVer/ultisnips'
 	Plug 'tpope/vim-surround'
-	Plug 'shime/vim-livedown'
 	Plug 'honza/vim-snippets'
   Plug 'rhysd/clever-f.vim'
-  Plug 'haya14busa/incsearch.vim'
-	Plug 'ervandew/supertab'
 	Plug 'bling/vim-bufferline'
 	Plug 'somini/vim-autoclose'
 	Plug 'mhinz/vim-startify'
 	Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf.vim'
-  Plug 'mbbill/undotree'
   Plug 'junegunn/fzf'
   Plug 'jdkanani/vim-material-theme'
   Plug 'AndrewRadev/switch.vim'
   Plug 'stefandtw/quickfix-reflector.vim'
+  Plug 'junegunn/vim-emoji'
   Plug 'mhinz/vim-signify'
   Plug 'jojoyuji/nerdtree-async'
-  " Plug 'nerdtree-execute'
   Plug 'leshill/vim-json'
   Plug 'elzr/vim-json' 
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
   Plug 'tpope/vim-jdaddy', {'for': 'json'}
   Plug 'zoubin/vim-gotofile'
   Plug 'tpope/vim-sensible'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'prettier/vim-prettier', { 
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'json', 'vue', 'graphql']
+    \ }
+  Plug 'heavenshell/vim-jsdoc'
+  Plug 'wellle/targets.vim'
+  Plug 'mattn/emmet-vim'
+  Plug 'posva/vim-vue'
+  Plug 'ap/vim-css-color'
+  Plug '29decibel/vim-stringify'
+  Plug 'moll/vim-node', {'for': 'javascript'}
+  Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+  Plug 'othree/yajs.vim', {'for': 'javascript'}
+  Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 
 	""" Plugins' Settings {{{
+    " JSDocs
+    let g:jsdoc_enable_es6=1
+
     " UltiSnips
-    let g:UltiSnipsUsePythonVersion = 3
+    if has('python3')
+      let g:UltiSnipsUsePythonVersion = 3
+    else
+      let g:UltiSnipsUsePythonVersion = 2
+    endif
     let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
     let g:UltiSnipsEditSplit="vertical"
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+    " JS Libs
+    let g:used_javascript_libs = 'underscore,vue,lodash,chai,jasmine'
+
+    " VueJS
+    let g:vue_disable_pre_processors = 1
+
+    " Targets
+    let g:targets_quotes = '"d ''q `'
+
+    " Emmet
+    let g:user_emmet_mode='a'
 
     " Switch
     let g:switch_mapping="-"
@@ -176,6 +217,8 @@
       \   ['null', 'undefined', 'NaN'],
       \   ['map', 'forEach', 'filter'],
       \   ['let', 'const', 'var'],
+      \   ['console.log', 'console.warn', 'console.error', 'debug'],
+      \   ['log', 'warn', 'error'],
       \   ['exports', 'module.exports']
       \ ]
 
@@ -198,6 +241,7 @@
     let g:prettier#config#use_tabs = 'false'
     let g:prettier#config#trailing_comma = 'none'
     let g:prettier#config#flatten_ternaries = 'true'
+    nmap <leader>c <Plug>(Prettier)
 
     " Statusline
     let g:lightline = {

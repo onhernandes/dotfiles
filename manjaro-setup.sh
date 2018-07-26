@@ -29,13 +29,17 @@ pacman_install() {
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
+<<<<<<< HEAD
     YAOURT_PACKAGES="google-chrome woeusb spotify postman rambox"
+=======
+    YAOURT_PACKAGES="google-chrome exercism-cli spotify postman rambox megasync"
+>>>>>>> 9770a30d9816d1a71bb9a12cb68e76975e567a91
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier
+    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson
 }
 
 ruby_gems_setup() {
@@ -56,9 +60,13 @@ services_setup() {
 dotfiles_setup() {
     echo "Setting misc dotfiles"
 
-    # Set .gitconfig
-    if [[ -f $DOTFILES/commands/git/.gitconfig ]]; then
-        ln -s $DOTFILES/commands/git/.gitconfig $HOME/.gitconfig
+    # Set .gitconfig and .gitignore_global
+    if [[ -f $DOTFILES/commands/git/gitconfig ]]; then
+        ln -s $DOTFILES/commands/git/gitconfig /etc/gitconfig
+    fi
+
+    if [[ -f $DOTFILES/commands/git/gitignore_global ]]; then
+        ln -s $DOTFILES/commands/git/gitignore_global /etc/gitignore_global
     fi
 
     # Setting ST3 files
@@ -91,8 +99,8 @@ dotfiles_setup() {
 
     curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash > $HOME/.tmux/tmuxinator.bash
     echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
-    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles"' >> $HOME/.bashrc
-    echo -e 'export EDITOR=nvim' >> $HOME/.bashrc
+    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"' >> $HOME/.bashrc
+    echo -e 'export EDITOR=vi' >> $HOME/.bashrc
 }
 
 initialize_me() {
@@ -104,6 +112,8 @@ initialize_me() {
     ruby_gems_setup
     services_setup
     dotfiles_setup
+
+    source $HOME/.bashrc
 }
 
 initialize_me

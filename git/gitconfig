@@ -25,9 +25,10 @@
 	fo = fetch origin
 	s = status
 	die = reset --hard
+  up = fetch origin && git pull
 
 [push]
 	default = current
 
 [core]
-	excludefiles = ~/.gitignore_global
+	excludefiles = /etc/gitignore_global
