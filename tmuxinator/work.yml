@@ -1,7 +1,6 @@
 # ~/.tmuxinator/work.yml
 
 name: work
-root: /var/www/
 
 windows:
   - work:
@@ -10,11 +9,13 @@ windows:
       panes:
         - nvim
         - DEBUG=mongoose npm run mon
+  <%- if @args[0] == "front" %>
   - app-v2: 
       root: /var/www/app-v2
       panes:
         - nvim
         - yarn start
+  <%- end %>
   - app:
       root: /var/www/app
       panes:
