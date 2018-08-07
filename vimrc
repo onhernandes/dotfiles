@@ -227,6 +227,7 @@
       \   ['let', 'const', 'var'],
       \   ['console.log', 'console.warn', 'console.error', 'debug'],
       \   ['log', 'warn', 'error'],
+      \   ['before', 'after'],
       \   ['exports', 'module.exports']
       \ ]
 
@@ -250,6 +251,11 @@
     let g:prettier#config#trailing_comma = 'none'
     let g:prettier#config#flatten_ternaries = 'true'
     nmap <leader>c <Plug>(Prettier)
+
+    " Ale
+    let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
+    let g:ale_linters_explicit = 1
+    let g:ale_sign_warning = '!!'
 
     " Statusline
     let g:lightline = {
