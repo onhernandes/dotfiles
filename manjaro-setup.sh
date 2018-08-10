@@ -19,21 +19,16 @@ ensure_home_folder() {
 pacman_install() {
     echo "Installing Pacman Packages"
 
-    wget https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A 
-    && rm sublimehq-pub.gpg
+    wget https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh curl mariadb mongodb mongodb-tools keepassxc npm nodejs easytag git filezilla xclip xf86-input-synaptics fzf ruby sublime-text neovim"
+    PACMAN_PACKAGES="openssh docker docker-compose curl mongodb mongodb-tools keepassxc easytag xclip xf86-input-synaptics fzf ruby sublime-text neovim"
 		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-<<<<<<< HEAD
     YAOURT_PACKAGES="google-chrome woeusb spotify postman rambox"
-=======
-    YAOURT_PACKAGES="google-chrome exercism-cli spotify postman rambox megasync"
->>>>>>> 9770a30d9816d1a71bb9a12cb68e76975e567a91
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 
@@ -48,8 +43,8 @@ ruby_gems_setup() {
 
 services_setup() {
     echo "Setting some services"
-    SERVICES=(mysqld mongodb)
-    sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    SERVICES=(mongodb docker)
+    # sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
     for serv in ${SERVICES[@]}; do
         systemctl enable $serv
@@ -97,7 +92,7 @@ dotfiles_setup() {
 		ln -s $DOTFILES/vimrc $HOME/.config/nvim/init.vim
 		ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
 
-    curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash > $HOME/.tmux/tmuxinator.bash
+    curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmux/tmuxinator.bash
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $HOME/git-completion.bash
     echo -e ". $HOME/.git-completion.bash" >> $HOME/.bashrc
     echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
