@@ -228,6 +228,7 @@
       \   ['console.log', 'console.warn', 'console.error', 'debug'],
       \   ['log', 'warn', 'error'],
       \   ['before', 'after'],
+      \   ['get', 'put', 'post', 'delete'],
       \   ['exports', 'module.exports']
       \ ]
 
