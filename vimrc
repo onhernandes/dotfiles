@@ -232,6 +232,7 @@
       \   ['console.log', 'console.warn', 'console.error', 'debug'],
       \   ['log', 'warn', 'error'],
       \   ['before', 'after'],
+      \   ['True', 'False', 'None'],
       \   ['get', 'put', 'post', 'delete'],
       \   ['exports', 'module.exports']
       \ ]
@@ -266,7 +267,6 @@
     let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
-  """ }}}
 
     " Signify
     let g:signify_sign_add = '+'
@@ -281,6 +281,7 @@
     " FZF Stuff
     command! -bang -nargs=* GitAg
       \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
+  """ }}}
 	call plug#end()
      
   " Theme & Syntax
