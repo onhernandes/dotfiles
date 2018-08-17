@@ -16,6 +16,7 @@ fi
 
 if [[ $COMMAND == "symlink" ]]; then
   chmod +x $DOTFILES/commands/r
+  chmod +x $DOTFILES/commands/subl-snippet
 
   FILES=( \
     ("$DOTFILES/git/gitconfig", "$HOME/.gitconfig") \
@@ -25,7 +26,8 @@ if [[ $COMMAND == "symlink" ]]; then
     ("$DOTFILES/vimrc", "$HOME/.vimrc") \
     ("$DOTFILES/vimrc", "$HOME/.config/nvim/init.vim") \
     ("$DOTFILES/tmux.conf", "$HOME/.tmux.conf") \
-    ("$DOTFILES/commands/r", "/usr/bin/r")
+    ("$DOTFILES/commands/r", "/usr/bin/r") \
+    ("$DOTFILES/commands/subl-snippet", "/usr/bin/subl-snippet") \
   )
 
   for f in ${$FILES[*]}; do
