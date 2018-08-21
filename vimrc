@@ -1,6 +1,13 @@
 """ Automatically create needed files and folders on first run (*nix only) {{{
 	call system('mkdir -p $HOME/.vim/{autoload,bundle,swap,undo}')
   call system('mkdir $HOME/.local/share/nvim/plugged')
+
+  " Automatically install vim-plug if needed
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
 """ }}}
 
 """ Neo/Vim Settings {{{
