@@ -2,6 +2,25 @@
 COMMAND=$1
 DOTFILES="$HOME/.onhernandes/dotfiles"
 
+if [[ $COMMAND == "setup-python" ]]; then
+  FOLDER = $1
+  cd $FOLDER
+
+  if [[ -d ./env ]]; then
+    mkdir env
+  fi
+
+  virtualenv --python=$(which python3) env
+  source env/bin/activate
+
+  if [[ -f ./requirements.txt ]]; then
+    pip install -r requirements.txt
+  fi
+
+  deactivate
+  exit
+fi
+
 if [[ $COMMAND == "clear-desktop" ]]; then
   while true; do
       read -p "You really wanna clear all your desktop? " yn
