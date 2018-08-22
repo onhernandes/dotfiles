@@ -2,7 +2,7 @@
 # I use this to install basic things on my server, so I can run some apps and play around
 
 apt-get update
-apt-get install python3-pip git mongodb neovim sudo
+apt-get install -y python3-pip git mongodb neovim sudo ca-certificates build-essential supervisor libfontconfig
 
 useradd onhernandes -m
 usermod -a -G sudo onhernandes

@@ -196,6 +196,8 @@
   Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
   Plug 'wakatime/vim-wakatime'
   Plug 'w0rp/ale'
+  Plug 'matze/vim-move'
+  Plug 'tpope/vim-unimpaired'
 
 	""" Plugins' Settings {{{
     " JSDocs
