@@ -8,15 +8,19 @@ useradd onhernandes -m
 usermod -a -G sudo onhernandes
 chsh -s /bin/bash onhernandes
 
+systemctl enable mongodb
+systemctl start mongodb
+
+passwd onhernandes
+
+su - onhernandes
+
 pip3 install virtualenv neovim
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-systemctl enable mongodb
-systemctl start mongodb
 
 if [[ ! -d /home/onhernandes/.local/share/nvim/plugged ]]; then
   mkdir -p /home/onhernandes/.local/share/nvim/plugged
