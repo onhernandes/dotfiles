@@ -198,6 +198,7 @@
   Plug 'w0rp/ale'
   Plug 'matze/vim-move'
   Plug 'tpope/vim-unimpaired'
+  Plug 'MattesGroeger/vim-bookmarks'
 
 	""" Plugins' Settings {{{
     " JSDocs
