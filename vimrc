@@ -124,6 +124,30 @@
   " Map :Files
   nmap <leader>f :Files<cr>
 
+  " Bubble single lines to CTRL + ALT + j
+  nmap  <c-a-j> ]e
+  nmap  <c-a-k> [e
+
+  " Bubble multiple lines to CTRL + ALT + j
+  vmap <c-a-k> [egv
+  vmap <c-a-j> ]egv
+
+  " leader + space clear highlight
+  nmap <silent> <leader><space> :silent noh<cr>
+
+  " Simpler folding
+  nnoremap zr zR
+  nnoremap zm zM
+
+  " jj to <esc>
+  inoremap jj <esc>
+
+  " <tab> indent
+  map <tab> >gv
+  map <s-tab> <gv
+  nmap <tab> >>
+  nmap <s-tab> <<
+
   " Map leader save
 	nmap <leader>w :w!<cr>
 
@@ -141,6 +165,9 @@
 	" Map horizontal and vertical split of the same file
 	nmap <leader>s :split %<cr>
 	nmap <leader>vs :vsplit %<cr>
+
+  " Map S to s for surround plugin
+  vmap s S
 
   " DO NOT USE THESE FUCKING ARROWS. THANKS.
 	noremap <Up> ""
