@@ -184,7 +184,14 @@
 	call plug#begin('~/.local/share/nvim/plugged')
 
 	" Plugins
-	Plug 'roxma/nvim-completion-manager'
+	Plug 'ncm2/ncm2'
+	Plug 'roxma/nvim-yarp'
+  Plug 'ncm2/ncm2-tmux'
+  Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
+  Plug 'ncm2/ncm2-jedi'
+  Plug 'ncm2/ncm2-vim'
+  Plug 'ncm2/ncm2-ultisnips'
+  Plug 'ncm2/ncm2-markdown-subscope'
 	Plug 'SirVer/ultisnips'
 	Plug 'tpope/vim-surround'
 	Plug 'honza/vim-snippets'
@@ -228,16 +235,16 @@
   Plug 'MattesGroeger/vim-bookmarks'
 
 	""" Plugins' Settings {{{
+    " NCM2
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
+
     " JSDocs
     let g:jsdoc_enable_es6=1
 
     " UltiSnips
-    if has('python3')
-      let g:UltiSnipsUsePythonVersion = 3
-    else
-      let g:UltiSnipsUsePythonVersion = 2
-    endif
-    let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim-snippets"]
+    let g:UltiSnipsUsePythonVersion = 3
+    let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim/snippets"]
     let g:UltiSnipsEditSplit="vertical"
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
