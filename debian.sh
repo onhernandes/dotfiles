@@ -31,8 +31,7 @@ if [[ ! -d /home/onhernandes/.config/nvim ]]; then
 fi                            
 
 git clone git@github.com:onhernandes/dotfiles.git /home/onhernandes/dotfiles
-ln -s /home/onhernandes/dotfiles/vimrc /home/onhernandes/.vimrc
 ln -s /home/onhernandes/dotfiles/vim /home/onhernandes/.vim
-ln -s /home/onhernandes/dotfiles/commands/git/gitconfig /etc/gitconfig
 ln -s /home/onhernandes/dotfiles/vimrc /home/onhernandes/.config/nvim/init.vim
+ln -s /home/onhernandes/dotfiles/commands/git/gitconfig /etc/gitconfig
 

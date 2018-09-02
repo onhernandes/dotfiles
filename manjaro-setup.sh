@@ -37,6 +37,10 @@ npm_packages_setup() {
     sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson
 }
 
+pip_packages_setup() {
+    sudo pip install neovim
+}
+
 ruby_gems_setup() {
     gem install rdoc neovim tmuxinator
 }
@@ -68,12 +72,13 @@ dotfiles_setup() {
     if [[ -d $SUBLIME_USER_PACKAGE ]]; then
         ln -s $DOTFILES/sublime/Package\ Control.sublime-settings $SUBLIME_USER_PACKAGE
         ln -s $DOTFILES/sublime/Preferences.sublime-settings $SUBLIME_USER_PACKAGE
+        chmod +x $DOTFILES/commands/subl-snippet && ln -f $DOTFILES/commands/subl-snippet /usr/bin/subl-snippet
     fi
 
     # Setting custom commands
-    chmod +x $DOTFILES/commands/gitlist && ln -s $DOTFILES/commands/gitlist /usr/bin
-    chmod +x $DOTFILES/commands/license-mit && ln -s $DOTFILES/commands/license-mit /usr/bin
-    chmod +x $DOTFILES/commands/subl-snippet && ln -s $DOTFILES/commands/subl-snippet /usr/bin
+    chmod +x $DOTFILES/commands/license-mit && ln -f $DOTFILES/commands/license-mit /usr/bin/license-mit
+    chmod +x $DOTFILES/commands/kirby && ln -f $DOTFILES/commands/kirby /usr/bin/kirby
+    chmod +x $DOTFILES/commands/r && ln -f $DOTFILES/commands/r /usr/bin/r
 
 		# Setting vim and tmux config
 		if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
@@ -88,16 +93,12 @@ dotfiles_setup() {
 		  mkdir -p $HOME/.tmux/plugins
     fi 
 
-		ln -s $DOTFILES/vimrc $HOME/.vimrc
-		ln -s $DOTFILES/vimrc $HOME/.config/nvim/init.vim
-		ln -s $DOTFILES/tmux.conf $HOME/.tmux.conf
+		ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
+		ln -f $DOTFILES/tmux.conf $HOME/.tmux.conf
 
     curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmux/tmuxinator.bash
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $HOME/git-completion.bash
-    echo -e ". $HOME/.git-completion.bash" >> $HOME/.bashrc
-    echo -e "source $HOME/.tmux/tmuxinator.bash" >> $HOME/.bashrc
-    echo -e 'export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"' >> $HOME/.bashrc
-    echo -e 'export EDITOR=vi' >> $HOME/.bashrc
+    echo -e "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc
 }
 
 install_alacritty() {
@@ -120,6 +121,7 @@ initialize_me() {
     install_alacritty
 
     npm_packages_setup
+    pip_packages_setup
     ruby_gems_setup
     services_setup
     dotfiles_setup

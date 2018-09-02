@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-# Update and Upgrade
-echo "Updating..."
-sudo apt-get update
-
-echo "Upgrading..."
-sudo apt-get upgrade -y
