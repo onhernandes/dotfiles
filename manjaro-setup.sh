@@ -22,7 +22,7 @@ pacman_install() {
     wget https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh docker docker-compose curl mongodb mongodb-tools keepassxc easytag xclip xf86-input-synaptics fzf ruby sublime-text neovim"
+    PACMAN_PACKAGES="openssh docker docker-compose curl mongodb mongodb-tools keepassxc easytag xclip xf86-input-synaptics fzf ruby sublime-text neovim cmake freetype2 fontconfig pkg-config make rustup"
 		pacman -S --noconfirm $PACMAN_PACKAGES
 }
 
@@ -100,10 +100,24 @@ dotfiles_setup() {
     echo -e 'export EDITOR=vi' >> $HOME/.bashrc
 }
 
+install_alacritty() {
+  mkdir /tmp/alacritty
+  git clone git@github.com:jwilm/alacritty.git /tmp/alacritty
+  cd /tmp/alacritty
+  rustup override set stable
+  rustup update stable
+  cargo build --release
+  cp ./target/release/alacritty /usr/bin/alacritty
+  cp $DOTFILES/Alacritty.desktop $HOME/.local/share/applications/
+  cd $HOME
+}
+
 initialize_me() {
     ensure_home_folder
     pacman_install
     yaourt_install
+
+    install_alacritty
 
     npm_packages_setup
     ruby_gems_setup
