@@ -68,6 +68,10 @@
 				\ endif
 		augroup END
   """ }}}
+
+  if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/settings.vim"))
+    so $HOME/.onhernandes/dotfiles/vim/local/settings.vim
+  endif
 """ }}}
 
 """ Custom Mappings {{{
@@ -178,6 +182,10 @@
 	noremap! <Left> <Esc>
 	noremap <Right> ""             
 	noremap! <Right> <Esc>   
+
+  if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/mappings.vim"))
+    so $HOME/.onhernandes/dotfiles/vim/local/mappings.vim
+  endif
 """ }}}
 
 """ VimPlug {{{
@@ -295,16 +303,9 @@
       \ | endif
 
     " Prettier
-    let g:prettier#config#single_quote = 'true' 
-    let g:prettier#config#tab_width = 2
-    let g:prettier#config#use_tabs = 'false'
-    let g:prettier#config#trailing_comma = 'none'
-    let g:prettier#config#flatten_ternaries = 'true'
     nmap <leader>c <Plug>(Prettier)
 
     " Ale
-    let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
-    let g:ale_linters_explicit = 1
     let g:ale_sign_warning = '!!'
 
     " Statusline
@@ -326,6 +327,11 @@
     command! -bang -nargs=* GitAg
       \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
   """ }}}
+
+  if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
+    so $HOME/.onhernandes/dotfiles/vim/local/plugins.vim
+  endif
+
 	call plug#end()
      
   " Theme & Syntax
