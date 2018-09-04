@@ -28,7 +28,7 @@ pacman_install() {
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-    YAOURT_PACKAGES="google-chrome woeusb spotify postman rambox"
+    YAOURT_PACKAGES="google-chrome woeusb shfmt spotify postman rambox"
     yaourt -S --noconfirm $YAOURT_PACKAGES
 }
 

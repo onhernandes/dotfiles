@@ -320,6 +320,8 @@
     let g:signify_sign_change = '~'
     let g:signify_sign_changedelete = g:signify_sign_change
 
+    " ALE
+
     " Nerdtree
     autocmd vimenter * NERDTree"
 
