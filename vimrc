@@ -320,11 +320,6 @@
     let g:signify_sign_change = '~'
     let g:signify_sign_changedelete = g:signify_sign_change
 
-    " ALE
-
-    " Nerdtree
-    autocmd vimenter * NERDTree"
-
     " FZF Stuff
     command! -bang -nargs=* GitAg
       \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
