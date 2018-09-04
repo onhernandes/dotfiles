@@ -56,5 +56,5 @@ if [[ $COMMAND == "symlink" ]]; then
   done
 fi
 
-echo "Available commands: clear-desktop | symlink"
+echo "Available commands: setup-python | clear-desktop | symlink"
 

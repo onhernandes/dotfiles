@@ -16,3 +16,4 @@ fi
 
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
+
