@@ -2,6 +2,12 @@
 COMMAND=$1
 DOTFILES="$HOME/.onhernandes/dotfiles"
 
+ensure_symlink() {
+  if [[ ! -f $2 ]]; then
+    ln -s $1 $2
+  fi
+}
+
 if [[ $COMMAND == "setup-python" ]]; then
   FOLDER = $1
   cd $FOLDER
@@ -37,23 +43,15 @@ if [[ $COMMAND == "symlink" ]]; then
   chmod +x $DOTFILES/commands/r
   chmod +x $DOTFILES/commands/subl-snippet
 
-  FILES=( \
-    ("$DOTFILES/git/gitconfig", "$HOME/.gitconfig") \
-    ("$DOTFILES/git/gitconfig", "/etc/.gitconfig") \
-    ("$DOTFILES/git/gitignore_global", "$HOME/.gitignore_global") \
-    ("$DOTFILES/git/gitignore_global", "/etc/.gitignore_global") \
-    ("$DOTFILES/vimrc", "$HOME/.vimrc") \
-    ("$DOTFILES/vimrc", "$HOME/.config/nvim/init.vim") \
-    ("$DOTFILES/tmux.conf", "$HOME/.tmux.conf") \
-    ("$DOTFILES/commands/r", "/usr/bin/r") \
-    ("$DOTFILES/commands/subl-snippet", "/usr/bin/subl-snippet") \
-  )
-
-  for f in ${$FILES[*]}; do
-    if [[ ! -f $f[1] ]]; then
-      ln -s $f[0] $f[1]
-    fi
-  done
+  ensure_symlink $DOTFILES/git/gitconfig $HOME/.gitconfig
+  ensure_symlink $DOTFILES/git/gitconfig /etc/.gitconfig
+  ensure_symlink $DOTFILES/git/gitignore_global $HOME/.gitignore_global
+  ensure_symlink $DOTFILES/git/gitignore_global /etc/.gitignore_global
+  ensure_symlink $DOTFILES/vimrc $HOME/.config/nvim/init.vim
+  ensure_symlink $DOTFILES/tmux.conf $HOME/.tmux.conf
+  ensure_symlink $DOTFILES/commands/r /usr/bin/r
+  ensure_symlink $DOTFILES/commands/subl-snippet /usr/bin/subl-snippet
+  exit
 fi
 
 echo "Available commands: setup-python | clear-desktop | symlink"
