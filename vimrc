@@ -183,6 +183,9 @@
 	noremap <Right> ""             
 	noremap! <Right> <Esc>   
 
+  " Abbreviations
+  iabbrev lenght length
+
   if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/mappings.vim"))
     so $HOME/.onhernandes/dotfiles/vim/local/mappings.vim
   endif
@@ -252,14 +255,14 @@
 
     " UltiSnips
     let g:UltiSnipsUsePythonVersion = 3
-    let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.".onhernandes/dotfiles/vim/snippets"]
+    let g:UltiSnipsSnippetDirectories=["UltiSnips", expand("$HOME/.onhernandes/dotfiles/vim/snippets")]
     let g:UltiSnipsEditSplit="vertical"
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
     " JS Libs
-    let g:used_javascript_libs = 'underscore,vue,lodash,chai,jasmine'
+    let g:used_javascript_libs = 'vue,lodash'
 
     " VueJS
     let g:vue_disable_pre_processors = 1
