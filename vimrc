@@ -69,6 +69,9 @@
 		augroup END
   """ }}}
 
+  " Set liquid as html
+  autocmd BufRead,BufNewFile *.liquid set filetype=html 
+
   if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/settings.vim"))
     so $HOME/.onhernandes/dotfiles/vim/local/settings.vim
   endif
@@ -185,6 +188,7 @@
 
   " Abbreviations
   iabbrev lenght length
+  iabbrev assing assign
 
   if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/mappings.vim"))
     so $HOME/.onhernandes/dotfiles/vim/local/mappings.vim

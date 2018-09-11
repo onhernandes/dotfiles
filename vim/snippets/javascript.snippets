@@ -2,3 +2,14 @@ snippet jstr "JSON.stringify" !b
 JSON.stringify($0, null, 2);
 endsnippet
 	
+snippet t "Ternary" b
+(${1:a>b}) ? ${2:true} : ${3:false};$0
+endsnippet
+
+snippet hop "hasOwnProperty" !i
+hasOwnProperty('${1}')${2}
+endsnippet
+
+snippet r "return" !b
+return ${1:value};$0
+endsnippet
