@@ -1,7 +1,9 @@
-snippet inc "Liquid Include" b
+extends liquid, html
+
+snippet inc "{% include %}" b
 {% include $0 %}
 endsnippet
 	
-snippet assg "Assign variable" b
+snippet assg "assign variable" b
 {% assign $1 = $0 %}
 endsnippet
