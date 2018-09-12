@@ -4,6 +4,90 @@ snippet inc "{% include %}" b
 {% include $0 %}
 endsnippet
 	
-snippet assg "assign variable" b
+snippet icr "increment" b
+{% increment $0 %}
+endsnippet
+	
+snippet dec "decrement" b
+{% decrement $0 %}
+endsnippet
+	
+snippet cap "capture" b
+{% capture $1 %}
+		$0
+{% endcapture %}
+endsnippet
+	
+snippet ass "assign variable" b
 {% assign $1 = $0 %}
 endsnippet
+	
+snippet v "variable" b
+{{ $0 }}
+endsnippet
+	
+snippet vf "variable with filter" b
+{{ $1 | $0 }}
+endsnippet
+	
+snippet if "if" b
+{% if $1 %}
+		$0
+{% endif %}
+endsnippet
+	
+snippet ife "if else" b
+{% if $1 %}
+	$0
+{% else %}
+{% endif %}
+endsnippet
+	
+snippet ifi "if else if" b
+{% if $1 %}
+{% elsif $0 %}
+{% else %}
+{% endif %}
+endsnippet
+	
+snippet un "unless" b
+{% unless $0 %}
+{% endunless %}
+endsnippet
+	
+snippet ca "case/when" b
+{% case $1 %}
+		{% when $0 %}
+		{% else %}
+{% endcase %}
+endsnippet
+	
+snippet for "for loop" b
+{% for $1 in $0 %}
+{% endfor %}
+endsnippet
+	
+snippet br "break" b
+{% break %}
+endsnippet
+	
+snippet co "continue" b
+{% continue %}
+endsnippet
+	
+snippet tl "table row" b
+{% tablerow $1 in $0 %}
+{% endtablerow %}
+endsnippet
+	
+snippet raw "raw" b
+{% raw %}
+{% endraw %}
+endsnippet
+	
+snippet c "comment" b
+{% comment %}
+		$0
+{% endcomment %}
+endsnippet
+
