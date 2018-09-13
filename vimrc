@@ -247,6 +247,7 @@
   Plug 'tpope/vim-unimpaired'
   Plug 'MattesGroeger/vim-bookmarks'
   Plug 'tpope/vim-liquid'
+  Plug 'Chiel92/vim-autoformat'
 
 	""" Plugins' Settings {{{
     " NCM2
