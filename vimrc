@@ -203,6 +203,8 @@
   Plug 'ncm2/ncm2-tmux'
   Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
   Plug 'ncm2/ncm2-jedi'
+  Plug 'ncm2/ncm2-path'
+  Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim'
   Plug 'ncm2/ncm2-ultisnips'
   Plug 'ncm2/ncm2-markdown-subscope'
@@ -228,10 +230,6 @@
   Plug 'tpope/vim-jdaddy', {'for': 'json'}
   Plug 'zoubin/vim-gotofile'
   Plug 'tpope/vim-sensible'
-  Plug 'prettier/vim-prettier', { 
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'json', 'vue', 'graphql']
-    \ }
   Plug 'heavenshell/vim-jsdoc'
   Plug 'wellle/targets.vim'
   Plug 'mattn/emmet-vim'
@@ -248,6 +246,7 @@
   Plug 'tpope/vim-unimpaired'
   Plug 'MattesGroeger/vim-bookmarks'
   Plug 'tpope/vim-liquid'
+  Plug 'mustache/vim-mustache-handlebars'
   Plug 'Chiel92/vim-autoformat'
 
   """ Plugins' Settings {{{
@@ -309,9 +308,6 @@
       \ |   NERDTree
       \ |   wincmd w
       \ | endif
-
-    " Prettier
-    nmap <leader>c <Plug>(Prettier)
 
     " Ale
     let g:ale_sign_warning = '!!'
