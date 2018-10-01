@@ -21,7 +21,7 @@ windows:
       panes:
         - npm start
   - me:
-      root: $HOME/.onhernandes
+      root: $HOME/.onhernandes/dotfiles
       panes: 
         - nvim
-
+        - source $HOME/venv/bin/activate && rainbowstream
