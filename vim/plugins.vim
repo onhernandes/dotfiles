@@ -115,19 +115,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
 """ }}}
 
-""" Themes and Colors {{{ 
-  Plug 'jdkanani/vim-material-theme'
-   
-  " Theme & Syntax
-  if !exists('g:syntax_on')
-    syntax enable
-  endif    
-
-  set background=dark
-  colorscheme material-theme
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-""" }}}
-
 """ JavaScript/JSON {{{ 
   " Vim JSON support
   Plug 'leshill/vim-json', {'for': 'json'}
@@ -165,8 +152,20 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:vue_disable_pre_processors = 1
 """ }}}
 
+""" Themes and Colors {{{ 
+  Plug 'jdkanani/vim-material-theme'
+""" }}}
+
 if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
   so $HOME/.onhernandes/dotfiles/vim/local/plugins.vim
 endif
 
 call plug#end()
+   
+" Theme & Syntax
+if !exists('g:syntax_on')
+  syntax enable
+endif    
+
+set background=dark
+colorscheme material-theme
