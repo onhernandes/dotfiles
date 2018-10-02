@@ -4,7 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-tmux'
-  Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
+  Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript']}
   Plug 'ncm2/ncm2-jedi'
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-bufword'
@@ -36,12 +36,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'somini/vim-autoclose'
   Plug 'mhinz/vim-startify'
   Plug 'stefandtw/quickfix-reflector.vim'
-  Plug 'junegunn/vim-emoji'
   Plug 'tpope/vim-sensible'
   Plug 'wakatime/vim-wakatime'
   Plug 'matze/vim-move'
   Plug 'tpope/vim-unimpaired'
-  Plug 'Chiel92/vim-autoformat'
   Plug 'jiangmiao/auto-pairs'
   Plug 'MattesGroeger/vim-bookmarks'
 
@@ -131,12 +129,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ JavaScript/JSON {{{ 
-  Plug 'leshill/vim-json'
-  Plug 'elzr/vim-json' 
+  " Vim JSON support
+  Plug 'leshill/vim-json', {'for': 'json'}
+  " Syntax Highlight key and value
+  Plug 'elzr/vim-json', {'for': 'json'}
+  " JSON Formatter: <leader>json
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
-  Plug 'tpope/vim-jdaddy', {'for': 'json'}
-  Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+  " Better JS Highlight
   Plug 'othree/yajs.vim', {'for': 'javascript'}
+  " Highlight JavaScript's Template Strings contents in other FileType syntax rule
   Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 
   " JSDocs
@@ -152,11 +153,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ HTML/CSS/FrontEnd Stuff {{{
   Plug 'ap/vim-css-color'
-  Plug 'tpope/vim-liquid'
-  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'tpope/vim-liquid', {'for': 'liquid'}
+  Plug 'mustache/vim-mustache-handlebars', {'for': ['hbs', 'mustache']}
 
   " Emmet
-  Plug 'mattn/emmet-vim'
+  Plug 'mattn/emmet-vim', {'for': ['vue', 'scss', 'sass', 'css', 'javascript', 'html', 'pug', 'mustache', 'hbs']}
   let g:user_emmet_mode='a'
 
   " VueJS
