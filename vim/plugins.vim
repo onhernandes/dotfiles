@@ -17,10 +17,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Snippets {{{
-  Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
 
   " UltiSnips
+  Plug 'SirVer/ultisnips'
   let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=["UltiSnips", expand("$HOME/.onhernandes/dotfiles/vim/snippets")]
   let g:UltiSnipsEditSplit="vertical"
@@ -31,6 +31,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ Miscellaneous and Utils {{{ 
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-dispatch'
   Plug 'rhysd/clever-f.vim'
   Plug 'bling/vim-bufferline'
   Plug 'somini/vim-autoclose'
@@ -41,7 +42,35 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'matze/vim-move'
   Plug 'tpope/vim-unimpaired'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'mileszs/ack.vim'
+
+  " Bookmarks
   Plug 'MattesGroeger/vim-bookmarks'
+  let g:bookmark_no_default_key_mappings = 1
+  function! BookmarkMapKeys()
+    nmap mm :BookmarkToggle<CR>
+    nmap mi :BookmarkAnnotate<CR>
+    nmap mn :BookmarkNext<CR>
+    nmap mp :BookmarkPrev<CR>
+    nmap ma :BookmarkShowAll<CR>
+    nmap mc :BookmarkClear<CR>
+    nmap mx :BookmarkClearAll<CR>
+    nmap mkk :BookmarkMoveUp
+    nmap mjj :BookmarkMoveDown
+  endfunction
+  function! BookmarkUnmapKeys()
+    unmap mm
+    unmap mi
+    unmap mn
+    unmap mp
+    unmap ma
+    unmap mc
+    unmap mx
+    unmap mkk
+    unmap mjj
+  endfunction
+  autocmd BufEnter * :call BookmarkMapKeys()
+  autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
   " Lightline/Statusline
   Plug 'itchyny/lightline.vim'
@@ -62,12 +91,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '▲'
   let g:ale_set_quickfix = 1
-  let g:ale_open_list = 1
+  "let g:ale_open_list = 1
   nnoremap <leader>af :ALEFix<CR>
   nnoremap <leader>al :ALELint<CR>
 
   " NerdTree
   Plug 'jojoyuji/nerdtree-async'
+  Plug 'ivalkeen/nerdtree-execute'
+  Plug 'tyok/nerdtree-ack'
   let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
   let NERDTreeShowBookmarks=1
   let NERDTreeDirArrows=1
@@ -141,10 +172,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ HTML/CSS/FrontEnd Stuff {{{
   Plug 'ap/vim-css-color'
   Plug 'tpope/vim-liquid', {'for': 'liquid'}
-  Plug 'mustache/vim-mustache-handlebars', {'for': ['hbs', 'mustache']}
+  Plug 'mustache/vim-mustache-handlebars', {'for': ['html.handlebars', 'html.mustache']}
 
   " Emmet
-  Plug 'mattn/emmet-vim', {'for': ['vue', 'scss', 'sass', 'css', 'javascript', 'html', 'pug', 'mustache', 'hbs']}
+  Plug 'mattn/emmet-vim', {'for': [
+    \ 'vue', 'scss', 'sass', 
+    \ 'css', 'javascript', 'html',
+    \ 'pug', 'html.handlebars', 
+    \ 'html.mustache'
+  \ ]}
   let g:user_emmet_mode='a'
 
   " VueJS
