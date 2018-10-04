@@ -5,7 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-tmux'
   Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript']}
-  Plug 'ncm2/ncm2-jedi'
+  Plug 'ncm2/ncm2-jedi', {'for': 'python'}
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim'
@@ -167,6 +167,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " NodeJS
   Plug 'moll/vim-node', {'for': 'javascript'}
+""" }}}
+
+""" Python {{{
+  Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+  Plug 'ambv/black', { 'for': 'python' }
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{
