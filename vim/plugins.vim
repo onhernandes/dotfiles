@@ -10,7 +10,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim'
   Plug 'ncm2/ncm2-ultisnips'
-  Plug 'ncm2/ncm2-markdown-subscope'
+  Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
+  Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars']}
+  Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
 
   autocmd BufEnter * call ncm2#enable_for_buffer()
   set completeopt=noinsert,menuone,noselect
