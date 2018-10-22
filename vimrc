@@ -51,6 +51,7 @@
   set foldenable
   set foldlevelstart=3
   set foldnestmax=10
+  set pastetoggle=<F6>
 
   """ Wildmode/wildmenu command-line completion {{{
     set wildignore+=*.bak,*.swp,*.swo
