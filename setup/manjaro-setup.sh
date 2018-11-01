@@ -34,7 +34,7 @@ yaourt_install() {
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson
+    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson gulp
 }
 
 pip_packages_setup() {

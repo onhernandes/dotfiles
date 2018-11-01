@@ -17,3 +17,6 @@ fi
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
 
+# Aliases
+alias v='nvim'
+alias r='source $HOME/.bashrc'
