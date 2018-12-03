@@ -5,7 +5,7 @@ name: work
 windows:
   - work:
       root: /var/www/wip/
-      layout: main-horizontal
+      layout: main-vertical
       panes:
         - nvim
         - DEBUG=mongoose npm run mon
@@ -17,11 +17,6 @@ windows:
         - yarn start
   <%- end %>
   - app:
-      root: /var/www/app
       panes:
-        - npm start
-  - me:
-      root: $HOME/.onhernandes/dotfiles
-      panes: 
-        - nvim
-        - source $HOME/venv/bin/activate && rainbowstream
+        - cd /var/www/app && npm start
+        - cd /var/www/survey

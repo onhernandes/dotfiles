@@ -177,7 +177,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{
-  Plug 'ap/vim-css-color'
+  Plug 'ap/vim-css-color', {'for': ['css', 'scss', 'sass']}
   Plug 'tpope/vim-liquid', {'for': 'liquid'}
   Plug 'mustache/vim-mustache-handlebars', {'for': ['html.handlebars', 'html.mustache']}
 
