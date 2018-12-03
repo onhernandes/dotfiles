@@ -47,6 +47,8 @@ vmap ; :
 " Map reload and edit for vimrc
 nmap <leader>so :so $HOME/.vimrc<cr> 
 nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
+nmap <leader>rm :edit $HOME/.onhernandes/dotfiles/vim/mappings.vim<cr>
+nmap <leader>rp :edit $HOME/.onhernandes/dotfiles/vim/plugins.vim<cr>
 
 " Map :Files
 nmap <leader>f :Files<cr>
