@@ -101,6 +101,13 @@ dotfiles_setup() {
     curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmux/tmuxinator.bash
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $HOME/git-completion.bash
     echo -e "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc
+
+    # powerline config
+		if [[ ! -d $HOME/.config/powerline-shell ]]; then
+		  mkdir $HOME/.config/powerline-shell
+    fi                             
+
+		ln -f $DOTFILES/powerline.json $HOME/.config/powerline-shell/config.json
 }
 
 install_alacritty() {
