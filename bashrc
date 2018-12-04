@@ -17,6 +17,14 @@ fi
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
 
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
 # Aliases
 alias v='nvim'
 alias r='source $HOME/.bashrc'
