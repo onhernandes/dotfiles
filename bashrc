@@ -20,6 +20,7 @@ function _update_ps1() {
 
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
+export DOTFILES="$HOME/.onhernandes/dotfiles"
 
 if [[ $(command -v powerline-shell) && $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
@@ -28,3 +29,4 @@ fi
 # Aliases
 alias v='nvim'
 alias r='source $HOME/.bashrc'
+alias dotfiles-git="git --work-tree=${DOTFILES} --git-dir=${DOTFILES}/.git"
