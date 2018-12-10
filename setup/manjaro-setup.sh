@@ -80,7 +80,6 @@ dotfiles_setup() {
     # Setting custom commands
     chmod +x $DOTFILES/commands/license-mit && ln -f $DOTFILES/commands/license-mit /usr/bin/license-mit
     chmod +x $DOTFILES/commands/kirby && ln -f $DOTFILES/commands/kirby /usr/bin/kirby
-    chmod +x $DOTFILES/commands/r && ln -f $DOTFILES/commands/r /usr/bin/r
 
 		# Setting vim and tmux config
 		if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
