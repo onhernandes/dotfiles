@@ -14,14 +14,14 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
-export EDITOR=vi
-
 function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
+export EDITOR=vi
+
+if [[ $(command -v powerline-shell) && $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
