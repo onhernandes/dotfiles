@@ -139,7 +139,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Files {{{ 
-  Plug 'zoubin/vim-gotofile'
+  Plug 'zoubin/vim-gotofile', { 'for': ['javascript'] }
 
   " FZF Stuff
   Plug 'junegunn/fzf.vim'
@@ -161,7 +161,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 
   " JSDocs
-  Plug 'heavenshell/vim-jsdoc'
+  Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
   let g:jsdoc_enable_es6=1
 
   " JS Libs
@@ -173,7 +173,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ Python {{{
   Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-  Plug 'ambv/black', { 'for': 'python' }
+  " Plug 'ambv/black', { 'for': 'python' }
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{
