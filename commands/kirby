@@ -8,22 +8,8 @@ ensure_symlink() {
   fi
 }
 
-if [[ $COMMAND == "setup-python" ]]; then
-  FOLDER = $1
-  cd $FOLDER
-
-  if [[ -d ./env ]]; then
-    mkdir env
-  fi
-
-  virtualenv --python=$(which python3) env
-  source env/bin/activate
-
-  if [[ -f ./requirements.txt ]]; then
-    pip install -r requirements.txt
-  fi
-
-  deactivate
+if [[ $COMMAND == "python" ]]; then
+  pip install --user neovim powerline-shell flake8 black
   exit
 fi
 
@@ -54,5 +40,5 @@ if [[ $COMMAND == "symlink" ]]; then
   exit
 fi
 
-echo "Available commands: setup-python | clear-desktop | symlink"
+echo "Available commands: python | clear-desktop | symlink"
 
