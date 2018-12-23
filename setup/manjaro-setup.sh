@@ -40,7 +40,7 @@ npm_packages_setup() {
 pip_packages_setup() {
     sudo pip install neovim
     sudo pip install powerline-shell
-    sudo pip install autopep8
+    sudo pip install flake8
     sudo pip install black
 }
 

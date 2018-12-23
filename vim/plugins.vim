@@ -1,5 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+
 """ NeoVim Completion Manager {{{
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
@@ -96,6 +97,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   "let g:ale_open_list = 1
   nnoremap <leader>af :ALEFix<CR>
   nnoremap <leader>al :ALELint<CR>
+  let g:ale_fixers = 
+    \ {
+      \ 'javascript': ['eslint'],
+      \ 'python': ['black']
+    \ }
 
   " NerdTree
   Plug 'jojoyuji/nerdtree-async'
@@ -173,7 +179,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ Python {{{
   Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-  " Plug 'ambv/black', { 'for': 'python' }
+  Plug 'ambv/black', { 'for': 'python' }
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{

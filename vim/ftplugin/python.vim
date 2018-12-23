@@ -5,4 +5,3 @@ setlocal shiftwidth=4
 
 " Set ale linters and fixers
 let b:ale_linters = ['flake8']
-let b:ale_fixers = ['autopep8']
