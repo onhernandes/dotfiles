@@ -44,21 +44,3 @@ if [[ $COMMAND == "clear-desktop" ]]; then
   done
   exit
 fi
-
-if [[ $COMMAND == "symlink" ]]; then
-  chmod +x $DOTFILES/commands/r
-  chmod +x $DOTFILES/commands/subl-snippet
-
-  ensure_symlink $DOTFILES/git/gitconfig $HOME/.gitconfig
-  ensure_symlink $DOTFILES/git/gitconfig /etc/.gitconfig
-  ensure_symlink $DOTFILES/git/gitignore_global $HOME/.gitignore_global
-  ensure_symlink $DOTFILES/git/gitignore_global /etc/.gitignore_global
-  ensure_symlink $DOTFILES/vimrc $HOME/.config/nvim/init.vim
-  ensure_symlink $DOTFILES/tmux.conf $HOME/.tmux.conf
-  ensure_symlink $DOTFILES/commands/r /usr/bin/r
-  ensure_symlink $DOTFILES/commands/subl-snippet /usr/bin/subl-snippet
-  exit
-fi
-
-echo "Available commands: python | clear-desktop | symlink"
-
