@@ -8,17 +8,14 @@
   pt = push --tags
   pa = push && git push --tags
 	pm 	= push origin master
-	pd	= push origin dev
 	a	= add -A
 	c	= commit -m
 	ca	= !git add -A && git commit -m
 	b	= branch
 	ck	= checkout
 	cb	= checkout -b
-	cbd	= checkout -b dev
 	pl	= pull
 	plo	= pull origin
-	pld	= pull origin dev
 	plm	= pull origin master
 	st = stash
 	sp = stash pop
