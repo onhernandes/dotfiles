@@ -32,6 +32,3 @@
 
 [push]
 	default = current
-
-[core]
-	excludefiles = /etc/gitignore_global
