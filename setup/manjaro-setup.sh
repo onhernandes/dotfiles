@@ -19,44 +19,38 @@ ensure_home_folder() {
 pacman_install() {
     echo "Installing Pacman Packages"
 
-    wget https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+    SUBLIME_TMP="/tmp/sublimehq-pub.gpg"
+
+    # Get ST GPG key
+    wget https://download.sublimetext.com/sublimehq-pub.gpg > $SUBLIME_TMP
+
+    sudo pacman-key --add $SUBLIME_TMP
+
+    sudo pacman-key --lsign-key 8A8F901A
+
+    rm $SUBLIME_TMP
+
     echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-    PACMAN_PACKAGES="openssh docker docker-compose curl mongodb mongodb-tools keepassxc easytag arandr autorandr xclip xf86-input-synaptics fzf ruby sublime-text neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts"
-		pacman -S --noconfirm $PACMAN_PACKAGES
+    $DOTFILES/setup/manjaro/pacman
 }
 
 yaourt_install() {
     echo "Installing Yaourt Packages"
-    YAOURT_PACKAGES="google-chrome woeusb shfmt spotify postman rambox"
-    yaourt -S --noconfirm $YAOURT_PACKAGES
+    $DOTFILES/setup/manjaro/yaourt
 }
 
 npm_packages_setup() {
     echo "Installing NPM Packages..."
-    sudo npm install -g getme nodemon standard hexo-cli hexo jest jest-cli neovim prettier jjson gulp
+    $DOTFILES/setup/npm-packages
 }
 
 pip_packages_setup() {
-    sudo pip install neovim
-    sudo pip install powerline-shell
-    sudo pip install flake8
-    sudo pip install black
+  $DOTFILES/setup/pip-packages
 }
 
 ruby_gems_setup() {
-    gem install rdoc neovim tmuxinator
-}
-
-services_setup() {
-    echo "Setting some services"
-    SERVICES=(mongodb docker)
-    # sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-
-    for serv in ${SERVICES[@]}; do
-        systemctl enable $serv
-        systemctl start $serv
-    done
+  $DOTFILES/setup/ruby-gems
 }
 
 dotfiles_setup() {

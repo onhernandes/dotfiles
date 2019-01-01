@@ -8,8 +8,23 @@ ensure_symlink() {
   fi
 }
 
-if [[ $COMMAND == "python" ]]; then
-  pip install --user neovim powerline-shell flake8 black
+if [[ $COMMAND == "pip" ]]; then
+  $DOTFILES/setup/pip-packages
+  exit
+fi
+
+if [[ $COMMAND == "npm" ]]; then
+  $DOTFILES/setup/npm-packages
+  exit
+fi
+
+if [[ $COMMAND == "yaourt" ]]; then
+  $DOTFILES/setup/manjaro/yaourt
+  exit
+fi
+
+if [[ $COMMAND == "pacman" ]]; then
+  $DOTFILES/setup/manjaro/pacman
   exit
 fi
 

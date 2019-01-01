@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+pip install --user neovim powerline-shell flake8 black

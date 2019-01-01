@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+YAOURT_PACKAGES="woeusb shfmt spotify postman"
+yaourt -S --noconfirm $YAOURT_PACKAGES

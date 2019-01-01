@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+gem install rdoc neovim tmuxinator

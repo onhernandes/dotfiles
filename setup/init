@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DOTFILES=$HOME/.onhernandes/dotfiles
+
+if [[ ! -d $HOME/.onhernandes ]]; then
+    mkdir $HOME/.onhernandes
+fi

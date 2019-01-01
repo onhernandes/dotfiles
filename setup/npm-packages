@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+npm install -g getme nodemon standard neovim jjson gulp
