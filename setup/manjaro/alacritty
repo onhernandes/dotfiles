@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+CURRENT_DIR=${CWD}
+mkdir /tmp/alacritty
+git clone git@github.com:jwilm/alacritty.git /tmp/alacritty
+cd /tmp/alacritty
+rustup override set stable
+rustup update stable
+cargo build --release
+cp ./target/release/alacritty /usr/bin/alacritty
+cp $HOME/.onhernandes/dotfiles/Alacritty.desktop $HOME/.local/share/applications/
+cd $CURRENT_DIR

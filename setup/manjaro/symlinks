@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+
+if [[ ! -e ${HOME}/.gitconfig ]]; then
+  ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
+fi
+
+if [[ ! -e /usr/bin/kirby ]]; then
+  chmod +x $DOTFILES/commands/kirby
+  ln -f $DOTFILES/commands/kirby /usr/bin/kirby
+fi
+
+if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
+  mkdir $HOME/.local/share/nvim/plugged
+fi                             
+
+if [[ ! -d $HOME/.config/nvim ]]; then
+  mkdir $HOME/.config/nvim
+fi                            
+
+if [[ ! -d $HOME/.tmux ]]; then
+  mkdir -p $HOME/.tmux/plugins
+fi 
+
+if [[ ! -e ${HOME}/.config/nvim/init.vim ]]; then
+  ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
+fi
+
+if [[ ! -e ${HOME}/.tmux.conf ]]; then
+  ln -f $DOTFILES/tmux.conf ${HOME}/.tmux.conf
+fi
+
+if [[ ! -f ${HOME}/.tmux/tmuxinator.bash ]]; then
+  curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmux/tmuxinator.bash
+fi
+
+if [[ ! -f ${HOME}/.git-completion.bash ]]; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $HOME/.git-completion.bash
+fi
+
+# powerline config
+if [[ ! -d $HOME/.config/powerline-shell ]]; then
+  mkdir $HOME/.config/powerline-shell
+fi                             
+
+if [[ ! -e ${HOME}/.config/powerline-shell/config.json ]]; then
+  ln -f $DOTFILES/powerline.json $HOME/.config/powerline-shell/config.json
+fi

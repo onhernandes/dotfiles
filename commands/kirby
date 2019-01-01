@@ -28,6 +28,11 @@ if [[ $COMMAND == "pacman" ]]; then
   exit
 fi
 
+if [[ $COMMAND == "symlink" ]]; then
+  $DOTFILES/setup/manjaro/symlinks
+  exit
+fi
+
 if [[ $COMMAND == "clear-desktop" ]]; then
   while true; do
       read -p "You really wanna clear all your desktop? " yn
