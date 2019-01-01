@@ -1,9 +1,0 @@
-.sass-cache/
-nohup.out
-node_modules
-.jekyll-metadata
-_site
-*.log
-vendor/
-public/
-build/
