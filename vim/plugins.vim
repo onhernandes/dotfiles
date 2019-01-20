@@ -102,6 +102,11 @@ call plug#begin('~/.local/share/nvim/plugged')
       \ 'javascript': ['eslint'],
       \ 'python': ['black']
     \ }
+  let g:ale_linters = 
+    \ {
+      \ 'javascript': ['eslint'],
+      \ 'python': ['black']
+    \ }
 
   " NerdTree
   Plug 'jojoyuji/nerdtree-async'
