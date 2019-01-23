@@ -31,3 +31,4 @@ fi
 alias v='nvim'
 alias r='source $HOME/.bashrc'
 alias dotfiles-git="git --work-tree=${DOTFILES} --git-dir=${DOTFILES}/.git"
+alias rpy="source venv/bin/activate"
