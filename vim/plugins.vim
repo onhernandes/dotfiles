@@ -183,7 +183,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Python {{{
-  Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+  " This plugin is overwriting CTRL + L map
+  "Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
   Plug 'ambv/black', { 'for': 'python' }
 """ }}}
 
