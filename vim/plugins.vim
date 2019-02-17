@@ -100,11 +100,13 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ale_fixers = 
     \ {
       \ 'javascript': ['eslint'],
+      \ 'vue': ['eslint'],
       \ 'python': ['black']
     \ }
   let g:ale_linters = 
     \ {
       \ 'javascript': ['eslint'],
+      \ 'vue': ['eslint'],
       \ 'python': ['black']
     \ }
 
