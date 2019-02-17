@@ -5,7 +5,7 @@
 [alias]
 	p	= push
 	po	= push origin
-  pt = push --tags
+  pt = push origin --tags
   pa = push && git push --tags
 	pm 	= push origin master
 	a	= add -A
@@ -28,4 +28,7 @@
   clear-branches = "!f() { git branch -D $(git branch | grep -v \\*); }; f"
 
 [push]
+	default = current
+
+[pull]
 	default = current
