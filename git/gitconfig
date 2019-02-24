@@ -1,34 +1,35 @@
 [user]
-	email = midia.matheus@gmail.com
-	name = Matheus Hernandes
+  email = midia.matheus@gmail.com
+  name = Matheus Hernandes
 
 [alias]
-	p	= push
-	po	= push origin
+  p	= push
+  po = push origin
   pt = push origin --tags
   pa = push && git push --tags
-	pm 	= push origin master
-	a	= add -A
-	c	= commit -m
-	ca	= !git add -A && git commit -m
-	b	= branch
-	ck	= checkout
-	cb	= checkout -b
-	pl	= pull
-	plo	= pull origin
-	plm	= pull origin master
-	st = stash
-	sp = stash pop
-	undo = reset HEAD~1
-	f = fetch
-	fo = fetch origin
-	s = status
-	die = reset --hard
+  pm 	= push origin master
+  a	= add -A
+  c	= commit -m
+  ca = !git add -A && git commit -m
+  b	= branch
+  cm = checkout master
+  ck = checkout
+  cb = checkout -b
+  pl = pull
+  plo	= pull origin
+  plm	= pull origin master
+  st = stash
+  sp = stash pop
+  undo = reset HEAD~1
+  f = fetch
+  fo = fetch origin
+  s = status --short --branch
+  die = reset --hard
   up = fetch origin && git pull
   clear-branches = "!f() { git branch -D $(git branch | grep -v \\*); }; f"
 
 [push]
-	default = current
+  default = current
 
 [pull]
-	default = current
+  default = current
