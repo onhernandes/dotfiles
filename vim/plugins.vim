@@ -187,7 +187,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Python {{{
-  Plug 'ambv/black', { 'for': 'python', 'do': 'pip install --user black' }
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{
