@@ -140,14 +140,16 @@ call plug#begin('~/.local/share/nvim/plugged')
     \   ['unshift', 'push'],
     \   ['log', 'error', 'debug', 'warn'],
     \   ['null', 'undefined', 'NaN'],
-    \   ['map', 'forEach', 'filter'],
+    \   ['map', 'forEach', 'filter', 'reduce'],
     \   ['let', 'const', 'var'],
-    \   ['console.log', 'console.warn', 'console.error', 'debug'],
+    \   ['console.log', 'console.warn', 'console.error'],
     \   ['log', 'warn', 'error'],
     \   ['before', 'after'],
     \   ['True', 'False', 'None'],
     \   ['get', 'put', 'post', 'delete'],
-    \   ['exports', 'module.exports']
+    \   ['exports', 'module.exports'],
+    \   ['right', 'left'],
+    \   ['top', 'bottom']
     \ ]
 """ }}}
 
@@ -185,9 +187,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Python {{{
-  " This plugin is overwriting CTRL + L map
-  "Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-  Plug 'ambv/black', { 'for': 'python' }
+  Plug 'ambv/black', { 'for': 'python', 'do': 'pip install --user black' }
 """ }}}
 
 """ HTML/CSS/FrontEnd Stuff {{{
@@ -198,7 +198,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Emmet
   Plug 'mattn/emmet-vim', {'for': [
     \ 'vue', 'scss', 'sass', 
-    \ 'css', 'javascript', 'html',
+    \ 'css', 'html',
     \ 'pug', 'html.handlebars', 
     \ 'html.mustache'
   \ ]}
