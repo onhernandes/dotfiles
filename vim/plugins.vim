@@ -46,6 +46,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-unimpaired'
   Plug 'jiangmiao/auto-pairs'
   Plug 'mileszs/ack.vim'
+  Plug 'ryanoasis/vim-devicons'
 
   " Bookmarks
   Plug 'MattesGroeger/vim-bookmarks'
