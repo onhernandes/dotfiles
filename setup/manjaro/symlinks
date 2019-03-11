@@ -25,6 +25,14 @@ if [[ ! -e ${HOME}/.config/nvim/init.vim ]]; then
   ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
 fi
 
+if [[ ! -e ${HOME}/.config/nvim/ftplugin ]]; then
+  ln -f $DOTFILES/vim/ftplugin $HOME/.config/nvim/ftplugin
+fi
+
+if [[ ! -e ${HOME}/.config/.flake8 ]]; then
+  ln -f $DOTFILES/python/flake8 $HOME/.config/.flake8
+fi
+
 if [[ ! -e ${HOME}/.tmux.conf ]]; then
   ln -f $DOTFILES/tmux.conf ${HOME}/.tmux.conf
 fi

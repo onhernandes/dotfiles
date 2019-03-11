@@ -108,7 +108,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ {
       \ 'javascript': ['eslint'],
       \ 'vue': ['eslint'],
-      \ 'python': ['black']
     \ }
 
   " NerdTree
