@@ -46,7 +46,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-unimpaired'
   Plug 'jiangmiao/auto-pairs'
   Plug 'mileszs/ack.vim'
-  Plug 'ryanoasis/vim-devicons'
+  "Plug 'ryanoasis/vim-devicons'
 
   " Bookmarks
   Plug 'MattesGroeger/vim-bookmarks'
@@ -171,9 +171,12 @@ call plug#begin('~/.local/share/nvim/plugged')
   " JSON Formatter: <leader>json
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
   " Better JS Highlight
-  Plug 'othree/yajs.vim', {'for': 'javascript'}
+  Plug 'othree/yajs.vim', {'for': ['javascript', 'typescript']}
   " Highlight JavaScript's Template Strings contents in other FileType syntax rule
-  Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
+  Plug 'Quramy/vim-js-pretty-template', {'for': ['javascript', 'typescript']}
+  " Typescript
+  Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+  let g:typescript_indent_disable = 1
 
   " JSDocs
   Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
@@ -183,7 +186,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:used_javascript_libs = 'vue,lodash'
 
   " NodeJS
-  Plug 'moll/vim-node', {'for': 'javascript'}
+  Plug 'moll/vim-node', {'for': ['javascript', 'typescript']}
 """ }}}
 
 """ Python {{{
