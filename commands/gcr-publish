@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+IMG=$1
+
+docker tag ${IMG} gcr.io/${GC_PROJECTID}/${IMG}
+docker push gcr.io/${GC_PROJECTID}/${IMG}

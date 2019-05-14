@@ -9,6 +9,11 @@ if [[ ! -e /usr/bin/kirby ]]; then
   ln -f $DOTFILES/commands/kirby /usr/bin/kirby
 fi
 
+if [[ ! -e /usr/bin/gcr-publish ]]; then
+  chmod +x $DOTFILES/commands/gcr-publish
+  ln -f $DOTFILES/commands/gcr-publish /usr/bin/gcr-publish
+fi
+
 if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
   mkdir $HOME/.local/share/nvim/plugged
 fi                             
