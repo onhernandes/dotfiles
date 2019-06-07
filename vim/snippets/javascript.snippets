@@ -18,8 +18,22 @@ snippet me "module.exports" b
 module.exports = $0
 endsnippet
 
-snippet fn "function"
-function $0 ($1) {
-	$2
-}
+snippet Opx "Sequelize Op" b
+const Op = ctx.db.Op;
+endsnippet
+
+snippet Op "Sequelize Op" b
+const Op = require('sequelize').Op;
+endsnippet
+
+snippet Op.eq "Sequelize Op.eq" b
+$1: {
+	[Op.eq]: $2
+}$0
+endsnippet
+
+snippet Op.in "Sequelize Op.in" b
+$1: {
+	[Op.in]: $2
+}$0
 endsnippet
