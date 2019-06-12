@@ -1,5 +1,5 @@
 snippet jstr "JSON.stringify" b
-	JSON.stringify($0, null, 2);
+JSON.stringify($1, null, 2)$0
 endsnippet
 	
 snippet t "Ternary" b
@@ -7,11 +7,7 @@ snippet t "Ternary" b
 endsnippet
 
 snippet hop "hasOwnProperty" i
-	hasOwnProperty('${1}')${2}
-endsnippet
-
-snippet r "return" b
-	return ${1:value};$0
+hasOwnProperty($1)$0
 endsnippet
 
 snippet me "module.exports" b
