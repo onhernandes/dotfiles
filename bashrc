@@ -14,6 +14,10 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+if [[ $(command -v kubectl 2>/dev/null) ]]; then
+  source <(kubectl completion bash)
+fi
+
 function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
