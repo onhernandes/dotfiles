@@ -4,8 +4,9 @@ SETUP_DIR="${HOME}/.onhernandes/dotfiles/setup"
 
 $SETUP_DIR/manjaro/pacman
 $SETUP_DIR/manjaro/yaourt
-$SETUP_DIR/manjaro/alacritty
 $SETUP_DIR/npm-packages
 $SETUP_DIR/pip-packages
 $SETUP_DIR/ruby-gems
 $SETUP_DIR/manjaro/symlinks
+
+echo "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc

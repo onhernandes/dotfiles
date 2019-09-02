@@ -7,18 +7,9 @@ if [[ ! -d $HOME/.onhernandes ]]; then
 fi
 
 if ! git_cmd="$(type -p "git")" || [[ -z $git_cmd ]]; then
-  if pacman_exists="$(type -p "pacman")"; then
-		pacman -S --noconfirm git
-  fi
-
-  if apt_exists="$(type -p "apt-get")"; then
-    apt-get install -y git
-  fi
+  pacman -S --noconfirm git
 fi
 
 if [[ ! -d $DOTFILES ]]; then
   git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
 fi
-
-echo "If you're running Debian, run ${DOTFILES}/setup/debian/init"
-echo "If you're running Manjaro, run ${DOTFILES}/setup/manjaro/init"

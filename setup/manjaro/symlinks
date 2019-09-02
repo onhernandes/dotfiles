@@ -4,18 +4,12 @@ if [[ ! -e ${HOME}/.gitconfig ]]; then
   ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
 fi
 
-if [[ ! -e /usr/bin/kirby ]]; then
-  chmod +x $DOTFILES/commands/kirby
-  ln -f $DOTFILES/commands/kirby /usr/bin/kirby
-fi
-
 if [[ ! -e /usr/bin/gcr-publish ]]; then
-  chmod +x $DOTFILES/commands/gcr-publish
   ln -f $DOTFILES/commands/gcr-publish /usr/bin/gcr-publish
 fi
 
 if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
-  mkdir $HOME/.local/share/nvim/plugged
+  mkdir -p $HOME/.local/share/nvim/plugged
 fi                             
 
 if [[ ! -d $HOME/.config/nvim ]]; then
