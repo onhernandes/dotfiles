@@ -33,3 +33,11 @@ $1: {
 	[Op.in]: $2
 }$0
 endsnippet
+
+snippet oid "ObjectId" b
+ObjectId($1)$2
+endsnippet
+
+snippet roid "require ObjectId" b
+const ObjectId = required('mongoose').Types.ObjectId
+endsnippet
