@@ -12,7 +12,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-vim'
   Plug 'ncm2/ncm2-ultisnips'
   Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
-  Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars']}
+  Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars', 'php']}
   Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
 
   autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -137,7 +137,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ [
     \   ['true', 'false'],
     \   ['typeof', 'instanceof'],
-    \   ['unshift', 'push'],
+    \   ['unshift', 'push', 'shift'],
     \   ['log', 'error', 'debug', 'warn'],
     \   ['null', 'undefined', 'NaN'],
     \   ['map', 'forEach', 'filter', 'reduce'],
@@ -202,7 +202,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ 'vue', 'scss', 'sass', 
     \ 'css', 'html',
     \ 'pug', 'html.handlebars', 
-    \ 'html.mustache'
+    \ 'html.mustache', 'php'
   \ ]}
   let g:user_emmet_mode='a'
 
