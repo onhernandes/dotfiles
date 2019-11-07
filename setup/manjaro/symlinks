@@ -5,7 +5,7 @@ if [[ ! -e ${HOME}/.gitconfig ]]; then
 fi
 
 if [[ ! -e /usr/bin/gcr-publish ]]; then
-  ln -f $DOTFILES/commands/gcr-publish /usr/bin/gcr-publish
+  sudo ln -f $DOTFILES/commands/gcr-publish /usr/bin/gcr-publish
 fi
 
 if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then

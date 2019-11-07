@@ -10,8 +10,11 @@ if ! git_cmd="$(type -p "git")" || [[ -z $git_cmd ]]; then
   pacman -S --noconfirm git
 fi
 
-if [[ ! -d $DOTFILES ]]; then
-  git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
+if [[ ! -d $HOME/.ssh ]] || [[ ! -e $HOME/.ssh/id_rsa.pub ]]; then
+  ssh-keygen
 fi
 
-$DOTFILES/setup/manjaro/init
+echo \n\n
+cat $HOME/.ssh/id_rsa.pub
+echo "After logging on Github, run "
+echo "curl https://raw.githubusercontent.com/onhernandes/dotfiles/master/setup/create-dotfiles | sh"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DOTFILES=$HOME/.onhernandes/dotfiles
+
+if [[ ! -d $DOTFILES ]]; then
+  git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
+fi
+
+$DOTFILES/setup/manjaro/init
