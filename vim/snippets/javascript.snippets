@@ -1,9 +1,13 @@
-snippet jstr "JSON.stringify" b
+snippet js "JSON.stringify" b
 JSON.stringify($1, null, 2)$0
+endsnippet
+
+snippet jp "JSON.parse" b
+JSON.parse($1)$0
 endsnippet
 	
 snippet t "Ternary" b
-	(${1:a>b}) ? ${2:true} : ${3:false};$0
+(${1:a>b}) ? ${2:true} : ${3:false};$0
 endsnippet
 
 snippet hop "hasOwnProperty" i
@@ -39,5 +43,9 @@ ObjectId($1)$2
 endsnippet
 
 snippet roid "require ObjectId" b
-const ObjectId = required('mongoose').Types.ObjectId
+const ObjectId = require('mongoose').Types.ObjectId
+endsnippet
+
+snippet cr "const require" b
+const $1 = required('$2')
 endsnippet
