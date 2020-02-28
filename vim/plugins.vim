@@ -213,6 +213,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ Themes and Colors {{{ 
   Plug 'jdkanani/vim-material-theme'
+  Plug 'joshdick/onedark.vim'
 """ }}}
 
 if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
@@ -227,4 +228,5 @@ if !exists('g:syntax_on')
 endif    
 
 set background=dark
-colorscheme material-theme
+" colorscheme material-theme
+colorscheme onedark
