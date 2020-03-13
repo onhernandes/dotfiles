@@ -101,6 +101,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ale_fixers = 
     \ {
       \ 'javascript': ['eslint'],
+      \ 'typescript': ['tslint'],
       \ 'vue': ['eslint'],
       \ 'python': ['black']
     \ }
@@ -176,7 +177,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'Quramy/vim-js-pretty-template', {'for': ['javascript', 'typescript']}
   " Typescript
   Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-  let g:typescript_indent_disable = 1
+  "let g:typescript_indent_disable = 1
 
   " JSDocs
   Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
