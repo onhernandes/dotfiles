@@ -107,8 +107,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ }
   let g:ale_linters = 
     \ {
-      \ 'javascript': ['eslint'],
+      \ 'javascript': ['eslint', 'flow-language-server'],
       \ 'vue': ['eslint'],
+      \ 'python': ['flake8'],
     \ }
 
   " NerdTree

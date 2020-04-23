@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-PACMAN_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl"
-sudo pacman -S --noconfirm $PACMAN_PACKAGES

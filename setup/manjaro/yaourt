@@ -1,4 +1,0 @@
-#!/usr/bin/bash
-
-YAOURT_PACKAGES="shfmt spotify google-chrome cheat"
-yaourt -S --noconfirm $YAOURT_PACKAGES
