@@ -169,11 +169,17 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Vim JSON support
   Plug 'leshill/vim-json', {'for': 'json'}
   " Syntax Highlight key and value
-  Plug 'elzr/vim-json', {'for': 'json'}
+  " Plug 'elzr/vim-json', {'for': 'json'}
   " JSON Formatter: <leader>json
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
   " Better JS Highlight
   Plug 'othree/yajs.vim', {'for': ['javascript', 'typescript']}
+  " JS Libs support
+  Plug 'othree/javascript-libraries-syntax.vim'
+  " Support for ES.Next features
+  Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'typescript'] }
+  " JSX Support for React
+  Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescript', 'tsx'] }
   " Highlight JavaScript's Template Strings contents in other FileType syntax rule
   Plug 'Quramy/vim-js-pretty-template', {'for': ['javascript', 'typescript']}
   " Typescript
