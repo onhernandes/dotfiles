@@ -101,13 +101,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ale_fixers = 
     \ {
       \ 'javascript': ['eslint'],
-      \ 'typescript': ['tslint'],
+      \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
       \ 'python': ['black']
     \ }
   let g:ale_linters = 
     \ {
       \ 'javascript': ['eslint', 'flow-language-server'],
+      \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
       \ 'python': ['flake8'],
     \ }
