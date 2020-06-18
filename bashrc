@@ -39,3 +39,11 @@ alias rpy="source venv/bin/activate"
 alias clone="git clone"
 alias ups="sudo systemctl start"
 alias downs="sudo systemctl stop"
+
+ssh-clone () {
+  git clone git@github.com:$1.git
+}
+
+https-clone () {
+  git clone https://github.com/$1.git
+}
