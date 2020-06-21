@@ -95,19 +95,22 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '▲'
   let g:ale_set_quickfix = 1
+  let g:ale_completion_enabled = 1
+
   "let g:ale_open_list = 1
   nnoremap <leader>af :ALEFix<CR>
   nnoremap <leader>al :ALELint<CR>
   let g:ale_fixers = 
     \ {
       \ 'javascript': ['eslint'],
-      \ 'typescript': ['tslint'],
+      \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
       \ 'python': ['black']
     \ }
   let g:ale_linters = 
     \ {
       \ 'javascript': ['eslint', 'flow-language-server'],
+      \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
       \ 'python': ['flake8'],
     \ }
