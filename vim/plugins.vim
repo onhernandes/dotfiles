@@ -188,6 +188,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Typescript
   Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
   "let g:typescript_indent_disable = 1
+  "Typescript
+  Plug 'HerringtonDarkholme/yats.vim'
 
   " JSDocs
   Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
