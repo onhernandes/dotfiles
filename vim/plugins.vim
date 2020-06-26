@@ -5,7 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-tmux'
-  Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript']}
+  Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript', 'typescript']}
   Plug 'ncm2/ncm2-jedi', {'for': 'python'}
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-bufword'
