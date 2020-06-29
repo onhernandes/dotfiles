@@ -14,6 +14,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
   Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars', 'php']}
   Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
+  Plug 'ncm2/ncm2-go', {'do': 'go get -u github.com/mdempsky/gocode', 'for': 'go'}
+  "Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+  "Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
 
   autocmd BufEnter * call ncm2#enable_for_buffer()
   set completeopt=noinsert,menuone,noselect
@@ -105,7 +108,8 @@ call plug#begin('~/.local/share/nvim/plugged')
       \ 'javascript': ['eslint'],
       \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
-      \ 'python': ['black']
+      \ 'python': ['black'],
+      \ 'go': ['gofmt', 'goimports']
     \ }
   let g:ale_linters = 
     \ {
@@ -168,6 +172,12 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
 """ }}}
 
+""" Golang {{{
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  let g:go_fmt_fail_silently = 0
+  let g:go_list_type = "quicklist"
+""" }}}
+
 """ JavaScript/JSON {{{ 
   " Vim JSON support
   Plug 'leshill/vim-json', {'for': 'json'}
@@ -177,8 +187,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
   " Better JS Highlight
   Plug 'othree/yajs.vim', {'for': ['javascript', 'typescript']}
-  " JS Libs support
-  Plug 'othree/javascript-libraries-syntax.vim'
   " Support for ES.Next features
   Plug 'othree/es.next.syntax.vim', { 'for': ['javascript', 'typescript'] }
   " JSX Support for React
@@ -195,8 +203,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
   let g:jsdoc_enable_es6=1
 
-  " JS Libs
-  let g:used_javascript_libs = 'vue,lodash'
+  " JS Libs support
+  "Plug 'othree/javascript-libraries-syntax.vim'
+  "let g:used_javascript_libs = 'vue,lodash'
 
   " NodeJS
   Plug 'moll/vim-node', {'for': ['javascript', 'typescript']}
