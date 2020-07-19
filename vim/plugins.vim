@@ -23,7 +23,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Snippets {{{
-  Plug 'honza/vim-snippets'
+  Plug 'honza/vim-snippets', { 'do': 'rm ./UltiSnips/javascript* && rm -rf ./snippets/javascript*' }
+  let g:ultisnips_javascript = {
+    \ 'keyword-spacing': 'always',
+    \ 'semi': 'never',
+    \ 'space-before-function-paren': 'always',
+  \ }
 
   " UltiSnips
   Plug 'SirVer/ultisnips'
