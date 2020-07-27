@@ -197,10 +197,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
   "let g:typescript_indent_disable = 1
   "Typescript
-  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 
   " JSDocs
-  Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+  Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript', 'do': 'make install' }
   let g:jsdoc_enable_es6=1
 
   " JS Libs support
