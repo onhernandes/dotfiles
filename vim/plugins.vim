@@ -23,6 +23,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Snippets {{{
+  " UltiSnips
+  Plug 'SirVer/ultisnips'
+  let g:UltiSnipsUsePythonVersion = 3
+  "let g:UltiSnipsSnippetDirectories=["UltiSnips", expand("$HOME/.onhernandes/dotfiles/vim/snippets")]
+  let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+  let g:UltiSnipsEditSplit="vertical"
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
   Plug 'honza/vim-snippets', { 'do': 'rm ./UltiSnips/javascript* && rm -rf ./snippets/javascript*' }
   let g:ultisnips_javascript = {
     \ 'keyword-spacing': 'always',
@@ -30,14 +40,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ 'space-before-function-paren': 'always',
   \ }
 
-  " UltiSnips
-  Plug 'SirVer/ultisnips'
-  let g:UltiSnipsUsePythonVersion = 3
-  let g:UltiSnipsSnippetDirectories=["UltiSnips", expand("$HOME/.onhernandes/dotfiles/vim/snippets")]
-  let g:UltiSnipsEditSplit="vertical"
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+  Plug 'onhernandes/vim-js-snippets'
 """ }}}
 
 """ Miscellaneous and Utils {{{ 
