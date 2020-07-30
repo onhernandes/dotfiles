@@ -33,3 +33,4 @@
 
 [pull]
   default = current
+  rebase = false
