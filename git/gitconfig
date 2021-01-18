@@ -29,8 +29,18 @@
   clear-branches = "!f() { git branch -D $(git branch | grep -v \\*); }; f"
 
 [push]
-  default = current
+	default = current
 
 [pull]
   default = current
-  rebase = false
+	rebase = merges
+
+[core]
+  excludesfile = ~/.gitignore
+
+[includeIf "gitdir:~/code/3778/"]
+  path = .gitconfig-3778
+[includeIf "gitdir:~/code/go/src/github.com/3778/"]
+  path = .gitconfig-3778
+[fetch]
+	prune = true
