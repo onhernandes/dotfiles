@@ -1,5 +1,0 @@
-#!/bin/bash
-# This is a simple helper for executing Photoshop from CLI, since I had some problems because Wine wasn't being able to find
-# 32bit freetype font
-
-env WINEPREFIX=~/.wine32 WINEARCH=win32 ~/.PlayOnLinux/wineprefix/PhotoshopCS6/drive_c/Program\ Files/Photoshop/Photoshop.exe > /dev/null 2> /dev/null &

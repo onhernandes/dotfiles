@@ -7,7 +7,8 @@
   po = push origin
   pt = push origin --tags
   pa = push && git push --tags
-  pm 	= push origin master
+  pm = push origin master
+  pfl = push --force-with-lease
   a	= add -A
   c	= commit -m
   ca = !git add -A && git commit -m

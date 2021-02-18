@@ -1,0 +1,48 @@
+#!/bin/bash
+
+SETUP_DIR=$HOME/.onhernandes/dotfiles/setup
+DOTFILES=$HOME/.onhernandes/dotfiles
+
+if [[ ! -d $DOTFILES ]]; then
+  git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
+fi
+
+# Install pamac packages
+PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop"
+sudo pamac install --no-confirm $PAMAC_PACKAGES
+sudo pamac build --no-confirm google-chrome
+
+
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+source $HOME/.bashrc
+nvm install 12
+
+# Install NPM Packages
+$SETUP_DIR/npm-packages
+
+# Install pip
+curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+sudo python /tmp/get-pip.py
+source $HOME/.bashrc
+rm /tmp/get-pip.py
+
+# Install pip packages
+$SETUP_DIR/pip-packages
+
+# Install ruby gems
+$SETUP_DIR/ruby-gems
+
+# Set up symlinks
+$SETUP_DIR/symlinks
+
+# Install Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc
+echo "Done"
+
+source $HOME/.bashrc

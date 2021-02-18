@@ -39,6 +39,7 @@ alias rpy="source venv/bin/activate"
 alias clone="git clone"
 alias ups="sudo systemctl start"
 alias downs="sudo systemctl stop"
+alias dps="docker ps -a"
 
 ssh-clone () {
   git clone git@github.com:$1.git

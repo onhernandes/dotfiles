@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-
-PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop"
-sudo pamac install --no-confirm $PAMAC_PACKAGES
-pamac build --no-confirm google-chrome cheat
