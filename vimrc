@@ -1,6 +1,12 @@
 """ Automatically create needed files and folders on first run (*nix only) {{{
-  call system('mkdir -p $HOME/.vim/{autoload,bundle,swap,undo}')
-  call system('mkdir $HOME/.local/share/nvim/plugged')
+  if isdirectory('$HOME/.vim/autoload') == 0
+    call system('mkdir -p $HOME/.vim/{autoload,bundle,swap,undo}')
+  endif
+
+  if isdirectory('$HOME/.local/share/nvim/plugged') == 0
+    call system('mkdir $HOME/.local/share/nvim/plugged')
+  endif
+
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
   " Automatically install vim-plug if needed
