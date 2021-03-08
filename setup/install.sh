@@ -4,11 +4,12 @@ SETUP_DIR=$HOME/.onhernandes/dotfiles/setup
 DOTFILES=$HOME/.onhernandes/dotfiles
 
 if [[ ! -d $DOTFILES ]]; then
+  mkdir ~/.onhernandes
   git clone git@github.com:onhernandes/dotfiles.git $DOTFILES
 fi
 
 # Install pamac packages
-PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop"
+PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip"
 sudo pamac install --no-confirm $PAMAC_PACKAGES
 sudo pamac build --no-confirm google-chrome
 
@@ -23,12 +24,6 @@ nvm install 12
 
 # Install NPM Packages
 $SETUP_DIR/npm-packages
-
-# Install pip
-curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
-sudo python /tmp/get-pip.py
-source $HOME/.bashrc
-rm /tmp/get-pip.py
 
 # Install pip packages
 $SETUP_DIR/pip-packages

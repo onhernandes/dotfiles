@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 
-pip install --user neovim powerline-shell flake8 black pipenv
+pip install --user pynvim powerline-shell flake8 black pipenv
+pip2 install --user pynvim powerline-shell flake8 black pipenv
