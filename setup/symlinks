@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+DOTFILES="${HOME}/.onhernandes"
 
 if [[ ! -e ${HOME}/.gitconfig ]]; then
   ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
