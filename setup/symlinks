@@ -9,6 +9,10 @@ if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
   mkdir -p $HOME/.local/share/nvim/plugged
 fi                             
 
+if [[ ! -e ${HOME}/.config/nvim/ftplugin ]]; then
+  mkdir -p ${HOME}/.config/nvim/ftplugin
+fi
+
 if [[ ! -d $HOME/.config/nvim ]]; then
   mkdir $HOME/.config/nvim
 fi                            
@@ -19,10 +23,6 @@ fi
 
 if [[ ! -e ${HOME}/.config/nvim/init.vim ]]; then
   ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
-fi
-
-if [[ ! -e ${HOME}/.config/nvim/ftplugin ]]; then
-  mkdir -p ${HOME}/.config/nvim/ftplugin
 fi
 
 if [[ ! -e ${HOME}/.config/nvim/ftplugin/python.vim ]]; then

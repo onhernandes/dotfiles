@@ -22,6 +22,7 @@ function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
 
+export TERM="xterm-256color"
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
 export DOTFILES="$HOME/.onhernandes/dotfiles"
