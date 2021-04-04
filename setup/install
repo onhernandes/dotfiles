@@ -9,7 +9,7 @@ if [[ ! -d $DOTFILES ]]; then
 fi
 
 # Install pamac packages
-PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip gnome-tweaks"
+PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip gnome-tweaks htop"
 sudo pamac install --no-confirm $PAMAC_PACKAGES
 sudo pamac build --no-confirm google-chrome
 
@@ -21,6 +21,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 source $HOME/.bashrc
 nvm install 12
+
+# Install snap packages
+sudo snap install spotify
 
 # Install NPM Packages
 $SETUP_DIR/npm-packages

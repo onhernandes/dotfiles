@@ -67,6 +67,9 @@ It also installs (without pacman):
 - nvm
 - tpm (tmux plugin manager)
 
+From snap:
+- spotify
+
 From NPM:
 - neovim
 - jjson (for neovim)

@@ -9,6 +9,7 @@
   pa = push && git push --tags
   pm = push origin master
   pfl = push --force-with-lease
+  pf = push --force
   a	= add -A
   c	= commit -m
   ca = !git add -A && git commit -m

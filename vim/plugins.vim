@@ -4,7 +4,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ NeoVim Completion Manager {{{
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2-tmux'
+
+  if !empty($TMUX)
+    Plug 'ncm2/ncm2-tmux'
+  endif
+
   Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript', 'typescript']}
   Plug 'ncm2/ncm2-jedi', {'for': 'python'}
   Plug 'ncm2/ncm2-path'
@@ -14,7 +18,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
   Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars', 'php']}
   Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
-  Plug 'ncm2/ncm2-go', {'do': 'go get -u github.com/mdempsky/gocode', 'for': 'go'}
+  "Plug 'ncm2/ncm2-go', {'do': 'go get -u github.com/mdempsky/gocode', 'for': 'go'}
   "Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
   "Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
 
@@ -171,7 +175,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Files {{{ 
-  Plug 'zoubin/vim-gotofile', { 'for': ['javascript'] }
+  Plug 'zoubin/vim-gotofile', { 'for': ['javascript', 'typescript', 'jsx', 'tsx', 'json'] }
 
   " FZF Stuff
   Plug 'junegunn/fzf.vim'
@@ -181,7 +185,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Golang {{{
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
   let g:go_fmt_fail_silently = 0
   let g:go_list_type = "quicklist"
 """ }}}
@@ -242,7 +246,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}}
 
 """ Themes and Colors {{{ 
-  Plug 'jdkanani/vim-material-theme'
   Plug 'joshdick/onedark.vim'
 """ }}}
 
@@ -257,6 +260,5 @@ if !exists('g:syntax_on')
   syntax enable
 endif    
 
-set background=dark
-" colorscheme material-theme
+set background = "dark"
 colorscheme onedark
