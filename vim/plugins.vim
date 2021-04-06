@@ -245,6 +245,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   let g:vue_disable_pre_processors = 1
 """ }}}
 
+""" TOML Support {{{
+  Plug 'cespare/vim-toml', {'for': 'toml'}
+""" }}} 
+
 """ Themes and Colors {{{ 
   Plug 'joshdick/onedark.vim'
 """ }}}
