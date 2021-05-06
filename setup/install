@@ -9,9 +9,10 @@ if [[ ! -d $DOTFILES ]]; then
 fi
 
 # Install pamac packages
-PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip gnome-tweaks htop"
+PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher"
 sudo pamac install --no-confirm $PAMAC_PACKAGES
 sudo pamac build --no-confirm google-chrome
+exit 0
 
 
 # Install NVM

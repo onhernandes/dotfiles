@@ -135,6 +135,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'jojoyuji/nerdtree-async'
   Plug 'ivalkeen/nerdtree-execute'
   Plug 'tyok/nerdtree-ack'
+  "Plug 'Xuyuanp/nerdtree-git-plugin'
   let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
   let NERDTreeShowBookmarks=1
   let NERDTreeDirArrows=1
@@ -178,8 +179,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'zoubin/vim-gotofile', { 'for': ['javascript', 'typescript', 'jsx', 'tsx', 'json'] }
 
   " FZF Stuff
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'junegunn/fzf'
   command! -bang -nargs=* GitAg
     \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
 """ }}}
@@ -194,7 +195,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Vim JSON support
   Plug 'leshill/vim-json', {'for': 'json'}
   " Syntax Highlight key and value
-  " Plug 'elzr/vim-json', {'for': 'json'}
+  Plug 'elzr/vim-json', {'for': 'json'}
   " JSON Formatter: <leader>json
   Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
   " Better JS Highlight
