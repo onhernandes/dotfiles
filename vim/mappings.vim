@@ -50,8 +50,10 @@ nmap <leader>rr :edit $HOME/.onhernandes/dotfiles/vimrc<cr>
 nmap <leader>rm :edit $HOME/.onhernandes/dotfiles/vim/mappings.vim<cr>
 nmap <leader>rp :edit $HOME/.onhernandes/dotfiles/vim/plugins.vim<cr>
 
-" Map :Files
-nmap <leader>f :Files<cr>
+" Map :Files as Find Files
+nmap <leader>ff :Files ./<cr>
+" Map :Ag as Find Code
+nmap <leader>fc :Ag <cr>
 
 " Bubble single lines to CTRL + ALT + j
 nmap  <c-a-j> ]e
