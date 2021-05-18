@@ -251,7 +251,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ }}} 
 
 """ Themes and Colors {{{ 
-  Plug 'joshdick/onedark.vim'
+  "Plug 'joshdick/onedark.vim'
+  Plug 'hachy/eva01.vim'
 """ }}}
 
 if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
@@ -266,4 +267,4 @@ if !exists('g:syntax_on')
 endif    
 
 set background = "dark"
-colorscheme onedark
+colorscheme eva01
