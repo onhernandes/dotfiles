@@ -9,7 +9,7 @@ if [[ ! -d $DOTFILES ]]; then
 fi
 
 # Install pamac packages
-PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher"
+PAMAC_PACKAGES="openssh docker docker-compose curl easytag arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher asdf-vm android-studio watchman"
 sudo pamac install --no-confirm $PAMAC_PACKAGES
 sudo pamac build --no-confirm google-chrome
 exit 0
@@ -42,6 +42,12 @@ $SETUP_DIR/symlinks
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc
-echo "Done"
-
 source $HOME/.bashrc
+
+# Install java asdf plugin
+echo "Installing openjdk-14, recommended by React Native"
+asdf plugin-add java https://github.com/halcyon/asdf-java.git
+asdf install java openjdk-14
+asdf global java openjdk-14
+
+echo "Done"
