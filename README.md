@@ -7,13 +7,13 @@ That's my dotfiles folder with many things that I can't work without them.
 First, you'll have to execute the pre-install script
 
 ```
-curl -o- https://raw.githubusercontent.com/onhernandes/dotfiles/master/setup/pre-install | bash
+curl -o- https://raw.githubusercontent.com/onhernandes/dotfiles/main/setup/pre-install | bash
 ```
 
 or
 
 ```
-wget -qO- https://raw.githubusercontent.com/onhernandes/dotfiles/master/setup/pre-install | bash
+wget -qO- https://raw.githubusercontent.com/onhernandes/dotfiles/main/setup/pre-install | bash
 ```
 
 It creates `~/.onhernandes` if it doesn't exists, installs git and setup a new SSH key if there's no either `~/.ssh` or `~/.ssh/id_rsa.pub`. Then you should login to Github, setup your SSH keys and then execute the install script:
@@ -21,13 +21,13 @@ It creates `~/.onhernandes` if it doesn't exists, installs git and setup a new S
 # Install Script
 
 ```
-curl -o- https://raw.githubusercontent.com/onhernandes/dotfiles/master/setup/install | bash
+curl -o- https://raw.githubusercontent.com/onhernandes/dotfiles/main/setup/install | bash
 ```
 
 or
 
 ```
-wget -qO- https://raw.githubusercontent.com/onhernandes/dotfiles/master/setup/install | bash
+wget -qO- https://raw.githubusercontent.com/onhernandes/dotfiles/main/setup/install | bash
 ```
 
 ## What does it install?
