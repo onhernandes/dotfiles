@@ -39,7 +39,7 @@ Installs:
 - docker
 - docker-compose
 - curl
-- easytag
+- unzip
 - arandr
 - autorandr
 - xclip (used by neovim)
@@ -61,6 +61,11 @@ Installs:
 - python2-pip (by default, python and pip comes into v3, but there's no pip2.8)
 - gnome-tweaks
 - google-chrome (Unfortunately, I've to use Google Chrome for Google Meet, because it consumes 100% of my CPU on firefox)
+- watchman
+- android studio
+- asdf-vm (multi-lang version manager)
+- bat
+- the silver searcher
 
 
 It also installs (without pacman):

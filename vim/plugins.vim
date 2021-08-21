@@ -2,27 +2,30 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 
 """ NeoVim Completion Manager {{{
-  Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
+  "Plug 'ncm2/ncm2'
+  "Plug 'roxma/nvim-yarp'
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': 'pip install virtualenv'}
+  Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+  let g:coq_settings = { 'auto_start': v:true | 'shut-up' }
 
-  if !empty($TMUX)
-    Plug 'ncm2/ncm2-tmux'
-  endif
+  "if !empty($TMUX)
+    "Plug 'ncm2/ncm2-tmux'
+  "endif
 
-  Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript', 'typescript']}
-  Plug 'ncm2/ncm2-jedi', {'for': 'python'}
-  Plug 'ncm2/ncm2-path'
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-vim'
-  Plug 'ncm2/ncm2-ultisnips'
-  Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
-  Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars', 'php']}
-  Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
+  "Plug 'ncm2/ncm2-tern', {'do': 'npm install', 'for': ['vue', 'javascript', 'typescript']}
+  "Plug 'ncm2/ncm2-jedi', {'for': 'python'}
+  "Plug 'ncm2/ncm2-path'
+  "Plug 'ncm2/ncm2-bufword'
+  "Plug 'ncm2/ncm2-vim'
+  "Plug 'ncm2/ncm2-ultisnips'
+  "Plug 'ncm2/ncm2-markdown-subscope', {'for': 'markdown'}
+  "Plug 'ncm2/ncm2-html-subscope', {'for': ['html', 'html.mustache', 'html.handlebars', 'php']}
+  "Plug 'ncm2/ncm2-cssomni', {'for': ['css', 'sass', 'scss']}
   "Plug 'ncm2/ncm2-go', {'do': 'go get -u github.com/mdempsky/gocode', 'for': 'go'}
   "Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
   "Plug 'artur-shaik/vim-javacomplete2', {'for': ['java', 'jsp']}
 
-  autocmd BufEnter * call ncm2#enable_for_buffer()
+  "autocmd BufEnter * call ncm2#enable_for_buffer()
   set completeopt=noinsert,menuone,noselect
 """ }}}
 
