@@ -93,6 +93,7 @@ nmap <leader>h :bp<cr>
 " Map resize horizontal splits
 nmap <leader>j :res -1<cr>
 nmap <leader>k :res +1<cr>
+nmap <c-h> <c-w>h
 
 " Map :Buffers
 nnoremap <leader>b :Buffers<cr>

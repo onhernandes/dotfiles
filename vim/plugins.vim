@@ -3,10 +3,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """ NeoVim Completion Manager {{{
   "Plug 'ncm2/ncm2'
-  "Plug 'roxma/nvim-yarp'
+  Plug 'roxma/nvim-yarp'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': 'pip install virtualenv'}
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-  let g:coq_settings = { 'auto_start': v:true | 'shut-up' }
+  let g:coq_settings = { 'auto_start': v:true }
 
   "if !empty($TMUX)
     "Plug 'ncm2/ncm2-tmux'
@@ -134,20 +134,23 @@ call plug#begin('~/.local/share/nvim/plugged')
       \ 'python': ['flake8'],
     \ }
 
+  " CHADTree!
+  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+  nnoremap <leader>v <cmd>CHADopen<cr>
+
   " NerdTree
-  Plug 'jojoyuji/nerdtree-async'
-  Plug 'ivalkeen/nerdtree-execute'
-  Plug 'tyok/nerdtree-ack'
+  "Plug 'jojoyuji/nerdtree-async'
+  "Plug 'ivalkeen/nerdtree-execute'
+  "Plug 'tyok/nerdtree-ack'
   "Plug 'Xuyuanp/nerdtree-git-plugin'
-  let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
-  let NERDTreeShowBookmarks=1
-  let NERDTreeDirArrows=1
-  let NERDTreeHijackNetrw=0
+  "let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
+  "let NERDTreeShowBookmarks=1
+  "let NERDTreeDirArrows=1
+  "let NERDTreeHijackNetrw=0
 
   autocmd VimEnter *
     \   if !argc()
     \ |   Startify
-    \ |   NERDTree
     \ |   wincmd w
     \ | endif
 
