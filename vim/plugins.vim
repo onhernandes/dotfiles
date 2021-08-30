@@ -66,7 +66,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'mileszs/ack.vim'
   "Plug 'ryanoasis/vim-devicons'
 
-  " Bookmarks
+" Bookmarks
   Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_no_default_key_mappings = 1
   function! BookmarkMapKeys()
@@ -136,7 +136,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " CHADTree!
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+  let g:chadtree_settings = {'view.sort_by': ['is_folder', 'file_name', 'ext']}
   nnoremap <leader>v <cmd>CHADopen<cr>
+  
+  " LSP Config!
+  Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
+
 
   " NerdTree
   "Plug 'jojoyuji/nerdtree-async'
@@ -266,6 +271,7 @@ if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
 endif
 
 call plug#end()
+call luaeval('require"lspconfig".pyright.setup{}')
    
 " Theme & Syntax
 if !exists('g:syntax_on')

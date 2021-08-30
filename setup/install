@@ -9,7 +9,7 @@ if [[ ! -d $DOTFILES ]]; then
 fi
 
 # Install pamac packages
-PAMAC_PACKAGES="openssh docker docker-compose curl arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher asdf-vm android-studio watchman google-chrome"
+PAMAC_PACKAGES="openssh docker docker-compose curl arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher asdf-vm android-studio watchman google-chrome tmuxinator"
 sudo pamac install --no-confirm $PAMAC_PACKAGES
 # sudo pamac build --no-confirm google-chrome
 
@@ -38,6 +38,9 @@ $SETUP_DIR/symlinks
 
 # Install Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Downloads tmuxinator auto-completion for bash
+wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -O $HOME/.tmuxinator.bash
 
 echo "source $HOME/.onhernandes/dotfiles/bashrc" >> $HOME/.bashrc
 source $HOME/.bashrc

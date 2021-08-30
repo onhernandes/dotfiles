@@ -46,3 +46,5 @@
   path = .gitconfig-3778
 [fetch]
 	prune = true
+[init]
+	defaultBranch = main

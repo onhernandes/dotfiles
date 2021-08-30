@@ -37,8 +37,8 @@ if [[ ! -e ${HOME}/.tmux.conf ]]; then
   ln -f $DOTFILES/tmux.conf ${HOME}/.tmux.conf
 fi
 
-if [[ ! -f ${HOME}/.tmux/tmuxinator.bash ]]; then
-  curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmux/tmuxinator.bash
+if [[ ! -f ${HOME}/.tmuxinator.bash ]]; then
+  curl https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash -o $HOME/.tmuxinator.bash
 fi
 
 if [[ ! -f ${HOME}/.git-completion.bash ]]; then

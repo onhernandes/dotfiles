@@ -1,22 +1,83 @@
-# ~/.tmuxinator/work.yml
+# $HOME/.onhernandes/dotfiles/tmuxinator/work.yml
 
 name: work
+root: ~/code
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
 
 windows:
-  - work:
-      root: /var/www/wip/
-      layout: main-vertical
+  - vtop:
       panes:
-        - nvim
-        - DEBUG=mongoose npm run mon
-  <%- if @args[0] == "front" %>
-  - app-v2: 
-      root: /var/www/app-v2
+        - vtop
+  - me:
+      root: ~/.onhernandes/dotfiles
       panes:
-        - nvim
-        - yarn start
-  <%- end %>
-  - app:
+        - me:
+          - #empty
+  - cmd:
+      root: ~/code/commandcenter
       panes:
-        - cd /var/www/app && npm start
-        - cd /var/www/survey
+        - cmd:
+          - #empty
+  - back:
+      root: ~/code/commandcenter-backend
+      panes:
+        - v
+  - front:
+      root: ~/code/commandcenter-frontend
+      panes:
+        - v
+  - hasura:
+      root: ~/code/commandcenter-hasura
+      panes:
+        - hasura:
+          - #empty
+  - cloud:
+      root: ~/code/cloud
+      panes:
+        - cloud:
+          - #empty
+  - intake:
+      root: ~/code/intake-engine
+      panes:
+        - intake:
+          - #empty
