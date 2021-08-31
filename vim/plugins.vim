@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-""" NeoVim Completion Manager {{{
+""" Completion suggestion {{{
   "Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': 'pip install virtualenv'}
