@@ -135,9 +135,13 @@ call plug#begin('~/.local/share/nvim/plugged')
     \ }
 
   " CHADTree!
-  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-  let g:chadtree_settings = {'view.sort_by': ['is_folder', 'file_name', 'ext']}
-  nnoremap <leader>v <cmd>CHADopen<cr>
+  "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+  "let g:chadtree_settings = {'view.sort_by': ['is_folder', 'file_name', 'ext']}
+  "nnoremap <leader>v <cmd>CHADopen<cr>
+  " NvimTree
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+  nnoremap <leader>v <cmd>NvimTreeToggle<cr>
   
   " LSP Config!
   Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
