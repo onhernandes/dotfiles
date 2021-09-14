@@ -4,48 +4,43 @@ NOTION_API_KEY=$NOTION_API_KEY
 DATABASE_ID=$DATABASE_ID
 
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-  printf "Welcome! Thanks for using this script.\n\n"
-  printf "The time format: HH:mm e.g. 14:30, 09:00, 10:13, 19:44, etc\n\n"
-  printf "Usage:\n\n"
+  printf "✨ Welcome! Thanks for using this script! ✨\n\n"
+  printf "⏳ The time format⏰: HH:mm e.g. 14:30, 09:00, 10:13, 19:44, etc⏳\n"
+  printf "⏳This format is applied as: date --iso-8601=seconds --date=<start time, 13:40>⏳\n\n"
+  printf "🎩 Usage:\n\n"
   printf "\twork-schedule <time you started working> <time you ended working>\n"
   exit
 fi
 
-exit
-# You must use like
-# work-schedule <the time you started working, like 12:55> <the time you stoped working, like 17:30>
 START_TIME=$1
-END_TIME=$2
-
 START_DATETIME=$(date --iso-8601=seconds --date=$START_TIME)
-END_DATETIME=""
+
+END_TIME=$2
+END_DATETIME=$(date --iso-8601=seconds --date=$END_TIME)
+
 
 curl 'https://api.notion.com/v1/pages' \
   -H 'Authorization: Bearer '"$NOTION_API_KEY"'' \
   -H "Content-Type: application/json" \
   -H "Notion-Version: 2021-08-16" \
   --data '{
-	"parent": { "type": "database_id", "database_id": "'"$DATABASE_ID"'" },
-	"properties": {
-		"ignore-me": {
-			"title": [
-				{
-					"text": {
-						"content": "Tuscan Kale"
-					}
-				}
-			]
-		},
-		"Data e hora de entrada": {
-			"date": {
-        date: { start: "'"$START_DATETIME"'", end: null },
-      }
-		},
-		"Data e hora de saída": {
-			"date": {
-        date: { start: "'"$END_DATETIME"'", end: null },
-      }
-		}
-	},
-	"children": []
+    "parent": { "database_id": "'"$DATABASE_ID"'" },
+        "properties": {
+                "ignore-me": {
+                        "title": [
+                                {
+                                        "text": {
+                                                "content": ""
+                                        }
+                                }
+                        ]
+                },
+                "Data e hora de entrada": {
+      "date": { "start": "'"$START_DATETIME"'", "end": null }
+                },
+                "Data e hora de saída": {
+      "date": { "start": "'"$END_DATETIME"'", "end": null }
+                }
+        },
+        "children": []
 }'
