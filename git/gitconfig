@@ -5,6 +5,7 @@
 [alias]
   p	= push
   po = push origin
+  pu = push -u origin
   pt = push origin --tags
   pa = push && git push --tags
   pm = push origin master

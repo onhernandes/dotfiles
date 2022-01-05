@@ -138,7 +138,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
   "let g:chadtree_settings = {'view.sort_by': ['is_folder', 'file_name', 'ext']}
   "nnoremap <leader>v <cmd>CHADopen<cr>
-  " NvimTree
+  NvimTree
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
   nnoremap <leader>v <cmd>NvimTreeToggle<cr>
@@ -148,14 +148,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 
   " NerdTree
-  "Plug 'jojoyuji/nerdtree-async'
-  "Plug 'ivalkeen/nerdtree-execute'
-  "Plug 'tyok/nerdtree-ack'
-  "Plug 'Xuyuanp/nerdtree-git-plugin'
-  "let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
-  "let NERDTreeShowBookmarks=1
-  "let NERDTreeDirArrows=1
-  "let NERDTreeHijackNetrw=0
+  " Plug 'jojoyuji/nerdtree-async'
+  " Plug 'ivalkeen/nerdtree-execute'
+  " Plug 'tyok/nerdtree-ack'
+  " Plug 'Xuyuanp/nerdtree-git-plugin'
+  " let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
+  " let NERDTreeShowBookmarks=1
+  " let NERDTreeDirArrows=1
+  " let NERDTreeHijackNetrw=0
 
   autocmd VimEnter *
     \   if !argc()
