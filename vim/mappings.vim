@@ -7,17 +7,8 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
-" Binding nvim clipboard with system's clipboard using xclip
-function! ClipboardYank()
-  call system('xclip -selection clipboard', @@)
-endfunction
-function! ClipboardPaste()
-  let @@ = system('xclip -selection clipboard -o')
-endfunction
-
-vnoremap <silent> y y:call ClipboardYank()<cr>
-vnoremap <silent> d d:call ClipboardYank()<cr>
-nnoremap <silent> p :call ClipboardPaste()<cr>p
+" Binding nvim clipboard with system's clipboard
+set clipboard=unnamedplus
 
 " Map leader + q to close buffer
 map <leader>q <esc>:call CloseCurrentBuffer()<cr>

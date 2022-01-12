@@ -13,7 +13,6 @@
   if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
 """ }}}
 
@@ -24,13 +23,12 @@
   set encoding=UTF-8
   " Set tabs to 2 spaces
   set tabstop=2
-  set softtabstop=0
   set shiftwidth=2
   set foldmethod=indent
 
   " Set indent and numbers
   set number
-  set numberwidth=5
+  set numberwidth=4
   set smartindent
   set cindent
 

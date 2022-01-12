@@ -61,11 +61,13 @@ windows:
   - back:
       root: ~/code/commandcenter-backend
       panes:
-        - v
+        - back:
+          - #empty
   - front:
       root: ~/code/commandcenter-frontend
       panes:
-        - v
+        - front:
+          - #empty
   - hasura:
       root: ~/code/commandcenter-hasura
       panes:
@@ -76,8 +78,18 @@ windows:
       panes:
         - cloud:
           - #empty
+  - ingestion:
+      root: ~/code/commandcenter-data-ingestion/
+      panes:
+        - ingestion:
+          - #empty
   - intake:
       root: ~/code/intake-engine
       panes:
         - intake:
+          - #empty
+  - predicoes:
+      root: ~/code/commandcenter-predicoes/
+      panes:
+        - predicoes:
           - #empty

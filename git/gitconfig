@@ -30,6 +30,13 @@
   die = reset --hard
   up = fetch origin && git pull
   clear-branches = "!f() { git branch -D $(git branch | grep -v \\*); }; f"
+  rc = rebase --continue
+  rb = "!sxz() { EDITOR=nvim git rebase -i HEAD~$1; }; sxz"
+  ra = rebase --abort
+  re = restore
+  sw = switch
+  fix = "!xyz() { git add -A && git commit -n --fixup=$(git rev-parse --short HEAD); }; xyz"
+  lt = log --oneline -1
 
 [push]
 	default = current

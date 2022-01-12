@@ -5,29 +5,33 @@ if [[ ! -e ${HOME}/.gitconfig ]]; then
   ln -s ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
 fi
 
-if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
-  mkdir -p $HOME/.local/share/nvim/plugged
-fi                             
+#if [[ ! -d $HOME/.local/share/nvim/plugged ]]; then
+  #mkdir -p $HOME/.local/share/nvim/plugged
+#fi                             
 
-if [[ ! -e ${HOME}/.config/nvim/ftplugin ]]; then
-  mkdir -p ${HOME}/.config/nvim/ftplugin
+#if [[ ! -e ${HOME}/.config/nvim/ftplugin ]]; then
+  #mkdir -p ${HOME}/.config/nvim/ftplugin
+#fi
+
+#if [[ ! -d $HOME/.config/nvim ]]; then
+  #mkdir $HOME/.config/nvim
+#fi                            
+
+if [[ ! -e ${HOME}/.config/nvim ]]; then
+  ln -f $DOTFILES/neovim $HOME/.config/nvim
 fi
-
-if [[ ! -d $HOME/.config/nvim ]]; then
-  mkdir $HOME/.config/nvim
-fi                            
 
 if [[ ! -d $HOME/.tmux ]]; then
   mkdir -p $HOME/.tmux/plugins
 fi 
 
-if [[ ! -e ${HOME}/.config/nvim/init.vim ]]; then
-  ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
-fi
+#if [[ ! -e ${HOME}/.config/nvim/init.vim ]]; then
+  #ln -f $DOTFILES/vimrc $HOME/.config/nvim/init.vim
+#fi
 
-if [[ ! -e ${HOME}/.config/nvim/ftplugin/python.vim ]]; then
-  ln -f $DOTFILES/vim/ftplugin/python.vim $HOME/.config/nvim/ftplugin/python.vim
-fi
+#if [[ ! -e ${HOME}/.config/nvim/ftplugin/python.vim ]]; then
+  #ln -f $DOTFILES/vim/ftplugin/python.vim $HOME/.config/nvim/ftplugin/python.vim
+#fi
 
 if [[ ! -e ${HOME}/.config/.flake8 ]]; then
   ln -f $DOTFILES/python/flake8 $HOME/.config/.flake8

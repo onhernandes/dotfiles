@@ -4,9 +4,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 """ Completion suggestion {{{
   "Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
-  Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': 'pip install virtualenv'}
-  Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-  let g:coq_settings = { 'auto_start': v:true }
 
   "if !empty($TMUX)
     "Plug 'ncm2/ncm2-tmux'
@@ -120,9 +117,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   nnoremap <leader>al :ALELint<CR>
   let g:ale_fixers = 
     \ {
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['eslint'],
-      \ 'vue': ['eslint'],
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'typescript': ['eslint', 'prettier'],
+      \ 'typescriptreact': ['eslint', 'prettier'],
+      \ 'vue': ['eslint', 'prettier'],
       \ 'python': ['black'],
       \ 'go': ['gofmt', 'goimports']
     \ }
@@ -138,24 +136,30 @@ call plug#begin('~/.local/share/nvim/plugged')
   "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
   "let g:chadtree_settings = {'view.sort_by': ['is_folder', 'file_name', 'ext']}
   "nnoremap <leader>v <cmd>CHADopen<cr>
-  NvimTree
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
-  nnoremap <leader>v <cmd>NvimTreeToggle<cr>
+  "Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  "Plug 'kyazdani42/nvim-tree.lua'
+  "nnoremap <leader>v <cmd>NvimTreeToggle<cr>
+  "call luaeval('require"nvim-tree".setup{}')
   
   " LSP Config!
-  Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
+  "Plug 'neovim/nvim-lspconfig', { 'do': 'npm i -g pyright' }
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq', 'do': 'pip install virtualenv'}
+  "Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+  let g:coq_settings = { 'auto_start': v:true }
 
 
   " NerdTree
-  " Plug 'jojoyuji/nerdtree-async'
-  " Plug 'ivalkeen/nerdtree-execute'
-  " Plug 'tyok/nerdtree-ack'
-  " Plug 'Xuyuanp/nerdtree-git-plugin'
-  " let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
-  " let NERDTreeShowBookmarks=1
-  " let NERDTreeDirArrows=1
-  " let NERDTreeHijackNetrw=0
+  Plug 'preservim/nerdtree'
+  Plug 'ivalkeen/nerdtree-execute'
+  Plug 'tyok/nerdtree-ack'
+  "Plug 'Xuyuanp/nerdtree-git-plugin'
+  let g:indent_guides_exclude_filetypes = ['nerdtree'] " fixes the folding issue on NERDTree
+  let NERDTreeShowBookmarks=1
+  let NERDTreeDirArrows=1
+  let g:NERDTreeGlyphReadOnly = "RO"
+  nnoremap <leader>v <cmd>NERDTreeToggle<cr>
+  nnoremap <leader>vf :NERDTreeFind<cr>
+  "let NERDTreeHijackNetrw=0
 
   autocmd VimEnter *
     \   if !argc()
@@ -275,7 +279,7 @@ if filereadable(expand("$HOME/.onhernandes/dotfiles/vim/local/plugins.vim"))
 endif
 
 call plug#end()
-call luaeval('require"lspconfig".pyright.setup{}')
+"call luaeval('require"lspconfig".pyright.setup{}')
    
 " Theme & Syntax
 if !exists('g:syntax_on')
