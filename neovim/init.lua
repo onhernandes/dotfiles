@@ -121,7 +121,6 @@ local packer_bootstrap = ensure_packer()
 
   -- Map leader + q to close current buffer
   vim.cmd([[
-    map <leader>q <esc>:call CloseCurrentBuffer()<cr>
     function! CloseCurrentBuffer()
       let todelbufNr = bufnr("%")
       let newbufNr = bufnr("#")
@@ -137,7 +136,7 @@ local packer_bootstrap = ensure_packer()
       exe "bd".todelbufNr
     endfunction
   ]])
-  nmap('<leader>q', '<esc>:call CloseCurrentBuffer()')
+  nmap('<leader>q', '<esc>:call CloseCurrentBuffer()<cr>')
 
   -- Map moving-keys for sugestions/completions in insert-mode
   imap('<c-k>', '<c-p>')
