@@ -359,10 +359,15 @@ local packer_bootstrap = ensure_packer()
 
     -- Auto completion with CoQ
     use { 'ms-jpq/coq_nvim', branch = 'coq', run = 'pip install virtualenv' }
-    vim.g.coq_settings = {}
-    vim.g.coq_settings['auto_start'] = true
+    vim.g.coq_settings = {
+      auto_start = true,
+      keymap = {
+        manual_complete = '',
+        recommended = false
+      }
+    }
+    
     use { 'ms-jpq/coq.thirdparty', branch = '3p' }
-    vim.api.nvim_create_autocmd({ "VimEnter" }, { command = ":COQnow" })
 
     -- Still missing proper implementation of custom COQ snippets
     use {
@@ -374,17 +379,36 @@ local packer_bootstrap = ensure_packer()
           packer_packages_path .. '/custom-coq-snippets/snippets',
           os.getenv('DOTFILES') .. '/neovim/coq-user-snippets'
         })
-      end,
-      config = function()
+
         vim.cmd([[
           :COQsnips compile
         ]])
       end
     }
 
+    -- Treesitter
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate<CR>:TSInstall typescript javascript rust scss python sql css html vim json jsdoc graphql gitignore dockerfile c'
+    }
+    require'nvim-treesitter.configs'.setup{
+      highlight = {
+        enable = true
+      }
+    }
+
+    -- This is experimental
+    vim.cmd([[
+      set foldmethod=expr
+      set foldexpr=nvim_treesitter#foldexpr()
+    ]])
+
     -- LSP Config
-    use { 'neovim/nvim-lspconfig', run = 'npm i -g pyright typescript typescript-language-server' }
-    use 'sigmasd/deno-nvim'
+    use {
+      'neovim/nvim-lspconfig',
+      run = vim.fn.stdpath('config') .. '/custom-coq-snippets/nvim-lspconfig-hook.sh',
+    }
+    -- use 'sigmasd/deno-nvim'
     use 'jose-elias-alvarez/typescript.nvim'
     require("typescript").setup({
       disable_commands = false,
@@ -392,9 +416,13 @@ local packer_bootstrap = ensure_packer()
           capabilities = require('coq').lsp_ensure_capabilities()
       },
     })
-    require('lspconfig')['pyright'].setup(require('coq').lsp_ensure_capabilities())
     nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
-    -- require('lspconfig')['deno-nvim'].setup{}
+
+    require('lspconfig')['pyright'].setup(require('coq').lsp_ensure_capabilities())
+    -- require('lspconfig')['deno-nvim'].setup(require('coq').lsp_ensure_capabilities())
+    if vim.fn.exists('$HOME/.local/bin/rust-analyzer') then
+      require('lspconfig')['rust_analyzer'].setup(require('coq').lsp_ensure_capabilities())
+    end
 
     use 'preservim/nerdtree'
     use 'ivalkeen/nerdtree-execute'
@@ -496,23 +524,6 @@ local packer_bootstrap = ensure_packer()
     -- Lua better syntax highlight
     use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
 
-    -- Treesitter
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate<CR>:TSInstall typescript<CR>:TSInstall javascript<CR>'
-    }
-    require'nvim-treesitter.configs'.setup{
-      highlight = {
-        enable = true
-      }
-    }
-
-    -- This is experimental
-    vim.cmd([[
-      set foldmethod=expr
-      set foldexpr=nvim_treesitter#foldexpr()
-    ]])
-
     -- Themes
     --  use 'joshdick/onedark.vim'
     local thema_name = 'hachy/eva01.vim'
@@ -532,5 +543,5 @@ local packer_bootstrap = ensure_packer()
     if packer_bootstrap then
       require('packer').sync()
     end
-  end )
+  end)
 -- }}}
