@@ -17,64 +17,63 @@ local packer_bootstrap = ensure_packer()
 -- Vim settings {{{
   -- General settings
   vim.g.mapleader = " " -- map leader to space
-  vim.o.encoding = "UTF-8" -- encoding
-  vim.o.swapfile = false -- don't use swap files
+  vim.opt.encoding = "UTF-8" -- encoding
+  vim.opt.swapfile = false -- don't use swap files
 
   -- White characters
-  vim.o.autoindent = true
-  vim.o.smartindent = true
-  vim.o.cindent = true
-  vim.o.tabstop = 2 -- 1 tab = 2 spaces
-  vim.o.shiftwidth = 2 -- indentation rule
-  vim.o.formatoptions = 'qnj1' -- q  - comment formatting; n - numbered lists; j - remove comment when joining lines; 1 - don't break after one-letter word, experimental
-  vim.o.expandtab = true -- expand tab to spaces
+  vim.opt.autoindent = true
+  vim.opt.smartindent = true
+  vim.opt.cindent = true
+  vim.opt.tabstop = 2 -- 1 tab = 2 spaces
+  vim.opt.shiftwidth = 2 -- indentation rule
+  vim.opt.formatoptions = 'qnj1' -- q  - comment formatting; n - numbered lists; j - remove comment when joining lines; 1 - don't break after one-letter word, experimental
+  vim.opt.expandtab = true -- expand tab to spaces
 
   -- Display
-  vim.o.scrolloff = 3 -- always show 3 rows from edge of the screen
-  vim.o.laststatus = 2 -- always show status line
-  vim.o.foldenable = true
+  vim.opt.scrolloff = 3 -- always show 3 rows from edge of the screen
+  vim.opt.laststatus = 2 -- always show status line
 
   -- Experimental Display settings
-  -- vim.o.foldmethod = 'indent' -- use indentation to generate folds
-  vim.o.foldmethod = 'syntax' -- use language syntax to generate folds, experimental
-  vim.o.showmatch  = true -- show matching brackets, experimental
-  vim.o.synmaxcol = 500 -- stop syntax highlight after x lines for performance, experimental
-  vim.o.foldlevel = 4 -- limit folding to 4 levels, experimental
-  vim.o.wrap = true -- wrap lines, experimental
-  vim.o.eol = false -- show if there's no eol char, experimental
-  vim.o.showbreak= '↪' -- character to show when line is broken, experimental
+  vim.opt.showmatch  = true -- show matching brackets, experimental
+  vim.opt.synmaxcol = 500 -- stop syntax highlight after x lines for performance, experimental
+  vim.opt.wrap = true -- wrap lines, experimental
+  vim.opt.eol = false -- show if there's no eol char, experimental
+  vim.opt.showbreak= '↪' -- character to show when line is broken, experimental
 
   -- Sidebar
-  vim.o.number = true -- line number on the left
-  vim.o.numberwidth = 4 -- always reserve 4 spaces for line number
-  vim.o.showcmd = true -- display command in bottom bar
-  -- vim.o.signcolumn = 'yes' -- keep 1 column for coc.vim  check
-  vim.o.modelines = 0
+  vim.opt.number = true -- line number on the left
+  vim.opt.numberwidth = 4 -- always reserve 4 spaces for line number
+  vim.opt.showcmd = true -- display command in bottom bar
+  -- vim.opt.signcolumn = 'yes' -- keep 1 column for coc.vim  check
+  vim.opt.modelines = 0
 
   -- Windows
-  vim.o.splitright = true -- set to split new window to right of current one
-  vim.o.splitbelow = true -- set to split new window to under current one
-  vim.o.title = true -- when on, the title of the window will be set to the value o titlestring
+  vim.opt.splitright = true -- set to split new window to right of current one
+  vim.opt.splitbelow = true -- set to split new window to under current one
+  vim.opt.title = true -- when on, the title of the window will be set to the value o titlestring
 
   -- Folding
-  vim.o.foldenable = true
-  vim.o.foldlevelstart = 3
-  vim.o.foldnestmax = 10
+  vim.opt.foldenable = true
+  vim.opt.foldlevelstart = 2
+  vim.opt.foldlevel = 2 -- limit folding to 2 levels, experimental
+  vim.opt.foldnestmax = 10
+  vim.opt.foldmethod = 'indent' -- use indentation to generate folds
+  --vim.opt.foldmethod = 'syntax' -- use language syntax to generate folds, experimental
 
   -- Misc
-  vim.o.virtualedit = "all" -- allow to virtually edit chars where they don't exist
-  vim.o.clipboard = "unnamedplus" -- syncs nvim clipboard & system clipboard
-  vim.o.more = true -- keep loading lists
-  vim.o.showmode = false
-  vim.o.completeopt = "menu,preview,longest" -- list of options for Insert mode completion
-  vim.o.expandtab = true
-  vim.o.termguicolors = true
-  vim.o.pastetoggle = '<F6>'
+  vim.opt.virtualedit = "all" -- allow to virtually edit chars where they don't exist
+  vim.opt.clipboard = "unnamedplus" -- syncs nvim clipboard & system clipboard
+  vim.opt.more = true -- keep loading lists
+  vim.opt.showmode = false
+  vim.opt.completeopt = "menu,preview,longest" -- list of options for Insert mode completion
+  vim.opt.expandtab = true
+  vim.opt.termguicolors = true
+  vim.opt.pastetoggle = '<F6>'
 
   -- Wildmode/wildmenu command-line completion
-  vim.o.wildmenu = true -- on TAB autocomplete command options
-  vim.o.wildignore = '*.bak,*.swp,*.swo,*.a,*.o,*.so,*.pyc,*.class,*.jpg,*.jpeg,*.gif,*.png,*.pdf,*/.git*,*.tar,*.zip,*node_modules/*,*dist/*,*public/*,coverage,*/__pycache__/*'
-  vim.o.wildmode = 'longest:full,list:full'
+  vim.opt.wildmenu = true -- on TAB autocomplete command options
+  vim.opt.wildignore = '*.bak,*.swp,*.swo,*.a,*.o,*.so,*.pyc,*.class,*.jpg,*.jpeg,*.gif,*.png,*.pdf,*/.git*,*.tar,*.zip,*node_modules/*,*dist/*,*public/*,coverage,*/__pycache__/*'
+  vim.opt.wildmode = 'longest:full,list:full'
 
   -- Return to last edit position when opening files
   vim.cmd([[
@@ -311,7 +310,7 @@ local packer_bootstrap = ensure_packer()
     -- and colorscheme was 'one'
     use {
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      require = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- Protected call to avoid errors on first run
@@ -363,12 +362,39 @@ local packer_bootstrap = ensure_packer()
     vim.g.coq_settings = {}
     vim.g.coq_settings['auto_start'] = true
     use { 'ms-jpq/coq.thirdparty', branch = '3p' }
+    vim.api.nvim_create_autocmd({ "VimEnter" }, { command = ":COQnow" })
 
     -- Still missing proper implementation of custom COQ snippets
-    use 'onhernandes/custom-coq-snippets'
+    use {
+      'onhernandes/custom-coq-snippets',
+      run = function()
+        vim.fn.system({
+          'ln',
+          '-s',
+          packer_packages_path .. '/custom-coq-snippets/snippets',
+          os.getenv('DOTFILES') .. '/neovim/coq-user-snippets'
+        })
+      end,
+      config = function()
+        vim.cmd([[
+          :COQsnips compile
+        ]])
+      end
+    }
 
     -- LSP Config
-    -- use { 'neovim/nvim-lspconfig', run = 'npm i -g pyright typescript typescript-language-server' }
+    use { 'neovim/nvim-lspconfig', run = 'npm i -g pyright typescript typescript-language-server' }
+    use 'sigmasd/deno-nvim'
+    use 'jose-elias-alvarez/typescript.nvim'
+    require("typescript").setup({
+      disable_commands = false,
+      server = {
+          capabilities = require('coq').lsp_ensure_capabilities()
+      },
+    })
+    require('lspconfig')['pyright'].setup(require('coq').lsp_ensure_capabilities())
+    nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
+    -- require('lspconfig')['deno-nvim'].setup{}
 
     use 'preservim/nerdtree'
     use 'ivalkeen/nerdtree-execute'
@@ -424,9 +450,9 @@ local packer_bootstrap = ensure_packer()
     ]])
     
     -- Vim JSON support
-    use { 'leshill/vim-json', ft = 'json' }
+    use { 'leshill/vim-json', as = 'leshill-vim-json', ft = 'json' }
     -- Syntax Highlight key and value
-    use { 'elzr/vim-json', ft = 'json' }
+    -- use { 'elzr/vim-json', as = 'elzr-vim-json', ft = 'json' }
     -- JSON Formatter: <leader>json
     use { 'XadillaX/json-formatter.vim', ft = 'json', run = 'npm install jjson -g' }
     -- Better JS Highlight
@@ -466,6 +492,26 @@ local packer_bootstrap = ensure_packer()
 
     -- TOML support
     use { 'cespare/vim-toml', ft = 'toml' }
+
+    -- Lua better syntax highlight
+    use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
+
+    -- Treesitter
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate<CR>:TSInstall typescript<CR>:TSInstall javascript<CR>'
+    }
+    require'nvim-treesitter.configs'.setup{
+      highlight = {
+        enable = true
+      }
+    }
+
+    -- This is experimental
+    vim.cmd([[
+      set foldmethod=expr
+      set foldexpr=nvim_treesitter#foldexpr()
+    ]])
 
     -- Themes
     --  use 'joshdick/onedark.vim'
