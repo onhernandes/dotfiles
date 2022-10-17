@@ -11,6 +11,7 @@
   pm = push origin master
   pfl = push --force-with-lease
   pf = push --force
+  first-push = "!fp() { git push -u origin $1; }; fp"
   a	= add -A
   c	= commit -m
   ca = !git add -A && git commit -m
