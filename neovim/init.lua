@@ -538,8 +538,13 @@ local packer_bootstrap = ensure_packer()
     use { 'ap/vim-css-color', ft = {'css', 'scss', 'sass'} }
 
     -- Emmet
-    use { 'mattn/emmet-vim', ft = { 'vue', 'scss', 'sass', 'css', 'html', 'php' } }
+    use { 'mattn/emmet-vim', ft = { 'vue', 'scss', 'sass', 'css', 'html', 'php', 'typescriptreact', 'jsx', 'tsx' } }
     vim.g.user_emmet_mode = 'a'
+    vim.api.nvim_create_autocmd(
+      --{ "FileType" },
+      { 'BufRead', 'BufNewFile' },
+      { pattern = { '.tsx', '.vue', '.jsx', '.html', '.css', '.scss', '.sass' }, command = ':PackerLoad emmet-vim<CR>:EmmetInstall<CR>' }
+    )
 
     -- VueJS
     use { 'posva/vim-vue', ft = {'vue'} }
