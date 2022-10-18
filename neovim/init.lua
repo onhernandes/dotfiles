@@ -113,10 +113,10 @@ local packer_bootstrap = ensure_packer()
   end
 
   -- Move through windows easily
-  nmap('<c-h>', '<c-w>h')
-  nmap('<c-l>', '<c-w>l')
-  nmap('<c-j>', '<c-w>j')
-  nmap('<c-k>', '<c-w>k')
+  --nmap('<c-h>', '<c-w>h')
+  --nmap('<c-l>', '<c-w>l')
+  --nmap('<c-j>', '<c-w>j')
+  --nmap('<c-k>', '<c-w>k')
 
   -- Map leader + q to close current buffer
   vim.cmd([[
@@ -145,8 +145,8 @@ local packer_bootstrap = ensure_packer()
   nmap(';', ':')
   vmap(';', ':')
 
-  -- Map reload and edit for vimrc
-  nmap('<leader>so', ':so $DOTFILES/neovim/init.lua<cr>');
+  -- Map reload and edit for init.lua
+  --nmap('<leader>so', ':so $DOTFILES/neovim/init.lua<cr>');
   nmap('<leader>rr', ':edit $DOTFILES/neovim/init.lua<cr>');
 
   -- Map :Files as Find Files
@@ -358,33 +358,20 @@ local packer_bootstrap = ensure_packer()
     nmap('<leader>al', ':ALELint<CR>')
 
     -- Auto completion with CoQ
+    --[[ coq
     use { 'ms-jpq/coq_nvim', branch = 'coq', run = 'pip install virtualenv' }
     vim.g.coq_settings = {
       auto_start = true,
       keymap = {
         manual_complete = '',
         recommended = false
-      }
+      },
+      ['display.pum.fast_close'] = false
     }
     
-    use { 'ms-jpq/coq.thirdparty', branch = '3p' }
-
-    -- Still missing proper implementation of custom COQ snippets
-    use {
-      'onhernandes/custom-coq-snippets',
-      run = function()
-        vim.fn.system({
-          'ln',
-          '-s',
-          packer_packages_path .. '/custom-coq-snippets/snippets',
-          os.getenv('DOTFILES') .. '/neovim/coq-user-snippets'
-        })
-
-        vim.cmd([[
-          :COQsnips compile
-        ]])
-      end
-    }
+    coq --]]
+    --use { 'ms-jpq/coq.thirdparty', branch = '3p' }
+    -- use { 'onhernandes/custom-coq-snippets', run = function() vim.fn.system({ 'ln', '-s', packer_packages_path .. '/custom-coq-snippets/snippets', os.getenv('DOTFILES') .. '/neovim/coq-user-snippets' }) vim.cmd([[ :COQsnips compile ]]) end }
 
     -- Treesitter
     use {
@@ -404,24 +391,64 @@ local packer_bootstrap = ensure_packer()
     ]])
 
     -- LSP Config
-    use {
-      'neovim/nvim-lspconfig',
-      run = vim.fn.stdpath('config') .. '/custom-coq-snippets/nvim-lspconfig-hook.sh',
-    }
+    use { 'neovim/nvim-lspconfig' }
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    vim.o.completeopt= 'menu,menuone,noselect'
+
+    -- Snippets
+    use 'quangnguyen30192/cmp-nvim-ultisnips'
+
+    -- nvim-cmp
+    local cmp = require'cmp'
+
+    cmp.setup({
+      snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+          -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+          -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+          vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+      },
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      }),
+      sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        -- { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
+      }, {
+        { name = 'buffer' },
+      })
+    })
     -- use 'sigmasd/deno-nvim'
     use 'jose-elias-alvarez/typescript.nvim'
     require("typescript").setup({
       disable_commands = false,
-      server = {
-          capabilities = require('coq').lsp_ensure_capabilities()
-      },
+      server = { capabilities = capabilities }
     })
     nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
 
-    require('lspconfig')['pyright'].setup(require('coq').lsp_ensure_capabilities())
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    require('lspconfig')['pyright'].setup({ capabilities = capabilities })
     -- require('lspconfig')['deno-nvim'].setup(require('coq').lsp_ensure_capabilities())
     if vim.fn.exists('$HOME/.local/bin/rust-analyzer') then
-      require('lspconfig')['rust_analyzer'].setup(require('coq').lsp_ensure_capabilities())
+      require('lspconfig')['rust_analyzer'].setup({ capabilities = capabilities })
     end
 
     use 'preservim/nerdtree'
