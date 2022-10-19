@@ -438,14 +438,16 @@ local packer_bootstrap = ensure_packer()
     })
     -- use 'sigmasd/deno-nvim'
     use 'jose-elias-alvarez/typescript.nvim'
+    nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
+
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    require('lspconfig')['pyright'].setup({ capabilities = capabilities })
     require("typescript").setup({
       disable_commands = false,
       server = { capabilities = capabilities }
     })
-    nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    require('lspconfig')['pyright'].setup({ capabilities = capabilities })
     -- require('lspconfig')['deno-nvim'].setup(require('coq').lsp_ensure_capabilities())
     if vim.fn.exists('$HOME/.local/bin/rust-analyzer') then
       require('lspconfig')['rust_analyzer'].setup({ capabilities = capabilities })
