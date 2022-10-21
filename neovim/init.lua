@@ -252,20 +252,21 @@ local packer_bootstrap = ensure_packer()
     -- Completion suggestion
     use 'roxma/nvim-yarp'
 
-    -- Snippets
-    use 'SirVer/ultisnips'
-    vim.g.UltiSnipsUsePythonVersion = 3
-    vim.g.UltiSnipsEditSplit = 'vertical'
-    vim.g.UltiSnipsExpandTrigger = '<tab>'
-    vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-    vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-    use { 'honza/vim-snippets', run = 'rm ./UltiSnips/javascript* && rm -rf ./snippets/javascript*' }
-    local ultisnips_javascript = {}
-    ultisnips_javascript['keyword-spacing'] = 'always';
-    ultisnips_javascript['semi'] = 'never';
-    ultisnips_javascript['space-before-function-paren'] = 'always';
-    vim.g.ultisnips_javascript = ultisnips_javascript
+    -- Snippets [[[
+    -- use 'SirVer/ultisnips'
+    -- vim.g.UltiSnipsUsePythonVersion = 3
+    -- vim.g.UltiSnipsEditSplit = 'vertical'
+    -- vim.g.UltiSnipsExpandTrigger = '<tab>'
+    -- vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
+    -- vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+    --
+    -- use { 'honza/vim-snippets', run = 'rm ./UltiSnips/javascript* && rm -rf ./snippets/javascript*' }
+    -- local ultisnips_javascript = {}
+    -- ultisnips_javascript['keyword-spacing'] = 'always';
+    -- ultisnips_javascript['semi'] = 'never';
+    -- ultisnips_javascript['space-before-function-paren'] = 'always';
+    -- vim.g.ultisnips_javascript = ultisnips_javascript
+    -- ]]]
 
     -- Bookmarks
     use 'MattesGroeger/vim-bookmarks'
@@ -332,6 +333,56 @@ local packer_bootstrap = ensure_packer()
       }
     end
 
+    -- lsp-zero, that magic one which set up LSP, CMP and more
+    use {
+      'VonHeikemen/lsp-zero.nvim',
+      requires = {
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
+
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-buffer'},
+        {'hrsh7th/cmp-path'},
+        {'saadparwaiz1/cmp_luasnip'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-nvim-lua'},
+
+        -- Snippets
+        {'L3MON4D3/LuaSnip'},
+        {'rafamadriz/friendly-snippets'},
+      }
+    }
+
+
+    local lsp_zero = require('lsp-zero')
+
+    lsp_zero.preset('manual-setup')
+    lsp_zero.nvim_workspace()
+    lsp_zero.ensure_installed({'tsserver', 'rust_analyzer'})
+    lsp_zero.setup_servers({'tsserver', 'rust_analyzer'})
+    lsp_zero.setup_nvim_cmp({
+      source = require('cmp').config.sources(
+        {
+          {name = 'path', max_item_count = 5},
+          {name = 'nvim_lsp', keyword_length = 2, max_item_count = 10},
+          {name = 'luasnip', keyword_length = 2},
+        },
+        {
+          {name = 'buffer', keyword_length = 3},
+        }
+      )
+    })
+    lsp_zero.setup()
+    vim.diagnostic.config({
+      virtual_text = true
+    })
+
+    use 'j-hui/fidget.nvim'
+    require('fidget').setup{}
+
     -- Ale for async lint & fix with LSP support
     use 'dense-analysis/ale'
     vim.g.ale_sign_error = '✘'
@@ -357,26 +408,10 @@ local packer_bootstrap = ensure_packer()
     nmap('<leader>af', ':ALEFix<CR>')
     nmap('<leader>al', ':ALELint<CR>')
 
-    -- Auto completion with CoQ
-    --[[ coq
-    use { 'ms-jpq/coq_nvim', branch = 'coq', run = 'pip install virtualenv' }
-    vim.g.coq_settings = {
-      auto_start = true,
-      keymap = {
-        manual_complete = '',
-        recommended = false
-      },
-      ['display.pum.fast_close'] = false
-    }
-    
-    coq --]]
-    --use { 'ms-jpq/coq.thirdparty', branch = '3p' }
-    -- use { 'onhernandes/custom-coq-snippets', run = function() vim.fn.system({ 'ln', '-s', packer_packages_path .. '/custom-coq-snippets/snippets', os.getenv('DOTFILES') .. '/neovim/coq-user-snippets' }) vim.cmd([[ :COQsnips compile ]]) end }
-
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate<CR>:TSInstall typescript javascript rust scss python sql css html vim json jsdoc graphql gitignore dockerfile c'
+      run = ':TSUpdate<CR>:TSInstall typescript javascript'
     }
     require'nvim-treesitter.configs'.setup{
       highlight = {
@@ -389,69 +424,6 @@ local packer_bootstrap = ensure_packer()
       set foldmethod=expr
       set foldexpr=nvim_treesitter#foldexpr()
     ]])
-
-    -- LSP Config
-    use { 'neovim/nvim-lspconfig' }
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    vim.o.completeopt= 'menu,menuone,noselect'
-
-    -- Snippets
-    use 'quangnguyen30192/cmp-nvim-ultisnips'
-
-    -- nvim-cmp
-    local cmp = require'cmp'
-
-    cmp.setup({
-      snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-          -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-          -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-          vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        end,
-      },
-      window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      }),
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
-      }, {
-        { name = 'buffer' },
-      })
-    })
-    -- use 'sigmasd/deno-nvim'
-    use 'jose-elias-alvarez/typescript.nvim'
-    nmap('gt', ':TypescriptGoToSourceDefinition<cr>')
-
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-    require('lspconfig')['pyright'].setup({ capabilities = capabilities })
-    require("typescript").setup({
-      disable_commands = false,
-      server = { capabilities = capabilities }
-    })
-
-    -- require('lspconfig')['deno-nvim'].setup(require('coq').lsp_ensure_capabilities())
-    if vim.fn.exists('$HOME/.local/bin/rust-analyzer') then
-      require('lspconfig')['rust_analyzer'].setup({ capabilities = capabilities })
-    end
 
     use 'preservim/nerdtree'
     use 'ivalkeen/nerdtree-execute'

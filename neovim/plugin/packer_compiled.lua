@@ -74,6 +74,18 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["BetterLua.vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/opt/BetterLua.vim",
+    url = "https://github.com/euclidianAce/BetterLua.vim"
+  },
+  LuaSnip = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["ack.vim"] = {
     loaded = true,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/ack.vim",
@@ -94,25 +106,30 @@ _G.packer_plugins = {
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/clever-f.vim",
     url = "https://github.com/rhysd/clever-f.vim"
   },
-  ["coq.thirdparty"] = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/coq.thirdparty",
-    url = "https://github.com/ms-jpq/coq.thirdparty"
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
   },
-  coq_nvim = {
+  ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/coq_nvim",
-    url = "https://github.com/ms-jpq/coq_nvim"
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["custom-coq-snippets"] = {
+  ["cmp-nvim-lua"] = {
     loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/custom-coq-snippets",
-    url = "https://github.com/onhernandes/custom-coq-snippets"
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
-  ["deno-nvim"] = {
+  ["cmp-path"] = {
     loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/deno-nvim",
-    url = "https://github.com/sigmasd/deno-nvim"
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["emmet-vim"] = {
     loaded = false,
@@ -132,6 +149,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/eva01.vim",
     url = "https://github.com/hachy/eva01.vim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   fzf = {
     loaded = true,
@@ -157,10 +184,25 @@ _G.packer_plugins = {
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json",
     url = "https://github.com/leshill/vim-json"
   },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   nerdtree = {
     loaded = true,
@@ -176,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/nerdtree-execute",
     url = "https://github.com/ivalkeen/nerdtree-execute"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -223,16 +270,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim",
     url = "https://github.com/leafgarland/typescript-vim"
-  },
-  ["typescript.nvim"] = {
-    loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/typescript.nvim",
-    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
   },
   ["vim-autoclose"] = {
     loaded = true,
@@ -311,11 +348,6 @@ _G.packer_plugins = {
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/vim-signify",
     url = "https://github.com/mhinz/vim-signify"
   },
-  ["vim-snippets"] = {
-    loaded = true,
-    path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/vim-snippets",
-    url = "https://github.com/honza/vim-snippets"
-  },
   ["vim-startify"] = {
     loaded = true,
     path = "/home/hernandes/.local/share/nvim/site/pack/packer/start/vim-startify",
@@ -371,31 +403,23 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType json ++once lua require("packer.load")({'vim-gotofile', 'json-formatter.vim', 'leshill-vim-json'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'BetterLua.vim'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType json ++once lua require("packer.load")({'leshill-vim-json', 'json-formatter.vim', 'vim-gotofile'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty', 'emmet-vim'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty', 'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'emmet-vim', 'es.next.syntax.vim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType php ++once lua require("packer.load")({'emmet-vim'}, { ft = "php" }, _G.packer_plugins)]]
 vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "css" }, _G.packer_plugins)]]
 vim.cmd [[au FileType scss ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "scss" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'yajs.vim', 'vim-gotofile', 'vim-js-pretty-template', 'vim-jsdoc', 'vim-jsx-pretty', 'vim-node', 'es.next.syntax.vim'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sass ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "sass" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType php ++once lua require("packer.load")({'emmet-vim'}, { ft = "php" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'yajs.vim', 'yats.vim', 'typescript-vim', 'vim-gotofile', 'vim-js-pretty-template', 'vim-jsx-pretty', 'vim-node', 'es.next.syntax.vim'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType toml ++once lua require("packer.load")({'vim-toml'}, { ft = "toml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vue ++once lua require("packer.load")({'emmet-vim', 'vim-vue'}, { ft = "vue" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-gotofile', 'vim-js-pretty-template', 'es.next.syntax.vim', 'vim-jsx-pretty', 'vim-node', 'vim-jsdoc', 'yajs.vim'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty'}, { ft = "jsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty'}, { ft = "tsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'vim-gotofile', 'vim-js-pretty-template', 'es.next.syntax.vim', 'vim-jsx-pretty', 'vim-node', 'yajs.vim', 'yats.vim', 'typescript-vim'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'es.next.syntax.vim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vue ++once lua require("packer.load")({'vim-vue', 'emmet-vim'}, { ft = "vue" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], false)
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], false)
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], false)
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], true)
 vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]]
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], false)
@@ -408,6 +432,15 @@ time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], true)
 vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]]
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
