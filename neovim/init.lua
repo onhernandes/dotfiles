@@ -367,15 +367,19 @@ local packer_bootstrap = ensure_packer()
       source = require('cmp').config.sources(
         {
           {name = 'path', max_item_count = 5},
-          {name = 'nvim_lsp', keyword_length = 2, max_item_count = 10},
+          {name = 'nvim_lsp', keyword_length = 3, max_item_count = 7},
           {name = 'luasnip', keyword_length = 2},
-        },
-        {
           {name = 'buffer', keyword_length = 3},
         }
       )
     })
     lsp_zero.setup()
+    require('luasnip.loaders.from_vscode').lazy_load({
+      paths = {
+        vim.fn.stdpath('config') .. '/snippets'
+      }
+    })
+
     vim.diagnostic.config({
       virtual_text = true
     })

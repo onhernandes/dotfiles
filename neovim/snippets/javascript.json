@@ -1,0 +1,38 @@
+{
+  "const function export default": {
+    "prefix": "ce",
+    "body": "const ${1:fName} = ($2) => {\n  $0\n};\n\nexport default ${1};"
+  },
+  "export { default as }": {
+    "prefix": "ea",
+    "body": "export { default as ${1:pName} } from \"./${1}\";"
+  },
+  "export default": {
+    "prefix": "ed",
+    "body": "export default ${1:name};"
+  },
+  "if statement": {
+    "prefix": "if",
+    "body": "if (${1}) {\n$CLIPBOARD\n$0\n}"
+  },
+  "import from": {
+    "prefix": "im",
+    "body": "import ${1:im} from \"./${1}\""
+  },
+  "export const fn": {
+    "prefix": "ec",
+    "body": "export const ${1:name} = (${2:args}) => {\n$0\n};"
+  },
+  "console log": {
+    "prefix": "cl",
+    "body": "console.log($1, $0);"
+  },
+  "full describe()": {
+    "prefix": "ds",
+    "body": "describe(\"${1:name}\", () => {\n$0\n});"
+  },
+  "full it()": {
+    "prefix": "it",
+    "body": "it(\"${1:name}\", () => {\n$0\n});"
+  }
+}
