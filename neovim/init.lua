@@ -361,8 +361,8 @@ local packer_bootstrap = ensure_packer()
 
     lsp_zero.preset('manual-setup')
     lsp_zero.nvim_workspace()
-    lsp_zero.ensure_installed({'tsserver', 'rust_analyzer'})
-    lsp_zero.setup_servers({'tsserver', 'rust_analyzer'})
+    lsp_zero.ensure_installed({'tsserver', 'rust_analyzer', 'sqlls'})
+    lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'sqlls'})
     lsp_zero.setup_nvim_cmp({
       source = require('cmp').config.sources(
         {
@@ -393,8 +393,13 @@ local packer_bootstrap = ensure_packer()
     vim.g.ale_sign_warning = '▲'
     vim.g.ale_set_quickfix = 1
     vim.g.ale_completion_enabled = 1
+    vim.g.ale_disable_lsp = 1
     local ale_fixers = {}
     ale_fixers['javascript'] = {'eslint', 'prettier'}
+    ale_fixers['css'] = {'csslint'}
+    ale_fixers['sass'] = {'prettier'}
+    ale_fixers['scss'] = ale_fixers['sass']
+    ale_fixers['html'] = {'htmlhint'}
     ale_fixers['typescript'] = {'eslint', 'prettier'}
     ale_fixers['typescriptreact'] = {'eslint', 'prettier'}
     ale_fixers['vue'] = {'eslint', 'prettier'}
@@ -484,8 +489,6 @@ local packer_bootstrap = ensure_packer()
     
     -- Vim JSON support
     use { 'leshill/vim-json', as = 'leshill-vim-json', ft = 'json' }
-    -- Syntax Highlight key and value
-    -- use { 'elzr/vim-json', as = 'elzr-vim-json', ft = 'json' }
     -- JSON Formatter: <leader>json
     use { 'XadillaX/json-formatter.vim', ft = 'json', run = 'npm install jjson -g' }
     -- Better JS Highlight
@@ -502,7 +505,7 @@ local packer_bootstrap = ensure_packer()
     use { 'HerringtonDarkholme/yats.vim', ft = 'typescript' }
 
     -- JSDocs
-    use { 'heavenshell/vim-jsdoc', ft = 'javascript', run = 'make install' }
+    use { 'heavenshell/vim-jsdoc', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact'}, run = 'make install' }
     vim.g.jsdoc_enable_es6 = 1
 
     -- JS Libs support
