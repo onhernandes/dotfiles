@@ -486,7 +486,7 @@ local packer_bootstrap = ensure_packer()
       command! -bang -nargs=* GitAg
         \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
     ]])
-    
+
     -- Vim JSON support
     use { 'leshill/vim-json', as = 'leshill-vim-json', ft = 'json' }
     -- JSON Formatter: <leader>json
