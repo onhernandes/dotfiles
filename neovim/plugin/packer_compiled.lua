@@ -403,44 +403,44 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'BetterLua.vim'}, { ft = "lua" }, _G.packer_plugins)]]
-vim.cmd [[au FileType json ++once lua require("packer.load")({'leshill-vim-json', 'json-formatter.vim', 'vim-gotofile'}, { ft = "json" }, _G.packer_plugins)]]
-vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty', 'emmet-vim'}, { ft = "jsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-gotofile', 'vim-jsx-pretty', 'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'emmet-vim', 'es.next.syntax.vim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType php ++once lua require("packer.load")({'emmet-vim'}, { ft = "php" }, _G.packer_plugins)]]
-vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType scss ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "scss" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'yajs.vim', 'vim-gotofile', 'vim-js-pretty-template', 'vim-jsdoc', 'vim-jsx-pretty', 'vim-node', 'es.next.syntax.vim'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sass ++once lua require("packer.load")({'emmet-vim', 'vim-css-color'}, { ft = "sass" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sass ++once lua require("packer.load")({'vim-css-color', 'emmet-vim'}, { ft = "sass" }, _G.packer_plugins)]]
+vim.cmd [[au FileType scss ++once lua require("packer.load")({'vim-css-color', 'emmet-vim'}, { ft = "scss" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'yajs.vim', 'yats.vim', 'typescript-vim', 'vim-gotofile', 'vim-js-pretty-template', 'vim-jsx-pretty', 'vim-node', 'es.next.syntax.vim'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jsx ++once lua require("packer.load")({'emmet-vim', 'vim-gotofile', 'vim-jsx-pretty', 'vim-jsdoc'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'yats.vim', 'vim-node', 'yajs.vim', 'vim-gotofile', 'es.next.syntax.vim', 'vim-jsx-pretty', 'vim-js-pretty-template', 'vim-jsdoc', 'typescript-vim'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'emmet-vim', 'es.next.syntax.vim', 'vim-jsdoc'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vue ++once lua require("packer.load")({'emmet-vim', 'vim-vue'}, { ft = "vue" }, _G.packer_plugins)]]
+vim.cmd [[au FileType json ++once lua require("packer.load")({'json-formatter.vim', 'vim-gotofile', 'leshill-vim-json'}, { ft = "json" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'BetterLua.vim'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType php ++once lua require("packer.load")({'emmet-vim'}, { ft = "php" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-node', 'yajs.vim', 'vim-gotofile', 'es.next.syntax.vim', 'vim-jsx-pretty', 'vim-js-pretty-template', 'vim-jsdoc'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType toml ++once lua require("packer.load")({'vim-toml'}, { ft = "toml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vue ++once lua require("packer.load")({'vim-vue', 'emmet-vim'}, { ft = "vue" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'emmet-vim', 'vim-gotofile', 'vim-jsx-pretty'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType css ++once lua require("packer.load")({'vim-css-color', 'emmet-vim'}, { ft = "css" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], false)
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], true)
 vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]]
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], false)
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], true)
 vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]]
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], false)
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], false)
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], false)
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], true)
-vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
-time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], false)
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], true)
 vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]]
 time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-node/ftdetect/node.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-vue/ftdetect/vue.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/leshill-vim-json/ftdetect/json.vim]], false)
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], true)
+vim.cmd [[source /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]]
+time([[Sourcing ftdetect script at: /home/hernandes/.local/share/nvim/site/pack/packer/opt/typescript-vim/ftdetect/typescript.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

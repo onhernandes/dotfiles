@@ -3,3 +3,5 @@
 vim/local/*
 tmuxinator/brocoli.yml
 tmuxinator/work.yml
+./neovim/nvim
+neovim/nvim
