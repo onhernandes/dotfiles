@@ -54,5 +54,13 @@
   "Object.entries()": {
     "prefix": "Oe",
     "body": "Object.entries($1)"
+  },
+  "Array.isArray()": {
+    "prefix": "Ais",
+    "body": "Array.isArray($1)"
+  },
+  "Array.from()": {
+    "prefix": "Afr",
+    "body": "Array.from($1)"
   }
 }
