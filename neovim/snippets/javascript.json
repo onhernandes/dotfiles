@@ -25,7 +25,7 @@
   },
   "import from": {
     "prefix": "im",
-    "body": "import ${1:im} from \"./${1}\""
+    "body": "import ${1:im} from \"${2}\"${3:;}"
   },
   "export const fn": {
     "prefix": "ec",
@@ -62,5 +62,21 @@
   "Array.from()": {
     "prefix": "Afr",
     "body": "Array.from($1)"
+  },
+  "Reflect.has()": {
+    "prefix": "Rh",
+    "body": "Reflect.has($1)"
+  },
+  "Reflect.get()": {
+    "prefix": "Rg",
+    "body": "Reflect.get($1)"
+  },
+  "Reflect.set()": {
+    "prefix": "Rs",
+    "body": "Reflect.set($1)"
+  },
+  "Reflect.delete()": {
+    "prefix": "Rd",
+    "body": "Reflect.delete($1)"
   }
 }
