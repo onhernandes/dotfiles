@@ -34,10 +34,6 @@ if [[ -d $HOME/Android ]]; then
 #   echo "After downloading everything, source ~/.bashrc. This warning will disappear and \$ANDROID_HOME will be properly set"
 fi
 
-if [[ -f $HOME/.asdf/plugins/java/set-java-home.bash ]]; then
-  source $HOME/.asdf/plugins/java/set-java-home.bash
-fi
-
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
 export EDITOR=vi
