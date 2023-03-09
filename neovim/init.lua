@@ -418,6 +418,7 @@ local packer_bootstrap = ensure_packer()
 
     nmap('<leader>af', ':ALEFix<CR>')
     nmap('<leader>al', ':ALELint<CR>')
+    nmap('<leader>ar', ':ALEFindReferences<CR>')
 
     -- Treesitter
     use {
