@@ -11,6 +11,10 @@
     "prefix": "ce",
     "body": "const ${1:fName} = ($2) => {\n  $0\n};\n\nexport default ${1};"
   },
+  "custom react tag": {
+    "prefix": "rt",
+    "body": "<$1>$CLIPBOARD $0</$1>"
+  },
   "export { default as }": {
     "prefix": "ea",
     "body": "export { default as ${1:pName} } from \"./${1}\";"
@@ -19,17 +23,25 @@
     "prefix": "ed",
     "body": "export default ${1:name};"
   },
+  "export type": {
+    "prefix": "et",
+    "body": "export type ${1:name};"
+  },
+  "export interface": {
+    "prefix": "ei",
+    "body": "export interface ${1:name};"
+  },
   "if statement": {
     "prefix": "if",
-    "body": "if (${1}) {\n$CLIPBOARD\n$0\n}"
+    "body": "if ($1) {\n$CLIPBOARD\n$0\n}"
   },
   "import from": {
     "prefix": "im",
-    "body": "import ${1:im} from \"${2}\"${3:;}"
+    "body": "import $1 from \"${2}\"${3:;}"
   },
   "export const fn": {
     "prefix": "ec",
-    "body": "export const ${1:name} = (${2:args}) => {\n$0\n};"
+    "body": "export const $1 = $2;"
   },
   "console log": {
     "prefix": "cl",

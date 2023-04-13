@@ -498,12 +498,15 @@ local packer_bootstrap = ensure_packer()
     use { 'othree/yajs.vim', ft = {'javascript', 'typescript'} }
     -- Support for ES.Next features
     use { 'othree/es.next.syntax.vim',  ft = {'javascript', 'typescript', 'typescriptreact'} }
+    use { 'mlaursen/vim-react-snippets', ft = {'javascript', 'typescript'} }
     -- JSX Support for React
     use { 'MaxMEllon/vim-jsx-pretty', ft = {'javascript', 'jsx', 'typescript', 'tsx'} }
     -- Highlight JavaScript's Template Strings contents in other FileType syntax rule
     use { 'Quramy/vim-js-pretty-template', ft = {'javascript', 'typescript'} }
     -- Typescript
-    use { 'leafgarland/typescript-vim', ft = 'typescript' }
+    use { 'leafgarland/typescript-vim', ft = {'typescript'} }
+    -- tsx
+    use { 'peitalin/vim-jsx-typescript', ft = {'typescriptreact'} }
     --Typescript
     use { 'HerringtonDarkholme/yats.vim', ft = 'typescript' }
 
