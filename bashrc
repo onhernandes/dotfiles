@@ -28,10 +28,6 @@ if [[ -d $HOME/Android ]]; then
   export PATH=$PATH:$ANDROID_HOME/tools
   export PATH=$PATH:$ANDROID_HOME/tools/bin
   export PATH=$PATH:$ANDROID_HOME/platform-tools
-# else
-#   echo "You need to manually configure Android Studio. Open it, it'll ask to set the JDK path, which you can get from: asdf which java."
-#   echo "Then it'll install some components. Visit https://reactnative.dev/docs/environment-setup and see which items need to be downloaded (currently, Android SDK Platform 29 and Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image)"
-#   echo "After downloading everything, source ~/.bashrc. This warning will disappear and \$ANDROID_HOME will be properly set"
 fi
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1

@@ -1,6 +1,6 @@
-# $HOME/.onhernandes/dotfiles/tmuxinator/work.yml
+# /home/hernandes/.onhernandes/dotfiles/tmuxinator/laugh-tale.yml
 
-name: work
+name: laugh-tale
 root: ~/code
 
 # Optional tmux socket
@@ -45,51 +45,19 @@ root: ~/code
 # attach: false
 
 windows:
-  - vtop:
+  - insights: vtop
+  - meupet:
+      root: ~/code/meu-pet
+      layout: main-vertical
       panes:
-        - vtop
-  - me:
-      root: ~/.onhernandes/dotfiles
+        - nvm use
+  - rnc:
+      root: ~/code/react-native-corazon
+      layout: main-vertical
       panes:
-        - me:
-          - #empty
-  - cmd:
-      root: ~/code/commandcenter
+        - nvm use
+  - superkoa:
+      root: ~/code/super-koa
+      layout: main-vertical
       panes:
-        - cmd:
-          - #empty
-  - back:
-      root: ~/code/commandcenter-backend
-      panes:
-        - back:
-          - #empty
-  - front:
-      root: ~/code/commandcenter-frontend
-      panes:
-        - front:
-          - #empty
-  - hasura:
-      root: ~/code/commandcenter-hasura
-      panes:
-        - hasura:
-          - #empty
-  - cloud:
-      root: ~/code/cloud
-      panes:
-        - cloud:
-          - #empty
-  - ingestion:
-      root: ~/code/commandcenter-data-ingestion/
-      panes:
-        - ingestion:
-          - #empty
-  - intake:
-      root: ~/code/intake-engine
-      panes:
-        - intake:
-          - #empty
-  - predicoes:
-      root: ~/code/commandcenter-predicoes/
-      panes:
-        - predicoes:
-          - #empty
+        - nvm use
