@@ -112,12 +112,6 @@ local packer_bootstrap = ensure_packer()
     map('t', shortcut, command)
   end
 
-  -- Move through windows easily
-  --nmap('<c-h>', '<c-w>h')
-  --nmap('<c-l>', '<c-w>l')
-  --nmap('<c-j>', '<c-w>j')
-  --nmap('<c-k>', '<c-w>k')
-
   -- Map leader + q to close current buffer
   vim.cmd([[
     function! CloseCurrentBuffer()
@@ -201,9 +195,6 @@ local packer_bootstrap = ensure_packer()
   -- Map horizontal and vertical split of the same file
   nmap('<leader>s', ':split %<cr>')
   nmap('<leader>vs', ':vsplit %<cr>')
-
-  -- Map S to s for surround plugin
-  vmap('s', 'S')
 
   -- Abbreviations
   vim.cmd([[
@@ -384,6 +375,10 @@ local packer_bootstrap = ensure_packer()
       virtual_text = true
     })
 
+
+    -- Map 's' to 'S' only when not in a LuaSnip snippet
+    nmap('<leader>rs', ':source $MYVIMRC<CR>')
+
     use 'j-hui/fidget.nvim'
     require('fidget').setup{}
 
@@ -423,7 +418,8 @@ local packer_bootstrap = ensure_packer()
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate<CR>:TSInstall typescript javascript'
+      run = ':TSUpdate<CR>:TSInstall typescript javascript python',
+      ft = {'typescript', 'typescriptreact', 'javascript', 'javascriptreact'}
     }
     require'nvim-treesitter.configs'.setup{
       highlight = {
@@ -432,10 +428,10 @@ local packer_bootstrap = ensure_packer()
     }
 
     -- This is experimental
-    vim.cmd([[
-      set foldmethod=expr
-      set foldexpr=nvim_treesitter#foldexpr()
-    ]])
+    --vim.cmd([[
+      --set foldmethod=expr
+      --set foldexpr=nvim_treesitter#foldexpr()
+    --]])
 
     use 'preservim/nerdtree'
     use 'ivalkeen/nerdtree-execute'
