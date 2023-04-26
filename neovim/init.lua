@@ -13,6 +13,12 @@ local ensure_packer = function()
   return false
 end
 local packer_bootstrap = ensure_packer()
+local tree_plugin = "nvim-tree"
+
+if tree_plugin == "nvim-tree" then
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+end
 
 -- Vim settings {{{
   -- General settings
@@ -51,14 +57,6 @@ local packer_bootstrap = ensure_packer()
   vim.opt.splitright = true -- set to split new window to right of current one
   vim.opt.splitbelow = true -- set to split new window to under current one
   vim.opt.title = true -- when on, the title of the window will be set to the value o titlestring
-
-  -- Folding
-  vim.opt.foldenable = true
-  vim.opt.foldlevelstart = 2
-  vim.opt.foldlevel = 2 -- limit folding to 2 levels, experimental
-  vim.opt.foldnestmax = 10
-  vim.opt.foldmethod = 'indent' -- use indentation to generate folds
-  --vim.opt.foldmethod = 'syntax' -- use language syntax to generate folds, experimental
 
   -- Misc
   vim.opt.virtualedit = "all" -- allow to virtually edit chars where they don't exist
@@ -160,10 +158,6 @@ local packer_bootstrap = ensure_packer()
   -- leader + space clear highlight
   nmap('<leader><space>', ':silent noh<cr>')
 
-  -- Simpler folding
-  nmap('zr', 'zR')
-  nmap('zm', 'zM')
-
   -- Make the fold that we're currently in the only fold showing; 
   -- collapse all other folds. Mnemonic: "z This"
   nmap('zt', 'zMzvzczO')
@@ -243,22 +237,6 @@ local packer_bootstrap = ensure_packer()
     -- Completion suggestion
     use 'roxma/nvim-yarp'
 
-    -- Snippets [[[
-    -- use 'SirVer/ultisnips'
-    -- vim.g.UltiSnipsUsePythonVersion = 3
-    -- vim.g.UltiSnipsEditSplit = 'vertical'
-    -- vim.g.UltiSnipsExpandTrigger = '<tab>'
-    -- vim.g.UltiSnipsJumpForwardTrigger = '<tab>'
-    -- vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
-    --
-    -- use { 'honza/vim-snippets', run = 'rm ./UltiSnips/javascript* && rm -rf ./snippets/javascript*' }
-    -- local ultisnips_javascript = {}
-    -- ultisnips_javascript['keyword-spacing'] = 'always';
-    -- ultisnips_javascript['semi'] = 'never';
-    -- ultisnips_javascript['space-before-function-paren'] = 'always';
-    -- vim.g.ultisnips_javascript = ultisnips_javascript
-    -- ]]]
-
     -- Bookmarks
     use 'MattesGroeger/vim-bookmarks'
     vim.g.bookmark_no_default_key_mappings = 1
@@ -286,7 +264,6 @@ local packer_bootstrap = ensure_packer()
         unmap mjj
       endfunction
       autocmd BufEnter * :call BookmarkMapKeys()
-      autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
     ]])
 
     -- Signify
@@ -302,81 +279,239 @@ local packer_bootstrap = ensure_packer()
     -- and colorscheme was 'one'
     use {
       'nvim-lualine/lualine.nvim',
-      require = { 'kyazdani42/nvim-web-devicons', opt = true }
+      require = { 'kyazdani42/nvim-web-devicons', opt = true },
+      config = function ()
+        -- Protected call to avoid errors on first run
+        require("lualine").setup({
+          options = {
+            icons_enabled = true,
+            theme = 'material'
+          },
+          sections = {
+            lualine_a = {'mode'},
+            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_c = {'filename'},
+            lualine_x = {'encoding', 'filetype'},
+            lualine_y = {'progress'},
+            lualine_z = {'location'}
+          }
+        })
+      end
     }
 
-    -- Protected call to avoid errors on first run
-    local status_lualine_ok, lualine = pcall(require, "lualine")
-    if status_lualine_ok then
-      lualine.setup {
-        options = {
-          icons_enabled = true,
-          theme = 'material'
-        },
-        sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename'},
-          lualine_x = {'encoding', 'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
-        }
-      }
-    end
-
+    use 'stevearc/dressing.nvim'
     -- lsp-zero, that magic one which set up LSP, CMP and more
     use {
       'VonHeikemen/lsp-zero.nvim',
+      branch = 'v2.x',
       requires = {
         -- LSP Support
-        {'neovim/nvim-lspconfig'},
-        {'williamboman/mason.nvim'},
-        {'williamboman/mason-lspconfig.nvim'},
+        {'neovim/nvim-lspconfig'},             -- Required
+        {                                      -- Optional
+          'williamboman/mason.nvim',
+          run = function()
+            pcall(vim.cmd, 'MasonUpdate')
+          end,
+        },
+        {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
         -- Autocompletion
-        {'hrsh7th/nvim-cmp'},
-        {'hrsh7th/cmp-buffer'},
-        {'hrsh7th/cmp-path'},
+        {'hrsh7th/nvim-cmp'},     -- Required
+        {'FelipeLema/cmp-async-path'},
         {'saadparwaiz1/cmp_luasnip'},
-        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'hrsh7th/cmp-nvim-lua'},
-
-        -- Snippets
-        {'L3MON4D3/LuaSnip'},
+        {'L3MON4D3/LuaSnip'},     -- Required
         {'rafamadriz/friendly-snippets'},
-      }
+        {'jose-elias-alvarez/typescript.nvim'},
+        {'kevinhwang91/promise-async'},
+        {'kevinhwang91/nvim-ufo'},
+        {'stevearc/aerial.nvim'},
+      },
+      config = function ()
+        -- New folding
+        vim.opt.foldcolumn = '1'
+        -- Using ufo provider need a large value, feel free to decrease the value
+        vim.opt.foldlevel = 99
+        vim.opt.foldlevelstart = 99
+        vim.opt.foldenable = true
+        -- Using ufo provider need remap `zR` and `zM`.
+        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+        vim.keymap.set('n', 'zM', require('ufo').closeFoldsWith)
+        nmap('zr', 'zR')
+        nmap('zm', 'zM')
+
+        -- Folding old settings
+
+        -- Simpler folding
+        -- vim.opt.foldenable = true
+        -- vim.opt.foldlevelstart = 2
+        -- vim.opt.foldlevel = 2 -- limit folding to 2 levels, experimental
+        -- vim.opt.foldnestmax = 10
+        -- vim.opt.foldmethod = 'indent' -- use indentation to generate folds
+
+        local lsp = require('lsp-zero').preset({})
+
+        lsp.on_attach(function (_, bufnr)
+          lsp.default_keymaps({buffer = bufnr})
+        end)
+        --lsp.set_server_config({ capabilities = server_capabilities })
+
+        lsp.setup_servers({'rust_analyzer', 'sqlls'})
+        --lsp.ensure_installed({'tsserver'})
+        lsp.skip_server_setup({'tsserver'})
+        lsp.setup()
+
+        require('luasnip.loaders.from_vscode').lazy_load({
+          paths = {
+            vim.fn.stdpath('config') .. '/snippets'
+          }
+        })
+
+        local server_capabilities = {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true
+            }
+          }
+        }
+
+        require('typescript').setup({
+          server = {
+            capabilities = server_capabilities
+          }
+        })
+        require('ufo').setup()
+
+        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        local cmp = require('cmp')
+        local cmp_action = require('lsp-zero').cmp_action()
+
+        local default_max_item_count = 5
+        cmp.setup({
+          sources = {
+            {name = 'luasnip', keyword_length = 2, max_item_count = default_max_item_count},
+            {name = 'nvim_lsp', max_item_count = default_max_item_count},
+            {name = 'async-path', max_item_count = default_max_item_count},
+            {name = 'buffer', keyword_length = 3, max_item_count = default_max_item_count},
+          },
+          mapping = {
+            -- `Enter` key to confirm completion
+            ['<CR>'] = cmp.mapping.confirm({select = false}),
+            ['<Tab>'] = cmp_action.tab_complete(),
+            ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+            -- Ctrl+Space to trigger completion menu
+            ['<C-Space>'] = cmp.mapping.complete(),
+            -- Navigate between snippet placeholder
+            ['<C-d>'] = cmp_action.luasnip_jump_forward(),
+            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+          },
+        })
+
+        vim.diagnostic.config({
+          virtual_text = false
+        })
+
+        require('aerial').setup({
+          on_attach = function (bufnr)
+            vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
+            vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
+          end,
+          backends = {"lsp"},
+          filter_kind = false
+        })
+        nmap('<leader>ae', '<cmd>AerialToggle!<CR>')
+      end
     }
 
+    use {
+      'folke/trouble.nvim',
+      requires = 'nvim-tree/nvim-web-devicons',
+      config = function()
+        require("trouble").setup({
+          auto_open = true,
+          auto_close = true,
+          fold_open = 'v',
+          fold_closed = '>',
+          indent_lines = false,
+          mode = 'document_diagnostics',
+          signs = {
+            error = '✘',
+            warning = '▲',
+            hint = '?',
+            information = 'i',
+            other = '?',
+          },
+        })
+      end
+    }
 
-    local lsp_zero = require('lsp-zero')
-
-    lsp_zero.preset('manual-setup')
-    lsp_zero.nvim_workspace()
-    lsp_zero.ensure_installed({'tsserver', 'rust_analyzer', 'sqlls'})
-    lsp_zero.setup_servers({'tsserver', 'rust_analyzer', 'sqlls'})
-    lsp_zero.setup_nvim_cmp({
-      source = require('cmp').config.sources(
-        {
-          {name = 'path', max_item_count = 5},
-          {name = 'nvim_lsp', keyword_length = 3, max_item_count = 7},
-          {name = 'luasnip', keyword_length = 2},
-          {name = 'buffer', keyword_length = 3},
-        }
-      )
-    })
-    lsp_zero.setup()
-    require('luasnip.loaders.from_vscode').lazy_load({
-      paths = {
-        vim.fn.stdpath('config') .. '/snippets'
+    -- <leader>t opens magic select menu for TS
+    local function magic_ts_code_actions()
+      local code_actions = {
+        ':TypescriptAddMissingImports',
+        ':TypescriptOrganizeImports',
+        ':TypescriptFixAll',
+        ':Trouble document_diagnostics',
       }
-    })
 
-    vim.diagnostic.config({
-      virtual_text = true
-    })
+      local function call_trouble()
+        require("trouble").toggle({ mode = 'document_diagnostics' })
+      end
 
+      local actions_by_cmd = {
+        [':TypescriptAddMissingImports'] = require("typescript").actions.addMissingImports,
+        [':TypescriptOrganizeImports'] = require("typescript").actions.organizeImports,
+        [':TypescriptFixAll'] = require("typescript").actions.fixAll,
+        [':Trouble document_diagnostics'] = call_trouble,
+      }
 
-    -- Map 's' to 'S' only when not in a LuaSnip snippet
+      local ui_select_opts = {
+        prompt = 'Choose a code action: ',
+      }
+
+      local function on_choose_magic_action (action)
+        local fn_action_name = actions_by_cmd[action]
+        if fn_action_name then
+          fn_action_name()
+        end
+      end
+
+      vim.ui.select(code_actions, ui_select_opts, on_choose_magic_action)
+    end
+
+    _G.magic_ts_code_actions = magic_ts_code_actions
+    vim.api.nvim_set_keymap('n', '<leader>t', ':lua magic_ts_code_actions()<CR>', { noremap = true })
+    use {
+      'akinsho/toggleterm.nvim',
+      tag = '*',
+      run = 'npm i -g commitizen cz-conventional-changelog',
+      config = function ()
+        require('toggleterm').setup()
+        local Terminal = require("toggleterm.terminal").Terminal
+        local git_cz = "git a && git cz"
+        local git_commit = Terminal:new {
+          cmd = git_cz,
+          dir = "git_dir",
+          close_on_exit = false,
+          hidden = true,
+          direction = "float",
+          float_opts = {
+            border = "double",
+          },
+          on_open = function(term)
+            vim.cmd("startinsert!")
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", ":close<CR>", {noremap = true, silent = true})
+          end,
+        }
+        _G.gitCz = function ()
+          git_commit:toggle()
+        end
+        vim.cmd('command! GitCzTerm lua gitCz()')
+      end
+    }
+
     nmap('<leader>rs', ':source $MYVIMRC<CR>')
 
     use 'j-hui/fidget.nvim'
@@ -389,6 +524,7 @@ local packer_bootstrap = ensure_packer()
     vim.g.ale_set_quickfix = 1
     vim.g.ale_completion_enabled = 1
     vim.g.ale_disable_lsp = 1
+    vim.g.ale_virtualtext_cursor = 'disabled'
     local ale_fixers = {}
     local js_fixers = {'eslint', 'prettier'}
     ale_fixers['javascript'] = js_fixers
@@ -419,29 +555,43 @@ local packer_bootstrap = ensure_packer()
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate<CR>:TSInstall typescript javascript python',
-      ft = {'typescript', 'typescriptreact', 'javascript', 'javascriptreact'}
+      ft = {'typescript', 'typescriptreact', 'javascript', 'javascriptreact'},
+      config = function ()
+        require'nvim-treesitter.configs'.setup{
+          highlight = {
+            enable = true
+          }
+        }
+      end
     }
-    require'nvim-treesitter.configs'.setup{
-      highlight = {
-        enable = true
+
+    if tree_plugin == "nvim-tree" then
+      use {
+        'nvim-tree/nvim-tree.lua',
+        config = function ()
+          require('nvim-tree').setup({})
+        end
       }
-    }
 
-    -- This is experimental
-    --vim.cmd([[
-      --set foldmethod=expr
-      --set foldexpr=nvim_treesitter#foldexpr()
-    --]])
+      vim.api.nvim_set_keymap("n", "<leader>vf", ":NvimTreeFindFile<cr>", {silent = true, noremap = true})
+      vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
+    end
 
-    use 'preservim/nerdtree'
-    use 'ivalkeen/nerdtree-execute'
-    use 'tyok/nerdtree-ack'
-    vim.g.indent_guides_exclude_filetypes = {'nerdtree'} -- fixes the folding issue on NERDTree
-    vim.g.NERDTreeShowBookmarks=1
-    vim.g.NERDTreeDirArrows=1
-    vim.g.NERDTreeGlyphReadOnly = 'RO'
-    nmap('<leader>v', '<cmd>NERDTreeToggle<cr>')
-    nmap('<leader>vf', ':NERDTreeFind<cr>')
+    if tree_plugin == "nerdtree" then
+      use 'preservim/nerdtree'
+      use 'ivalkeen/nerdtree-execute'
+      use 'tyok/nerdtree-ack'
+      vim.g.indent_guides_exclude_filetypes = {'nerdtree'} -- fixes the folding issue on NERDTree
+      vim.g.NERDTreeShowBookmarks=1
+      vim.g.NERDTreeDirArrows=1
+      vim.g.NERDTreeGlyphReadOnly = 'RO'
+      nmap('<leader>v', '<cmd>NERDTreeToggle<cr>')
+      nmap('<leader>vf', ':NERDTreeFind<cr>')
+      vim.cmd([[
+        autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+      ]])
+    end
+
     vim.cmd([[
       autocmd VimEnter *
         \   if !argc()
@@ -455,24 +605,28 @@ local packer_bootstrap = ensure_packer()
     vim.g.targets_quotes = '"d \'q `'
 
     -- Switch
-    use 'AndrewRadev/switch.vim'
-    vim.g.switch_mapping = '-'
-    vim.g.switch_custom_definitions = {
-      {'true', 'false'},
-      {'typeof', 'instanceof'},
-      {'unshift', 'push', 'shift'},
-      {'log', 'error', 'debug', 'warn'},
-      {'null', 'undefined', 'NaN'},
-      {'map', 'forEach', 'filter', 'reduce'},
-      {'let', 'const', 'var'},
-      {'console.log', 'console.warn', 'console.error'},
-      {'log', 'warn', 'error'},
-      {'before', 'after'},
-      {'True', 'False', 'None'},
-      {'get', 'put', 'post', 'delete'},
-      {'exports', 'module.exports'},
-      {'right', 'left'},
-      {'top', 'bottom'}
+    use {
+      'AndrewRadev/switch.vim',
+      config = function ()
+        vim.g.switch_mapping = '-'
+        vim.g.switch_custom_definitions = {
+          {'true', 'false'},
+          {'typeof', 'instanceof'},
+          {'unshift', 'push', 'shift'},
+          {'log', 'error', 'debug', 'warn'},
+          {'null', 'undefined', 'NaN'},
+          {'map', 'forEach', 'filter', 'reduce'},
+          {'let', 'const', 'var'},
+          {'console.log', 'console.warn', 'console.error'},
+          {'log', 'warn', 'error'},
+          {'before', 'after'},
+          {'True', 'False', 'None'},
+          {'get', 'put', 'post', 'delete'},
+          {'exports', 'module.exports'},
+          {'right', 'left'},
+          {'top', 'bottom'}
+        }
+      end
     }
 
     -- Files
@@ -507,27 +661,34 @@ local packer_bootstrap = ensure_packer()
     use { 'HerringtonDarkholme/yats.vim', ft = 'typescript' }
 
     -- JSDocs
-    use { 'heavenshell/vim-jsdoc', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact'}, run = 'make install' }
-    vim.g.jsdoc_enable_es6 = 1
+    use {
+      'heavenshell/vim-jsdoc',
+      ft = {'javascript', 'jsx', 'typescript', 'typescriptreact'},
+      run = 'make install',
+      config =function ()
+        vim.g.jsdoc_enable_es6 = 1
+      end
+    }
 
     -- JS Libs support
-    --use 'othree/javascript-libraries-syntax.vim'
-    --let g:used_javascript_libs = 'vue,lodash'
-
     -- NodeJS
     use { 'moll/vim-node', ft = {'javascript', 'typescript'} }
 
     -- HTML, CSS & Front-end related stuff
-    use { 'ap/vim-css-color', ft = {'css', 'scss', 'sass'} }
+    use { 'ap/vim-css-color', ft = {'css', 'scss', 'sass', 'typescriptreact'} }
 
     -- Emmet
-    use { 'mattn/emmet-vim', ft = { 'vue', 'scss', 'sass', 'css', 'html', 'php', 'typescriptreact', 'jsx', 'tsx' } }
-    vim.g.user_emmet_mode = 'a'
-    vim.api.nvim_create_autocmd(
-      --{ "FileType" },
-      { 'BufRead', 'BufNewFile' },
-      { pattern = { '.tsx', '.vue', '.jsx', '.html', '.css', '.scss', '.sass' }, command = ':PackerLoad emmet-vim<CR>:EmmetInstall<CR>' }
-    )
+    use {
+      'mattn/emmet-vim',
+      ft = { 'vue', 'scss', 'sass', 'css', 'html', 'php', 'typescriptreact', 'jsx', 'tsx' },
+      config = function ()
+        vim.g.user_emmet_mode = 'a'
+        vim.api.nvim_create_autocmd(
+          { 'BufRead', 'BufNewFile' },
+          { pattern = { '.tsx', '.vue', '.jsx', '.html', '.css', '.scss', '.sass' }, command = ':PackerLoad emmet-vim<CR>:EmmetInstall<CR>' }
+        )
+      end
+    }
 
     -- VueJS
     use { 'posva/vim-vue', ft = {'vue'} }
@@ -540,9 +701,10 @@ local packer_bootstrap = ensure_packer()
     use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
 
     -- Themes
-    --  use 'joshdick/onedark.vim'
-    local thema_name = 'hachy/eva01.vim'
-    use {thema_name}
+    local theme_name = 'hachy/eva01.vim'
+    use {
+      theme_name
+    }
 
     vim.cmd([[
       if !exists('g:syntax_on')
