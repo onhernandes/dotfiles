@@ -32,7 +32,7 @@ fi
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export TMUXINATOR_CONFIG="$HOME/.onhernandes/dotfiles/tmuxinator"
-export EDITOR=vi
+export EDITOR=nvim
 export DOTFILES="$HOME/.onhernandes/dotfiles"
 export PIPENV_VENV_IN_PROJECT=1
 export NODE_ENV="development"

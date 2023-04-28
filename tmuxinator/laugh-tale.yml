@@ -46,6 +46,10 @@ root: ~/code
 
 windows:
   - insights: vtop
+  - files:
+      root: ~/.onhernandes/dotfiles
+      panes:
+        - git status
   - meupet:
       root: ~/code/meu-pet
       layout: main-vertical

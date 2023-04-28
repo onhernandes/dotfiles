@@ -279,7 +279,7 @@ end
     -- and colorscheme was 'one'
     use {
       'nvim-lualine/lualine.nvim',
-      require = { 'kyazdani42/nvim-web-devicons', opt = true },
+      --require = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function ()
         -- Protected call to avoid errors on first run
         require("lualine").setup({
@@ -341,24 +341,13 @@ end
         nmap('zr', 'zR')
         nmap('zm', 'zM')
 
-        -- Folding old settings
-
-        -- Simpler folding
-        -- vim.opt.foldenable = true
-        -- vim.opt.foldlevelstart = 2
-        -- vim.opt.foldlevel = 2 -- limit folding to 2 levels, experimental
-        -- vim.opt.foldnestmax = 10
-        -- vim.opt.foldmethod = 'indent' -- use indentation to generate folds
-
         local lsp = require('lsp-zero').preset({})
 
         lsp.on_attach(function (_, bufnr)
           lsp.default_keymaps({buffer = bufnr})
         end)
-        --lsp.set_server_config({ capabilities = server_capabilities })
 
         lsp.setup_servers({'rust_analyzer', 'sqlls'})
-        --lsp.ensure_installed({'tsserver'})
         lsp.skip_server_setup({'tsserver'})
         lsp.setup()
 
@@ -404,7 +393,7 @@ end
             -- Ctrl+Space to trigger completion menu
             ['<C-Space>'] = cmp.mapping.complete(),
             -- Navigate between snippet placeholder
-            ['<C-d>'] = cmp_action.luasnip_jump_forward(),
+            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
             ['<C-b>'] = cmp_action.luasnip_jump_backward(),
           },
         })
@@ -427,22 +416,12 @@ end
 
     use {
       'folke/trouble.nvim',
-      requires = 'nvim-tree/nvim-web-devicons',
-      config = function()
-        require("trouble").setup({
-          auto_open = true,
-          auto_close = true,
-          fold_open = 'v',
-          fold_closed = '>',
-          indent_lines = false,
+      requires = "nvim-tree/nvim-web-devicons",
+      ensure_installed = true,
+      config = function ()
+        require('trouble').setup({
           mode = 'document_diagnostics',
-          signs = {
-            error = '✘',
-            warning = '▲',
-            hint = '?',
-            information = 'i',
-            other = '?',
-          },
+          indent_lines = false,
         })
       end
     }
@@ -454,17 +433,23 @@ end
         ':TypescriptOrganizeImports',
         ':TypescriptFixAll',
         ':Trouble document_diagnostics',
+        ':Trouble references',
       }
 
-      local function call_trouble()
+      local function call_trouble_doc()
         require("trouble").toggle({ mode = 'document_diagnostics' })
+      end
+
+      local function call_trouble_references()
+        require("trouble").toggle({ mode = 'lsp_references' })
       end
 
       local actions_by_cmd = {
         [':TypescriptAddMissingImports'] = require("typescript").actions.addMissingImports,
         [':TypescriptOrganizeImports'] = require("typescript").actions.organizeImports,
         [':TypescriptFixAll'] = require("typescript").actions.fixAll,
-        [':Trouble document_diagnostics'] = call_trouble,
+        [':Trouble document_diagnostics'] = call_trouble_doc,
+        [':Trouble references'] = call_trouble_references,
       }
 
       local ui_select_opts = {
@@ -526,7 +511,7 @@ end
     vim.g.ale_disable_lsp = 1
     vim.g.ale_virtualtext_cursor = 'disabled'
     local ale_fixers = {}
-    local js_fixers = {'eslint', 'prettier'}
+    local js_fixers = {'eslint'}
     ale_fixers['javascript'] = js_fixers
     ale_fixers['javascriptreact'] = js_fixers
     ale_fixers['typescript'] = js_fixers
@@ -566,9 +551,30 @@ end
     }
 
     if tree_plugin == "nvim-tree" then
+      use 'nvim-tree/nvim-web-devicons'
       use {
         'nvim-tree/nvim-tree.lua',
+        require = {
+          {'nvim-tree/nvim-web-devicons'}
+        },
         config = function ()
+          --require('nvim-tree/nvim-web-devicons').setup()
+          local function on_attach(bufnr)
+            local api = require('nvim-tree.api')
+            local function opts(desc)
+              return {
+                desc = 'nvim-tree: ' .. desc,
+                buffer = bufnr,
+                noremap = true,
+                silent = true,
+                nowait = true
+              }
+            end
+
+            api.config.mappings.default_on_attach(bufnr)
+            vim.api.nvim_buf_set_keymap('n', 'b', api.node.navigate.parent_close, opts('Close Directory'))
+          end
+
           require('nvim-tree').setup({})
         end
       }
