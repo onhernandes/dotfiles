@@ -217,6 +217,7 @@ end
   packer.startup(function (use)
     -- Packer manages itself
     use 'wbthomason/packer.nvim'
+    use 'nvim-tree/nvim-web-devicons'
 
     -- Misc
     use 'nvim-lua/plenary.nvim' -- Useful lua functions used by lots of plugins
@@ -279,7 +280,7 @@ end
     -- and colorscheme was 'one'
     use {
       'nvim-lualine/lualine.nvim',
-      --require = { 'kyazdani42/nvim-web-devicons', opt = true },
+      require = { 'kyazdani42/nvim-web-devicons' },
       config = function ()
         -- Protected call to avoid errors on first run
         require("lualine").setup({
@@ -551,7 +552,6 @@ end
     }
 
     if tree_plugin == "nvim-tree" then
-      use 'nvim-tree/nvim-web-devicons'
       use {
         'nvim-tree/nvim-tree.lua',
         require = {

@@ -6,7 +6,6 @@ if [[ ! -e ${HOME}/.gitconfig ]]; then
 fi        
 
 if [[ ! -e ${HOME}/.config/nvim ]]; then
-  echo theres no nvim
   ln -s $DOTFILES/neovim $HOME/.config/nvim
 fi
 
