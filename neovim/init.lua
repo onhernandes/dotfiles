@@ -435,7 +435,7 @@ end
         ':TypescriptFixAll',
         ':Trouble document_diagnostics',
         ':Trouble references',
-        'CodeAction Rename'<
+        'CodeAction Rename',
         'List CodeActions'
       }
 
