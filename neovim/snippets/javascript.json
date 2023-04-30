@@ -1,6 +1,6 @@
 {
   "const": {
-    "prefix": "c",
+    "prefix": "ct",
     "body": "const ${1:fName} = $2"
   },
   "const function": {
@@ -16,8 +16,12 @@
     "body": "<$1>$CLIPBOARD $0</$1>"
   },
   "export { default as }": {
-    "prefix": "ea",
+    "prefix": "eas",
     "body": "export { default as ${1:pName} } from \"./${1}\";"
+  },
+  "export * as": {
+    "prefix": "eall",
+    "body": "export * as ${1} from \"./${1}\";"
   },
   "export default": {
     "prefix": "ed",

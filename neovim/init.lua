@@ -435,6 +435,8 @@ end
         ':TypescriptFixAll',
         ':Trouble document_diagnostics',
         ':Trouble references',
+        'CodeAction Rename'<
+        'List CodeActions'
       }
 
       local function call_trouble_doc()
@@ -445,12 +447,22 @@ end
         require("trouble").toggle({ mode = 'lsp_references' })
       end
 
+      local function call_rename_code_action()
+        vim.lsp.buf.rename()
+      end
+
+      local function call_code_action_range()
+        vim.lsp.buf.code_action()
+      end
+
       local actions_by_cmd = {
         [':TypescriptAddMissingImports'] = require("typescript").actions.addMissingImports,
         [':TypescriptOrganizeImports'] = require("typescript").actions.organizeImports,
         [':TypescriptFixAll'] = require("typescript").actions.fixAll,
         [':Trouble document_diagnostics'] = call_trouble_doc,
         [':Trouble references'] = call_trouble_references,
+        ['CodeAction Rename'] = call_rename_code_action,
+        ['List CodeActions'] = call_code_action_range
       }
 
       local ui_select_opts = {
