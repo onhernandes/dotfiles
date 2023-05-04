@@ -342,6 +342,9 @@ end
         nmap('zr', 'zR')
         nmap('zm', 'zM')
 
+        vim.cmd([[
+          set omnifunc=
+        ]])
         local lsp = require('lsp-zero').preset({})
 
         lsp.on_attach(function (_, bufnr)
@@ -367,9 +370,15 @@ end
           }
         }
 
+        -- vim.lsp.set_log_level("debug")
         require('typescript').setup({
           server = {
-            capabilities = server_capabilities
+            capabilities = server_capabilities,
+            cmd = { "typescript-language-server", "--stdio", "--log-level", "4" },
+            init_options = {
+              hostInfo = 'neovim',
+              maxTsServerMemory = 4096,
+            }
           }
         })
         require('ufo').setup()

@@ -3,6 +3,10 @@
     "prefix": "ct",
     "body": "const ${1} = $2"
   },
+  "react component": {
+    "prefix": "cr",
+    "body": "const $1 = ({}) => {\n  return (\n  $0\n)\n};"
+  },
   "const function": {
     "prefix": "cf",
     "body": "const ${1} = ($2) => {\n  $0\n};"
@@ -21,7 +25,7 @@
   },
   "try catch": {
     "prefix": "tc",
-    "body": "try {$CLIPBOARD$2\n} catch (error) {$1}"
+    "body": "try {\n$CLIPBOARD$2\n} catch (error) {\n  console.log(error)$1\n}"
   },
   "eslint-disable-next-line": {
     "prefix": "esd",
@@ -49,7 +53,7 @@
   },
   "if statement": {
     "prefix": "if",
-    "body": "if ($1) {\n$CLIPBOARD\n$0\n}"
+    "body": "if ($1) {\n$CLIPBOARD$0\n}"
   },
   "import from": {
     "prefix": "im",
