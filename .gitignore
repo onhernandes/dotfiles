@@ -5,3 +5,4 @@ tmuxinator/brocoli.yml
 tmuxinator/work.yml
 ./neovim/nvim
 neovim/nvim
+neovim/plugin/packer_compiled.lua
