@@ -351,7 +351,7 @@ end
           lsp.default_keymaps({buffer = bufnr})
         end)
 
-        lsp.setup_servers({'rust_analyzer', 'sqlls'})
+        lsp.ensure_installed({'rust_analyzer', 'sqlls', 'pyright'})
         lsp.skip_server_setup({'tsserver'})
         lsp.setup()
 
@@ -525,44 +525,49 @@ end
     require('fidget').setup{}
 
     -- Ale for async lint & fix with LSP support
-    use 'dense-analysis/ale'
-    vim.g.ale_sign_error = '✘'
-    vim.g.ale_sign_warning = '▲'
-    vim.g.ale_set_quickfix = 1
-    vim.g.ale_completion_enabled = 1
-    vim.g.ale_disable_lsp = 1
-    vim.g.ale_virtualtext_cursor = 'disabled'
-    local ale_fixers = {}
-    local js_fixers = {'eslint'}
-    ale_fixers['javascript'] = js_fixers
-    ale_fixers['javascriptreact'] = js_fixers
-    ale_fixers['typescript'] = js_fixers
-    ale_fixers['typescriptreact'] = js_fixers
-    ale_fixers['vue'] = js_fixers
-    ale_fixers['css'] = {'csslint'}
-    ale_fixers['sass'] = {'prettier'}
-    ale_fixers['scss'] = ale_fixers['sass']
-    ale_fixers['html'] = {'htmlhint'}
-    ale_fixers['python'] = {'black'}
-    -- ale_fixers['go'] = {'gofmt', 'goimports'}
-    vim.g.ale_fixers = ale_fixers
+    use {
+      'dense-analysis/ale',
+      run = 'pip install black',
+      config = function ()
+        vim.g.ale_sign_error = '✘'
+        vim.g.ale_sign_warning = '▲'
+        vim.g.ale_set_quickfix = 1
+        vim.g.ale_completion_enabled = 1
+        vim.g.ale_disable_lsp = 1
+        vim.g.ale_virtualtext_cursor = 'disabled'
+        vim.g.ale_python_flake8_options = '--select C,E,F,W,B,B950 --ignore E501 --max-line-length 80'
+        local ale_fixers = {}
+        local js_fixers = {'eslint'}
+        ale_fixers['javascript'] = js_fixers
+        ale_fixers['javascriptreact'] = js_fixers
+        ale_fixers['typescript'] = js_fixers
+        ale_fixers['typescriptreact'] = js_fixers
+        ale_fixers['vue'] = js_fixers
+        ale_fixers['css'] = {'csslint'}
+        ale_fixers['sass'] = {'prettier'}
+        ale_fixers['scss'] = ale_fixers['sass']
+        ale_fixers['html'] = {'htmlhint'}
+        ale_fixers['python'] = {'black'}
+        vim.g.ale_fixers = ale_fixers
 
-    local ale_linters = {}
-    ale_linters['javascript'] = {'eslint', 'flow-language-server'}
-    ale_linters['typescript'] = {'eslint'}
-    ale_linters['vue'] = {'eslint'}
-    ale_linters['python'] = {'flake8'}
-    vim.g.ale_linters = ale_linters
+        local ale_linters = {}
+        ale_linters['javascript'] = {'eslint', 'flow-language-server'}
+        ale_linters['typescript'] = {'eslint'}
+        ale_linters['vue'] = {'eslint'}
+        ale_linters['python'] = {'flake8'}
+        vim.g.ale_linters = ale_linters
 
-    nmap('<leader>af', ':ALEFix<CR>')
-    nmap('<leader>al', ':ALELint<CR>')
-    nmap('<leader>ar', ':ALEFindReferences<CR>')
+        nmap('<leader>af', ':ALEFix<CR>')
+        nmap('<leader>al', ':ALELint<CR>')
+        nmap('<leader>ar', ':ALEFindReferences<CR>')
+      end
+    }
 
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate<CR>:TSInstall typescript javascript python',
-      ft = {'typescript', 'typescriptreact', 'javascript', 'javascriptreact'},
+      ft = {'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'python'},
       config = function ()
         require'nvim-treesitter.configs'.setup{
           highlight = {
