@@ -1,7 +1,5 @@
 local M = {}
 
-local utils = require("utils")
-
 M.ensure_packer_installed = function ()
   local packer_packages_path = vim.fn.stdpath('data') .. '/site/pack/packer/start'
   local fn = vim.fn
@@ -189,8 +187,9 @@ M.lsp = function (use)
       -- Using ufo provider need remap `zR` and `zM`.
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeFoldsWith)
-      utils.nmap('zr', 'zR')
-      utils.nmap('zm', 'zM')
+
+      vim.api.nvim_set_keymap('n', 'zr', 'zR', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', 'zm', 'zM', { noremap = true, silent = true })
 
       vim.cmd([[
         set omnifunc=
@@ -270,7 +269,7 @@ M.lsp = function (use)
         backends = {"lsp"},
         filter_kind = false
       })
-      utils.nmap('<leader>ae', '<cmd>AerialToggle!<CR>')
+      vim.api.nvim_set_keymap('n', '<leader>ae', '<cmd>AerialToggle!<CR>', { noremap = true, silent = true })
     end
   }
 end
@@ -299,6 +298,12 @@ M.jarvis = function (use)
       'CodeAction Rename',
       'List CodeActions'
     }
+
+    -- Desired actions:
+    -- npm install package
+    -- python install package
+    -- npm sync using npm ci + nvm
+    -- nvm use
 
     local function call_trouble_doc()
       require("trouble").toggle({ mode = 'document_diagnostics' })
@@ -408,9 +413,9 @@ M.linting = function (use)
       ale_linters['python'] = {'flake8'}
       vim.g.ale_linters = ale_linters
 
-      utils.nmap('<leader>af', ':ALEFix<CR>')
-      utils.nmap('<leader>al', ':ALELint<CR>')
-      utils.nmap('<leader>ar', ':ALEFindReferences<CR>')
+      vim.api.nvim_set_keymap('n', '<leader>af', ':ALEFix<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>al', ':ALELint<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>ar', ':ALEFindReferences<CR>', { noremap = true, silent = true })
     end
   }
 end
@@ -494,6 +499,11 @@ M.ecma = function (use)
   -- VueJS
   use { 'posva/vim-vue', ft = {'vue'} }
   vim.g.vue_disable_pre_processors = 1
+  use {
+    'norcalli/nvim-colorizer.lua',
+    ft = { 'css', 'javascript', 'vim', 'html', 'typescript', 'typescriptreact' },
+    config = [[require('colorizer').setup {}]],
+  }
 end
 
 M.misc_lang_support = function (use)
@@ -545,6 +555,7 @@ M.setup_plugins = function ()
   M.misc_lang_support(use)
   M.ecma(use)
   M.git(use)
+  M.theming(use)
 
   vim.cmd([[
     autocmd VimEnter *
