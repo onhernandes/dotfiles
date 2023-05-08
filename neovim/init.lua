@@ -1,19 +1,10 @@
 HOME = os.getenv("HOME")
 
-local packer_packages_path = vim.fn.stdpath('data') .. '/site/pack/packer/start'
--- Automatically install packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = packer_packages_path .. '/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-local packer_bootstrap = ensure_packer()
+local plugins = require("plugins")
+local packer_bootstrap = plugins.ensure_packer_installed()
 local tree_plugin = "nvim-tree"
+
+require("test").setup_plugins()
 
 if tree_plugin == "nvim-tree" then
   vim.g.loaded_netrw = 1
