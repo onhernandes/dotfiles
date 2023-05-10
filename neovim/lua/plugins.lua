@@ -321,6 +321,14 @@ M.jarvis = function (use)
       vim.lsp.buf.code_action()
     end
 
+    local function npm_install()
+      local src = vim.loop.cwd()
+      local package_json_exists = vim.loop.fs_stat(src .. '/package.json')
+      if package_json_exists then
+        vim.ui.input({ prompt = 'Which package do you want to install?' })
+      end
+    end
+
     local actions_by_cmd = {
       [':TypescriptAddMissingImports'] = require("typescript").actions.addMissingImports,
       [':TypescriptOrganizeImports'] = require("typescript").actions.organizeImports,
@@ -516,7 +524,11 @@ end
 
 M.theming = function (use)
   -- Themes
-  local theme_name = 'hachy/eva01.vim'
+  local my_themes = {
+    eva = 'hachy/eva01.vim',
+    kanagawa = 'rebelot/kanagawa.nvim'
+  }
+  local theme_name = my_themes.kanagawa
   use {
     theme_name
   }
@@ -527,7 +539,7 @@ M.theming = function (use)
     endif    
 
     set background = "dark"
-    colorscheme eva01
+    colorscheme kanagawa
   ]])
 end
 
