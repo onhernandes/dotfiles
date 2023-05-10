@@ -274,89 +274,6 @@ M.lsp = function (use)
   }
 end
 
-M.jarvis = function (use)
-  use {
-    'folke/trouble.nvim',
-    requires = "nvim-tree/nvim-web-devicons",
-    ensure_installed = true,
-    config = function ()
-      require('trouble').setup({
-        mode = 'document_diagnostics',
-        indent_lines = false,
-      })
-    end
-  }
-
-  -- <leader>t opens magic select menu for TS
-  local function magic_ts_code_actions()
-    local code_actions = {
-      ':TypescriptAddMissingImports',
-      ':TypescriptOrganizeImports',
-      ':TypescriptFixAll',
-      ':Trouble document_diagnostics',
-      ':Trouble references',
-      'CodeAction Rename',
-      'List CodeActions'
-    }
-
-    -- Desired actions:
-    -- npm install package
-    -- python install package
-    -- npm sync using npm ci + nvm
-    -- nvm use
-
-    local function call_trouble_doc()
-      require("trouble").toggle({ mode = 'document_diagnostics' })
-    end
-
-    local function call_trouble_references()
-      require("trouble").toggle({ mode = 'lsp_references' })
-    end
-
-    local function call_rename_code_action()
-      vim.lsp.buf.rename()
-    end
-
-    local function call_code_action_range()
-      vim.lsp.buf.code_action()
-    end
-
-    local function npm_install()
-      local src = vim.loop.cwd()
-      local package_json_exists = vim.loop.fs_stat(src .. '/package.json')
-      if package_json_exists then
-        vim.ui.input({ prompt = 'Which package do you want to install?' })
-      end
-    end
-
-    local actions_by_cmd = {
-      [':TypescriptAddMissingImports'] = require("typescript").actions.addMissingImports,
-      [':TypescriptOrganizeImports'] = require("typescript").actions.organizeImports,
-      [':TypescriptFixAll'] = require("typescript").actions.fixAll,
-      [':Trouble document_diagnostics'] = call_trouble_doc,
-      [':Trouble references'] = call_trouble_references,
-      ['CodeAction Rename'] = call_rename_code_action,
-      ['List CodeActions'] = call_code_action_range
-    }
-
-    local ui_select_opts = {
-      prompt = 'Choose a code action: ',
-    }
-
-    local function on_choose_magic_action (action)
-      local fn_action_name = actions_by_cmd[action]
-      if fn_action_name then
-        fn_action_name()
-      end
-    end
-
-    vim.ui.select(code_actions, ui_select_opts, on_choose_magic_action)
-  end
-
-  _G.personal_jarvis = magic_ts_code_actions
-  vim.api.nvim_set_keymap('n', '<leader>t', ':lua personal_jarvis()<CR>', { noremap = true })
-end
-
 M.git = function (use)
   use {
     'akinsho/toggleterm.nvim',
@@ -391,7 +308,7 @@ end
 M.linting = function (use)
   use {
     'dense-analysis/ale',
-    run = 'pip install black',
+    run = 'pip install black && npm i -g @johnnymorganz/stylua-bin',
     config = function ()
       vim.g.ale_sign_error = '✘'
       vim.g.ale_sign_warning = '▲'
@@ -412,6 +329,7 @@ M.linting = function (use)
       ale_fixers['scss'] = ale_fixers['sass']
       ale_fixers['html'] = {'htmlhint'}
       ale_fixers['python'] = {'black'}
+      ale_fixers['lua'] = {'stylua'}
       vim.g.ale_fixers = ale_fixers
 
       local ale_linters = {}
@@ -419,6 +337,7 @@ M.linting = function (use)
       ale_linters['typescript'] = {'eslint'}
       ale_linters['vue'] = {'eslint'}
       ale_linters['python'] = {'flake8'}
+      ale_linters['lua'] = {'stylua'}
       vim.g.ale_linters = ale_linters
 
       vim.api.nvim_set_keymap('n', '<leader>af', ':ALEFix<CR>', { noremap = true, silent = true })
@@ -561,7 +480,7 @@ M.setup_plugins = function ()
   local use = packer.use
   M.misc_plugins(use)
   M.lsp(use)
-  M.jarvis(use)
+  require("fred").setup_fred(use)
   M.linting(use)
   M.file_browser(use)
   M.misc_lang_support(use)
