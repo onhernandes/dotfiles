@@ -24,4 +24,7 @@ M.tmap = function (shortcut, command)
   M.map('t', shortcut, command)
 end
 
+M.log = function (level, message, scope)
+end
+
 return M
