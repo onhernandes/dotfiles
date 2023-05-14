@@ -25,18 +25,44 @@ M.add_action({
   title = "NPM Install Package",
   description = "Uses NPM and install desired package into current project",
   runner = function ()
+    local Terminal = require("toggleterm.terminal").Terminal
     local title = "Install NPM Package"
     local src = vim.loop.cwd()
     local pkg_path = src .. '/package.json'
     local package_json_exists = vim.loop.fs_stat(pkg_path)
+
     local function on_input(input)
+      local save_param = "--save"
+      if string.find(input, "-SD") then
+        save_param = "--save-dev"
+        input = string.gsub(input, "-SD", "")
+      end
+      input = input:gsub("^%s*(.-)%s*$", "%1")
       local is_input_valid = input ~= nil and vim.fn.strchars(input) > 0
+
       if is_input_valid then
-        -- install
+        local npm_cmd = "npm install " .. save_param .. " " .. input
+        notify("Installing...", "info", { title = title })
+        local npm_i_term = Terminal:new({
+          cmd = npm_cmd,
+          dir = src,
+          close_on_exit = true,
+          hidden = true,
+          direction = "vertical",
+          on_open = function(term)
+            vim.cmd("startinsert!")
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", ":close<CR>", { noremap = true, silent = true })
+          end,
+          on_exit = function ()
+            notify("Installation finished", "info", { title = title })
+          end
+        })
+
+        npm_i_term:toggle()
       end
 
       if not is_input_valid then
-        notify("invalid input", "error", { title = title })
+        notify("invalid input " .. input, "error", { title = title })
       end
     end
     if package_json_exists then
