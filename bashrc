@@ -64,3 +64,4 @@ ssh-clone () {
 https-clone () {
   git clone https://github.com/$1.git
 }
+export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'

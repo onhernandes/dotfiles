@@ -32,12 +32,6 @@ M.setup_mappings = function ()
   --nmap('<leader>so', ':so $DOTFILES/neovim/init.lua<cr>');
   utils.nmap('<leader>rr', ':edit $DOTFILES/neovim/init.lua<cr>');
 
-  -- Map :Files as Find Files
-  utils.nmap('<leader>ff', ':Files ./<cr>')
-
-  -- Map :Ag as Find Code
-  utils.nmap('<leader>fc', ':Ag <cr>')
-
   -- Bubble single lines to CTRL + ALT + j
   utils.nmap('<c-a-j>', ']e')
   utils.nmap('<c-a-k>', '[e')

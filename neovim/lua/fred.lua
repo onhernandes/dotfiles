@@ -112,6 +112,28 @@ M.add_action({
 })
 
 M.add_action({
+  action_name = "ts_remove_unused",
+  title = "Typescript Remove unused",
+  description = "Typescript Remove unused code",
+  runner = function ()
+    local ts = require("typescript")
+    ts.actions.removeUnused()
+  end
+})
+
+M.add_action({
+  action_name = "ts_refactor_code",
+  title = "Typescript Refactor code",
+  description = "Typescript Refactor code using all available LSP / TS Actions",
+  runner = function ()
+    local ts = require("typescript")
+    ts.actions.fixAll()
+    ts.actions.removeUnused()
+    ts.actions.organizeImports()
+  end
+})
+
+M.add_action({
   action_name = "ts_add_missing_imports",
   title = "Typescript Add missing imports",
   description = "Run LSP Action from tsserver to add all missing imports, if available",

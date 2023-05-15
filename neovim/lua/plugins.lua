@@ -1,5 +1,6 @@
 local M = {}
 
+local utils = require("utils")
 M.ensure_packer_installed = function()
 	local packer_packages_path = vim.fn.stdpath("data") .. "/site/pack/packer/start"
 	local fn = vim.fn
@@ -30,6 +31,7 @@ M.misc_plugins = function(use)
 		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("alpha").setup(require("alpha.themes.dashboard").config)
+      vim.g.dashboard_default_executive = "fzf.vim"
 		end,
 	})
 	use("stefandtw/quickfix-reflector.vim")
@@ -38,7 +40,12 @@ M.misc_plugins = function(use)
 	use("matze/vim-move")
 	use("tpope/vim-unimpaired")
 	use("jiangmiao/auto-pairs")
-	use("mileszs/ack.vim")
+  use {
+    "mileszs/ack.vim",
+    config = function ()
+      vim.g.ackprg = "ag --nogroup --nocolor --column"
+    end
+  }
 
 	-- Completion suggestion
 	use("roxma/nvim-yarp")
@@ -165,7 +172,7 @@ M.lsp = function(use)
 			{ -- Optional
 				"williamboman/mason.nvim",
 				run = function()
-					pcall(vim.cmd, "MasonUpdate")
+          vim.cmd("MasonUpdate")
 				end,
 			},
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
@@ -211,11 +218,13 @@ M.lsp = function(use)
 			lsp.skip_server_setup({ "tsserver" })
 			lsp.setup()
 
-			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = {
-					vim.fn.stdpath("config") .. "/snippets",
-				},
-			})
+      require('luasnip').filetype_extend('python', {'django'})
+      require('luasnip.loaders.from_vscode').lazy_load({
+        paths = {
+          vim.fn.stdpath('config') .. '/snippets'
+        },
+      })
+      require('luasnip.loaders.from_vscode').load()
 
 			local server_capabilities = {
 				textDocument = {
@@ -374,14 +383,20 @@ M.file_browser = function(use)
 	use({ "zoubin/vim-gotofile", ft = { "javascript", "typescript", "jsx", "tsx", "json" } })
 
 	-- FZF Stuff
-	use({
+	use {
 		"junegunn/fzf",
+    requires = {"junegunn/fzf.vim"},
 		run = function()
 			vim.fn["fzf#install"]()
 		end,
-	})
-	use("junegunn/fzf.vim")
-	vim.cmd([[
+	}
+
+  -- Map :Files as Find Files
+  utils.nmap('<leader>ff', ':Files ./<cr>')
+
+  -- Map :Ag as Find Code
+  utils.nmap('<leader>fc', ':Ag <cr>')
+  vim.cmd([[
     command! -bang -nargs=* GitAg
       \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
   ]])
@@ -501,14 +516,6 @@ M.setup_plugins = function()
 	M.ecma(use)
 	M.git(use)
 	M.theming(use)
-
-	vim.cmd([[
-    autocmd VimEnter *
-      \   if !argc()
-      \ |   Startify
-      \ |   wincmd w
-      \ | endif
-  ]])
 end
 
 return M
