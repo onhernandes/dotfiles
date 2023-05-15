@@ -24,4 +24,10 @@ M.tmap = function (shortcut, command)
   M.map('t', shortcut, command)
 end
 
+M.log = function (level, message, scope)
+  local title = scope .. ":" .. level
+  local full_msg = scope .. ":" .. level .. " " .. message
+  require("notify")(full_msg, level, { title = title })
+end
+
 return M
