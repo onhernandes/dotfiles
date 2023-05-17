@@ -1,11 +1,7 @@
 {
   "const": {
-    "prefix": "ct",
+    "prefix": "cct",
     "body": "const ${1} = $2"
-  },
-  "react component": {
-    "prefix": "cr",
-    "body": "const $1 = ({}) => {\n  return (\n  $0\n)\n};"
   },
   "const function": {
     "prefix": "cf",
@@ -18,10 +14,6 @@
   "const function export default": {
     "prefix": "ce",
     "body": "const ${1} = ($2) => {\n  $0\n};\n\nexport default ${1};"
-  },
-  "custom react tag": {
-    "prefix": "rt",
-    "body": "<$1>$CLIPBOARD $0</$1>"
   },
   "try catch": {
     "prefix": "tc",
@@ -42,14 +34,6 @@
   "export default": {
     "prefix": "ed",
     "body": "export default ${1};"
-  },
-  "export type": {
-    "prefix": "et",
-    "body": "export type ${1};"
-  },
-  "export interface": {
-    "prefix": "ei",
-    "body": "export interface ${1};"
   },
   "if statement": {
     "prefix": "if",

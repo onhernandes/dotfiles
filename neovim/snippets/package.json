@@ -7,12 +7,31 @@
     "snippets": [
       {
         "language": [
+          "typescriptreact",
+        ],
+        "path": "./typescript.react.json"
+      },
+      {
+        "language": [
+          "javascriptreact",
+        ],
+        "path": "./javascript.react.json"
+      },
+      {
+        "language": [
           "javascript",
           "javascriptreact",
           "typescript",
           "typescriptreact"
         ],
         "path": "./javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./typescript.json"
       }
     ]
   }

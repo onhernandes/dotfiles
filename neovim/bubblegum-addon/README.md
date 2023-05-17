@@ -23,7 +23,8 @@ use {
         "nvim-telescope/telescope.nvim",
         "jackMort/ChatGPT.nvim",
         -- }}}
-    }
+    },
+    rocks = {"luafp"},
     config = function ()
         require("bubblegum-addon").setup()
     end

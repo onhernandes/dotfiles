@@ -164,6 +164,16 @@ M.add_action({
   runner = require("typescript").actions.fixAll
 })
 
+M.add_action({
+  action_name = "py_organize_imports",
+  title = "Python Organize Imports",
+  description = "Run LSP Action from pyright organize imports",
+  ft = {"python"},
+  runner = function ()
+    vim.api.nvim_command(":PyrightOrganizeImports<CR>")
+  end
+})
+
 M.run_action_by_key = function (key, value, compare)
   compare = compare or M.compare_equal
   local found = {}

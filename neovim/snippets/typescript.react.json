@@ -1,0 +1,30 @@
+{
+  "react component": {
+    "prefix": "cr",
+    "body": "const $1 = ({}) => {\n  return (\n  $0\n)\n};"
+  },
+  "const theme": {
+    "prefix": "utm",
+    "body": "const theme = ${1:useTheme}($2);$3"
+  },
+  "const user": {
+    "prefix": "uuser",
+    "body": "const { ${2:user} } = ${1:useUser}($3);"
+  },
+  "const t": {
+    "prefix": "ui18n",
+    "body": "const { ${2:t} } = ${1:useTranslation}($3);"
+  },
+  "const useHookstate": {
+    "prefix": "uks",
+    "body": "const ${2:state} = ${1:useHookstate}($3);"
+  },
+  "custom react tag": {
+    "prefix": "rt",
+    "body": "<$1>$CLIPBOARD $0</$1>"
+  },
+  "const react component": {
+    "prefix": "crc",
+    "body": "const ${2:CompName} = ({}: ${3:Props}) => {\n  return ($0);\n}"
+  }
+}

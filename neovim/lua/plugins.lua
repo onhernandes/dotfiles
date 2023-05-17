@@ -121,12 +121,13 @@ M.misc_plugins = function(use)
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate<CR>:TSInstall typescript javascript python",
+    disable = true,
+		run = ":TSInstall typescript javascript python",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "python" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
-					enable = true,
+					enable = false,
 				},
 			})
 		end,
@@ -491,32 +492,7 @@ M.theming = function(use)
   ]])
 end
 
-M.setup_plugins = function()
-	local status_ok, packer = pcall(require, "packer")
-	if not status_ok then
-		return
-	end
-
-	-- Have packer use a popup window
-	packer.init({
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
-			end,
-		},
-	})
-
-	local use = packer.use
-	M.misc_plugins(use)
-	M.lsp(use)
-	--require("fred").setup_fred(use)
-	M.linting(use)
-	M.file_browser(use)
-	M.misc_lang_support(use)
-	M.ecma(use)
-	M.git(use)
-	M.theming(use)
-
+M.setup_bubblegum = function (use)
 	local bubblegum_path = vim.fn.stdpath("config") .. "/bubblegum-addon"
 	use({
 		bubblegum_path,
@@ -536,6 +512,33 @@ M.setup_plugins = function()
 			require("bubblegum-addon").setup()
 		end,
 	})
+end
+
+M.setup_plugins = function()
+	local status_ok, packer = pcall(require, "packer")
+	if not status_ok then
+		return
+	end
+
+	-- Have packer use a popup window
+	packer.init({
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "rounded" })
+			end,
+		},
+	})
+
+	local use = packer.use
+	M.misc_plugins(use)
+	M.lsp(use)
+	M.linting(use)
+	M.file_browser(use)
+	M.misc_lang_support(use)
+	M.ecma(use)
+	M.git(use)
+	M.theming(use)
+  M.setup_bubblegum(use)
 end
 
 return M

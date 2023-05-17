@@ -1,0 +1,14 @@
+{
+  "export type infer by zod": {
+    "prefix": "etz",
+    "body": "export type ${1} = z.infer<typeof ${2:$1Schema}>;"
+  },
+  "export type": {
+    "prefix": "et",
+    "body": "export type ${1} = {\n  $0\n};"
+  },
+  "export interface": {
+    "prefix": "ei",
+    "body": "export interface ${1};"
+  }
+}
