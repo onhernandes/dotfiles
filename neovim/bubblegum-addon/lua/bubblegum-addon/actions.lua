@@ -16,7 +16,7 @@ M.add_action = function (props)
 
   table.insert(
     M.actions,
-    { name = action_name, run = runner, title = title, description = description }
+    { name = action_name, run = runner, title = title, description = description, ft = props.ft or {} }
   )
 end
 
@@ -24,6 +24,7 @@ M.add_action({
   action_name = "npm_install_pkg",
   title = "NPM Install Package",
   description = "Uses NPM and install desired package into current project",
+  ft = {"typescript"},
   runner = function ()
     local Terminal = require("toggleterm.terminal").Terminal
     local title = "Install NPM Package"
@@ -77,6 +78,7 @@ M.add_action({
 
 M.add_action({
   action_name = "toggle_trouble_doc",
+  ft = {"any"},
   runner = function ()
     require("trouble").toggle({ mode = "document_diagnostics" })
   end,
@@ -86,6 +88,7 @@ M.add_action({
 
 M.add_action({
   action_name = "toggle_trouble_refs",
+  ft = {"any"},
   runner = function ()
     require("trouble").toggle({ mode = "lsp_references" })
   end,
@@ -95,6 +98,7 @@ M.add_action({
 
 M.add_action({
   action_name = "lsp_rename",
+  ft = {"any"},
   runner = function ()
     vim.lsp.buf.rename()
   end,
@@ -104,6 +108,7 @@ M.add_action({
 
 M.add_action({
   action_name = "lsp_list_code_actions",
+  ft = {"any"},
   runner = function ()
     vim.lsp.buf.code_action()
   end,
@@ -113,6 +118,7 @@ M.add_action({
 
 M.add_action({
   action_name = "ts_remove_unused",
+  ft = {"typescript"},
   title = "Typescript Remove unused",
   description = "Typescript Remove unused code",
   runner = function ()
@@ -125,6 +131,7 @@ M.add_action({
   action_name = "ts_refactor_code",
   title = "Typescript Refactor code",
   description = "Typescript Refactor code using all available LSP / TS Actions",
+  ft = {"typescript"},
   runner = function ()
     local ts = require("typescript")
     ts.actions.fixAll()
@@ -137,6 +144,7 @@ M.add_action({
   action_name = "ts_add_missing_imports",
   title = "Typescript Add missing imports",
   description = "Run LSP Action from tsserver to add all missing imports, if available",
+  ft = {"typescript"},
   runner = require("typescript").actions.addMissingImports
 })
 
@@ -144,6 +152,7 @@ M.add_action({
   action_name = "ts_organize_imports",
   title = "Typescript organize imports with LSP",
   description = "Run LSP Action from tsserver to organize imports",
+  ft = {"typescript"},
   runner = require("typescript").actions.organizeImports
 })
 
@@ -151,6 +160,7 @@ M.add_action({
   action_name = "ts_fix_all",
   title = "Typescript Fix All action",
   description = "Run LSP Action from tsserver to try to fix errors in code",
+  ft = {"typescript"},
   runner = require("typescript").actions.fixAll
 })
 
@@ -164,62 +174,16 @@ M.run_action_by_key = function (key, value, compare)
     if are_equal then
       has_been_found = true
       found = { run = item.run, title = item.title, description = item.description, action_name = item.action_name }
-      if item.run then
-        item.run()
-      end
-
       break
     end
   end
 
   if has_been_found then
+    found.run()
     return { success = true, data = found }
   end
 
   return { success = false }
-end
-
-M.on_select_magic_action = function (action_title)
-  M.run_action_by_key("title", action_title)
-end
-
-M.render_select = function ()
-  local ui_select_opts = {
-    prompt = 'Choose a code action: ',
-  }
-
-  local code_actions = {}
-
-  for _, value in pairs(M.actions) do
-    table.insert(code_actions, value.title)
-  end
-
-  vim.ui.select(code_actions, ui_select_opts, M.on_select_magic_action)
-end
-
-function Run_fred()
-    -- Desired actions:
-    -- npm install package
-    -- python install package
-    -- npm sync using npm ci + nvm
-    -- nvm use
-    M.render_select()
-end
-
-M.setup_fred = function (use)
-  use {
-    'folke/trouble.nvim',
-    requires = {'nvim-tree/nvim-web-devicons', 'rcarriga/nvim-notify'},
-    ensure_installed = true,
-    config = function ()
-      require('trouble').setup({
-        mode = 'document_diagnostics',
-        indent_lines = false,
-      })
-    end
-  }
-
-  vim.api.nvim_set_keymap('n', '<leader>t', ':lua Run_fred()<CR>', { noremap = true })
 end
 
 return M
