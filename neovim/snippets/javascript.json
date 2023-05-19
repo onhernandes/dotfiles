@@ -12,7 +12,7 @@
     "body": "export const ${1} = ($2) => {\n  $0\n};"
   },
   "const function export default": {
-    "prefix": "ce",
+    "prefix": "cfd",
     "body": "const ${1} = ($2) => {\n  $0\n};\n\nexport default ${1};"
   },
   "try catch": {
@@ -94,5 +94,49 @@
   "Reflect.delete()": {
     "prefix": "Rd",
     "body": "Reflect.delete($1)"
+  },
+  "react component": {
+    "prefix": "cr",
+    "body": "const $1 = ({}) => {\n  return (\n  $0\n)\n};"
+  },
+  "const theme": {
+    "prefix": "utm",
+    "body": "const theme = ${1:useTheme}($2);$3"
+  },
+  "const user": {
+    "prefix": "uuser",
+    "body": "const { ${2:user} } = ${1:useUser}($3);"
+  },
+  "const t": {
+    "prefix": "ui18n",
+    "body": "const { ${2:t} } = ${1:useTranslation}($3);"
+  },
+  "const useHookstate": {
+    "prefix": "uks",
+    "body": "const ${2:state} = ${1:useHookstate}($3);"
+  },
+  "custom react tag": {
+    "prefix": "rt",
+    "body": "<$1>$CLIPBOARD $0</$1>"
+  },
+  "const react component": {
+    "prefix": "crc",
+    "body": "const ${2:CompName} = ({}: ${3:Props}) => {\n  return ($0);\n}"
+  },
+  "export type infer by zod": {
+    "prefix": "etz",
+    "body": "export type ${1} = z.infer<typeof ${2:$1Schema}>;"
+  },
+  "export type": {
+    "prefix": "et",
+    "body": "export type ${1} = {\n  $0\n};"
+  },
+  "export interface": {
+    "prefix": "ei",
+    "body": "export interface ${1};"
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "body": "const ${1:doSomething} = useCallback($3($2) => {$4}, [$5]);"
   }
 }

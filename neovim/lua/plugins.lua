@@ -121,13 +121,13 @@ M.misc_plugins = function(use)
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-    disable = true,
+    disable = false,
 		run = ":TSInstall typescript javascript python",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "python" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
-					enable = false,
+					enable = true,
 				},
 			})
 		end,
@@ -219,13 +219,13 @@ M.lsp = function(use)
 			lsp.skip_server_setup({ "tsserver" })
 			lsp.setup()
 
-			require("luasnip").filetype_extend("python", { "django" })
+			--require("luasnip").filetype_extend("python", { "django" })
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
 					vim.fn.stdpath("config") .. "/snippets",
 				},
 			})
-			require("luasnip.loaders.from_vscode").load()
+			--require("luasnip.loaders.from_vscode").load()
 
 			local server_capabilities = {
 				textDocument = {
