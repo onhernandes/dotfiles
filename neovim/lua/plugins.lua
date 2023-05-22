@@ -127,7 +127,7 @@ M.misc_plugins = function(use)
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
-					enable = true,
+					enable = false,
 				},
 			})
 		end,

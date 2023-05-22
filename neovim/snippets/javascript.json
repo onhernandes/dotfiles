@@ -138,5 +138,13 @@
   "useCallback": {
     "prefix": "ucb",
     "body": "const ${1:doSomething} = useCallback($3($2) => {$4}, [$5]);"
+  },
+  "react native stylesheet": {
+    "prefix": "rns",
+    "body": "const ${1:styles} = StyleSheet.create({$0});"
+  },
+  "import react native stylesheet": {
+    "prefix": "imrns",
+    "body": "import { StyleSheet } from \"react-native\";$0"
   }
 }
