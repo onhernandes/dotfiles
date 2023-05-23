@@ -1,9 +1,9 @@
 local M = {
 	actions = {},
 	runners = {},
-  global_options = {
-    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-  }
+	global_options = {
+		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+	},
 }
 
 local notify = require("notify")
@@ -74,7 +74,7 @@ M.add_action({
 	action_name = "npm_install_pkg",
 	title = "NPM Install Package",
 	description = "Uses NPM and install desired package into current project",
-  ft = M.global_options.ft,
+	ft = M.global_options.ft,
 	runner = M.runners.npm_install_pkg,
 })
 
@@ -134,12 +134,43 @@ M.add_action({
 	action_name = "npm_remove_pkg",
 	title = "NPM Remove Package",
 	description = "Uses NPM and uninstalls desired package from current project",
-  ft = M.global_options.ft,
+	ft = M.global_options.ft,
 	runner = M.runners.npm_remove_pkg,
 })
 
-M.get_actions = function ()
-  return M.actions
+M.runners.npm_sync = function()
+	local Job = require("plenary.job")
+	local title = "Sync with package.json"
+	local src = vim.loop.cwd()
+	local pkg_path = src .. "/package.json"
+	local package_json_exists = vim.loop.fs_stat(pkg_path)
+
+	if package_json_exists then
+		Job:new({
+			command = "npm",
+			args = { "install" },
+			cwd = src,
+			on_exit = function()
+				notify("Package removed", "info", { title = title, hide_from_history = false })
+			end,
+		}):start()
+	end
+
+	if not package_json_exists then
+		notify("package.json not found at " .. pkg_path, "error", { title = title })
+	end
+end
+
+M.add_action({
+	action_name = "npm_sync",
+	title = "NPM Remove Package",
+	description = "Installs everything from package.json",
+	ft = M.global_options.ft,
+	runner = M.runners.npm_sync,
+})
+
+M.get_actions = function()
+	return M.actions
 end
 
 return M
