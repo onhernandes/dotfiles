@@ -139,6 +139,10 @@
     "prefix": "ucb",
     "body": "const ${1:doSomething} = useCallback($3($2) => {$4}, [$5]);"
   },
+  "use custom hook": {
+    "prefix": "uhook",
+    "body": "const ${1:doSomething} = ${2:useSomething}($3);"
+  },
   "react native stylesheet": {
     "prefix": "rns",
     "body": "const ${1:styles} = StyleSheet.create({$0});"

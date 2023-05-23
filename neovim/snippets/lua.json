@@ -1,0 +1,6 @@
+{
+  "local module return": {
+    "prefix": "lsm",
+    "body": "local M = {$1}\n$0\nreturn M"
+  }
+}

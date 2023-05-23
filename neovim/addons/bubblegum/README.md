@@ -26,7 +26,7 @@ use {
     },
     rocks = {"luafp"},
     config = function ()
-        require("bubblegum-addon").setup()
+        require("addons/bubblegum").setup()
     end
 }
 ```

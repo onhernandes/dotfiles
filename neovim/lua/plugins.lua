@@ -30,7 +30,7 @@ M.misc_plugins = function(use)
 		"goolord/alpha-nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("alpha").setup(require("alpha.themes.dashboard").config)
+			require("alpha").setup(require("alpha.themes.startify").config)
 			vim.g.dashboard_default_executive = "fzf.vim"
 		end,
 	})
@@ -121,7 +121,7 @@ M.misc_plugins = function(use)
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-    disable = false,
+		disable = false,
 		run = ":TSInstall typescript javascript python",
 		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "python" },
 		config = function()
@@ -159,6 +159,13 @@ M.misc_plugins = function(use)
 				{ "right", "left" },
 				{ "top", "bottom" },
 			}
+		end,
+	})
+
+	use({
+		"edluffy/hologram.nvim",
+		config = function()
+			require("hologram").setup({ auto_display = true })
 		end,
 	})
 end
@@ -492,8 +499,8 @@ M.theming = function(use)
   ]])
 end
 
-M.setup_bubblegum = function (use)
-	local bubblegum_path = vim.fn.stdpath("config") .. "/bubblegum-addon"
+M.setup_bubblegum = function(use)
+	local bubblegum_path = vim.fn.stdpath("config") .. "/addons/bubblegum"
 	use({
 		bubblegum_path,
 		requires = {
@@ -509,7 +516,23 @@ M.setup_bubblegum = function (use)
 			-- }}}
 		},
 		config = function()
-			require("bubblegum-addon").setup()
+			require("bubblegum").setup()
+		end,
+	})
+end
+
+M.setup_icek = function(use)
+	local pkg_path = vim.fn.stdpath("config") .. "/addons/icek"
+	use({
+		pkg_path,
+		requires = {
+			"folke/trouble.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"rcarriga/nvim-notify",
+			"kitty-runner.nvim",
+		},
+		config = function()
+			require("icek").setup()
 		end,
 	})
 end
@@ -538,7 +561,8 @@ M.setup_plugins = function()
 	M.ecma(use)
 	M.git(use)
 	M.theming(use)
-  M.setup_bubblegum(use)
+	M.setup_bubblegum(use)
+	--M.setup_icek(use)
 end
 
 return M

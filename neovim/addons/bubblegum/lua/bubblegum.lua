@@ -1,6 +1,6 @@
 local M = {}
 
-local actions = require("bubblegum-addon.actions")
+local actions = require("bubblegum.actions")
 
 M.list_contains = function(list, item)
 	for _, str in ipairs(list) do
@@ -39,7 +39,7 @@ end
 
 M.run_fred = function()
 	-- Desired actions:
-	-- npm install package
+  -- list packages from package.json and let user select for import
 	-- python install package
 	-- npm sync using npm ci + nvm
 	-- nvm use
