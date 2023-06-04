@@ -3,8 +3,6 @@ local M = {
 }
 
 local bubble_utils = require("bubblegum.utils")
-local notify = require("notify")
-local notify_title = "Bubblegum Commands"
 
 M.register_bubble = function(props)
 	table.insert(M.bubbles, props)
@@ -13,7 +11,6 @@ end
 M.register_bubble({
 	global_name = "BubbleCode",
 	keymap = function (runner)
-    notify("Setup keymap", "info", { title = notify_title, hide_from_history = false })
     _G.BubbleCode = runner
     vim.api.nvim_set_keymap("n", "<leader>t", ":lua BubbleCode()<CR>", { noremap = true })
 	end,
@@ -55,12 +52,9 @@ M.register_bubble({
 		local select_values = {}
 
 		for _, action in ipairs(actions) do
-      notify("Hey", "info", { title = notify_title })
-      notify("has files " .. next(action.files), "info", { title = notify_title })
 			if type(action.files) == "table" then
 				for _, file in ipairs(actions.files) do
 					local exists = bubble_utils.list_contains(files, file)
-          notify("Exists " .. tostring(exists), "info", { title = notify_title })
 
 					if exists then
 						table.insert(select_values, action.title)

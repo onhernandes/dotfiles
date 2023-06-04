@@ -64,4 +64,9 @@ ssh-clone () {
 https-clone () {
   git clone https://github.com/$1.git
 }
+
+pfreeze () {
+  pip freeze > requirements.txt
+}
+
 export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
