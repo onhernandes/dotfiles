@@ -3,6 +3,7 @@ local M = {
 	runners = {},
 	global_options = {
 		ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+    files = { "package.json" }
 	},
 }
 
@@ -75,6 +76,7 @@ M.add_action({
 	title = "NPM Install Package",
 	description = "Uses NPM and install desired package into current project",
 	ft = M.global_options.ft,
+	files = M.global_options.files,
 	runner = M.runners.npm_install_pkg,
 })
 
@@ -135,6 +137,7 @@ M.add_action({
 	title = "NPM Remove Package",
 	description = "Uses NPM and uninstalls desired package from current project",
 	ft = M.global_options.ft,
+	files = M.global_options.files,
 	runner = M.runners.npm_remove_pkg,
 })
 
@@ -166,6 +169,7 @@ M.add_action({
 	title = "NPM Remove Package",
 	description = "Installs everything from package.json",
 	ft = M.global_options.ft,
+	files = M.global_options.files,
 	runner = M.runners.npm_sync,
 })
 

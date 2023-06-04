@@ -4,10 +4,6 @@ local M = {
 
 local bubble_utils = require("bubblegum.utils")
 
-M.compare_equal = function(value, desired)
-	return value == desired
-end
-
 M.add_action = function(props)
 	bubble_utils.add_action(M.actions, props)
 end
@@ -64,31 +60,12 @@ M.add_action({
 
 M.actions = bubble_utils.merge_all_actions(
   M.actions,
-	require("bubblegum.npm_actions").get_actions(),
-	require("bubblegum.typescript-actions").get_actions()
+	require("bubblegum.bubbles.npm").get_actions(),
+	require("bubblegum.bubbles.typescript").get_actions()
 )
 
-M.run_action_by_key = function(key, value, compare)
-	compare = compare or M.compare_equal
-	local found = {}
-	local has_been_found = false
-	-- Iterate over the M.actions table
-	for i, item in ipairs(M.actions) do
-		local are_equal = compare(item[key], value)
-		if are_equal then
-			has_been_found = true
-			found =
-				{ run = item.run, title = item.title, description = item.description, action_name = item.action_name }
-			break
-		end
-	end
-
-	if has_been_found then
-		found.run()
-		return { success = true, data = found }
-	end
-
-	return { success = false }
+M.get_actions = function()
+	return M.actions
 end
 
 return M
