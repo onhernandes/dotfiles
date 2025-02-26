@@ -10,26 +10,25 @@ fi
 
 # Pamac packages
 PAMAC_PACKAGES="universal-ctags openssh docker docker-compose curl arandr autorandr xclip xf86-input-synaptics fzf ruby neovim cmake freetype2 fontconfig pkg-config make rustup powerline-fonts kitty tmux firefox-developer-edition kubectl shfmt telegram-desktop python2-pip htop bat the_silver_searcher asdf-vm android-studio watchman google-chrome tmuxinator"
+
 # Ubuntu packages
-APT_PACKAGES="universal-ctags xclip fzf cmake pkg-config fonts-powerline kitty tmux shfmt htop bat gnupg2 libssl-dev ruby3-0 silversearcher-ag fd-find ca-certificates python3-pip"
+APT_PACKAGES="universal-ctags xclip fzf cmake pkg-config fonts-powerline kitty tmux shfmt htop bat gnupg2 libssl-dev silversearcher-ag fd-find ca-certificates python3-pip"
 
 sudo apt install $APT_PACKAGES
-# sudo pamac install --no-confirm $PAMAC_PACKAGES
-# sudo pamac build --no-confirm google-chrome
 
 # Snap Packages
 sudo snap install rustup --classic
 sudo snap install spotify
 
-# Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# Check if NVM is installed, if not, install it
+if ! command -v nvm &> /dev/null; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
 
 source $HOME/.bashrc
-nvm install 18
-
-# Install snap packages
+nvm install 22
 
 # Install NPM Packages
 $SETUP_DIR/npm-packages

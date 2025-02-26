@@ -7,7 +7,7 @@ if [[ ! -d $HOME/.onhernandes ]]; then
 fi
 
 if ! git_cmd="$(type -p "git")" || [[ -z $git_cmd ]]; then
-  sudo pamac install --noconfirm git
+  sudo apt install git
 fi
 
 if [[ ! -d $HOME/.ssh ]] || [[ ! -e $HOME/.ssh/id_rsa.pub ]]; then
