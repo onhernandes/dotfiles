@@ -1,6 +1,5 @@
-[user]
-  email = 12698656+onhernandes@users.noreply.github.com 
-  name = Matheus Hernandes
+[includeIf "hasconfig:remote.*.url:*github.com*"]
+  path = ./gitconfig-github
 
 [alias]
   p	= push
