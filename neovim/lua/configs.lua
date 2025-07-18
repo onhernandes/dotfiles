@@ -49,8 +49,9 @@ M.setup_config = function ()
   vim.opt.showmode = false
   vim.opt.completeopt = "menu,preview,longest" -- list of options for Insert mode completion
   vim.opt.expandtab = true
-  vim.opt.termguicolors = true
-  vim.opt.pastetoggle = '<F6>'
+  vim.opt.termguicolors = true -- enable 24-bit colors
+  -- Disabled temporary, didn't work on Mac
+  -- vim.opt.pastetoggle = '<F6>'
 
   -- Wildmode/wildmenu command-line completion
   vim.opt.wildmenu = true -- on TAB autocomplete command options

@@ -110,7 +110,7 @@ M.misc_plugins = function(use)
 		end,
 	})
 
-	use("stevearc/dressing.nvim")
+	use("stevearc/dressing.nvim") -- it's deprecated, need to migrate to https://github.com/folke/snacks.nvim
 	use({
 		"j-hui/fidget.nvim",
 		config = function()
@@ -120,10 +120,8 @@ M.misc_plugins = function(use)
 
 	-- Treesitter
 	use({
-		"nvim-treesitter/nvim-treesitter",
-		disable = false,
-		run = ":TSInstall typescript javascript python",
-		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "python" },
+		"nvim-treesitter/nvim-treesitter", -- need to check later for main branch, it's the new version
+		run = ":TSInstall typescript javascript python csv cpp diff dockerfile git_config git_rebase gitcommit gitignore go goctl gomod gosum graphql html ini java javadoc jq json json5 jsdoc rust lua luadoc make nginx php pip_requirements scala scss css ruby sql ssh_config starlark svelte swift terraform textproto thrift tmux toml tsv tsx vimdoc vue xml yaml",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
@@ -143,21 +141,37 @@ M.misc_plugins = function(use)
 		config = function()
 			vim.g.switch_mapping = "-"
 			vim.g.switch_custom_definitions = {
-				{ "true", "false" },
-				{ "typeof", "instanceof" },
-				{ "unshift", "push", "shift" },
-				{ "log", "error", "debug", "warn" },
-				{ "null", "undefined", "NaN" },
-				{ "map", "forEach", "filter", "reduce" },
-				{ "let", "const", "var" },
-				{ "console.log", "console.warn", "console.error" },
-				{ "log", "warn", "error" },
-				{ "before", "after" },
-				{ "True", "False", "None" },
-				{ "get", "put", "post", "delete" },
-				{ "exports", "module.exports" },
-				{ "right", "left" },
-				{ "top", "bottom" },
+        { "true", "false" },                              -- general
+        { "True", "False", "None" },                      -- Python
+        { "null", "undefined", "NaN" },                   -- JS/TS
+        { "typeof", "instanceof" },                       -- JS/TS
+        { "unshift", "push", "shift" },                   -- JS/TS
+        { "console.log", "console.warn", "console.error", "console.debug" }, -- JS/TS
+        { "log", "warn", "error", "debug" },              -- general
+        { "get", "put", "post", "delete" },               -- HTTP verbs
+        { "before", "after" },                            -- tests/hooks
+        { "right", "left" },
+        { "top", "bottom" },
+
+        -- Python specific
+        { "list", "tuple", "set", "dict" },
+        { "is", "==", "!=" },
+        { "def", "class" },
+
+        -- Go specific
+        { "nil", "0" },
+        { "chan", "map", "struct", "interface" },
+
+        -- TypeScript specific
+        { "interface", "type" },
+        { "any", "unknown", "never" },
+        { "public", "private", "protected" },
+
+        -- JS/TS var declaration
+        { "let", "const", "var" },
+
+        -- Optional: add these if you care about exports
+        { "exports", "module.exports" },
 			}
 		end,
 	})
@@ -172,11 +186,9 @@ end
 
 M.lsp = function(use)
 	use({
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
+		"neovim/nvim-lspconfig",
 		requires = {
 			-- LSP Support
-			{ "neovim/nvim-lspconfig" }, -- Required
 			{ -- Optional
 				"williamboman/mason.nvim",
 				run = function()
@@ -193,7 +205,6 @@ M.lsp = function(use)
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "L3MON4D3/LuaSnip" }, -- Required
 			{ "rafamadriz/friendly-snippets" },
-			{ "jose-elias-alvarez/typescript.nvim" },
 			{ "kevinhwang91/promise-async" },
 			{ "kevinhwang91/nvim-ufo" },
 			{ "stevearc/aerial.nvim" },
@@ -216,15 +227,6 @@ M.lsp = function(use)
 			vim.cmd([[
         set omnifunc=
       ]])
-			local lsp = require("lsp-zero").preset({})
-
-			lsp.on_attach(function(_, bufnr)
-				lsp.default_keymaps({ buffer = bufnr })
-			end)
-
-			lsp.ensure_installed({ "rust_analyzer", "sqlls", "pyright" })
-			lsp.skip_server_setup({ "tsserver" })
-			lsp.setup()
 
 			--require("luasnip").filetype_extend("python", { "django" })
 			require("luasnip.loaders.from_vscode").lazy_load({
@@ -232,7 +234,6 @@ M.lsp = function(use)
 					vim.fn.stdpath("config") .. "/snippets",
 				},
 			})
-			--require("luasnip.loaders.from_vscode").load()
 
 			local server_capabilities = {
 				textDocument = {
@@ -243,22 +244,12 @@ M.lsp = function(use)
 				},
 			}
 
-			-- vim.lsp.set_log_level("debug")
-			require("typescript").setup({
-				server = {
-					capabilities = server_capabilities,
-					cmd = { "typescript-language-server", "--stdio", "--log-level", "4" },
-					init_options = {
-						hostInfo = "neovim",
-						maxTsServerMemory = 4096,
-					},
-				},
-			})
 			require("ufo").setup()
 
-			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+      -- vim.lsp.enable("")
+			-- require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 			local cmp = require("cmp")
-			local cmp_action = require("lsp-zero").cmp_action()
+			-- local cmp_action = require("lsp-zero").cmp_action()
 
 			local default_max_item_count = 5
 			cmp.setup({
@@ -271,13 +262,13 @@ M.lsp = function(use)
 				mapping = {
 					-- `Enter` key to confirm completion
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
-					["<Tab>"] = cmp_action.tab_complete(),
-					["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
+					-- ["<Tab>"] = cmp_action.tab_complete(),
+					-- ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
 					-- Ctrl+Space to trigger completion menu
 					["<C-Space>"] = cmp.mapping.complete(),
 					-- Navigate between snippet placeholder
-					["<C-f>"] = cmp_action.luasnip_jump_forward(),
-					["<C-b>"] = cmp_action.luasnip_jump_backward(),
+					-- ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+					-- ["<C-b>"] = cmp_action.luasnip_jump_backward(),
 				},
 			})
 
@@ -344,7 +335,7 @@ M.linting = function(use)
 			vim.g.ale_virtualtext_cursor = "disabled"
 			vim.g.ale_python_flake8_options = "--select C,E,F,W,B,B950 --ignore E501 --max-line-length 80"
 			local ale_fixers = {}
-			local js_fixers = { "eslint" }
+			local js_fixers = { "eslint", "prettier", "biome" }
 			ale_fixers["javascript"] = js_fixers
 			ale_fixers["javascriptreact"] = js_fixers
 			ale_fixers["typescript"] = js_fixers
@@ -359,9 +350,9 @@ M.linting = function(use)
 			vim.g.ale_fixers = ale_fixers
 
 			local ale_linters = {}
-			ale_linters["javascript"] = { "eslint", "flow-language-server" }
-			ale_linters["typescript"] = { "eslint" }
-			ale_linters["vue"] = { "eslint" }
+			ale_linters["javascript"] = { "eslint", "flow-language-server", "biome" }
+			ale_linters["typescript"] = { "eslint", "biome" }
+			ale_linters["vue"] = { "eslint", "biome" }
 			ale_linters["python"] = { "flake8" }
 			ale_linters["lua"] = { "stylua" }
 			vim.g.ale_linters = ale_linters
@@ -412,7 +403,7 @@ end
 
 M.ecma = function(use)
 	-- Vim JSON support
-	use({ "leshill/vim-json", as = "leshill-vim-json", ft = "json" })
+	use({ "leshill/vim-json", disable = true, as = "leshill-vim-json", ft = "json" })
 	-- JSON Formatter: <leader>json
 	use({ "XadillaX/json-formatter.vim", ft = "json", run = "npm install jjson -g" })
 	-- Better JS Highlight
@@ -468,6 +459,14 @@ M.ecma = function(use)
 		ft = { "css", "javascript", "vim", "html", "typescript", "typescriptreact" },
 		config = [[require('colorizer').setup {}]],
 	})
+  use({
+    "pmizio/typescript-tools.nvim",
+    ft = { "typescript", "typescriptreact" },
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+      require("typescript-tools").setup {}
+    end,
+  })
 end
 
 M.misc_lang_support = function(use)
@@ -494,8 +493,8 @@ M.theming = function(use)
       syntax enable
     endif    
 
-    set background = "dark"
-    colorscheme kanagawa
+    " set background = "dark"
+    " colorscheme kanagawa
   ]])
 end
 
@@ -516,23 +515,7 @@ M.setup_bubblegum = function(use)
 			-- }}}
 		},
 		config = function()
-			require("bubblegum").setup()
-		end,
-	})
-end
-
-M.setup_icek = function(use)
-	local pkg_path = vim.fn.stdpath("config") .. "/addons/icek"
-	use({
-		pkg_path,
-		requires = {
-			"folke/trouble.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"rcarriga/nvim-notify",
-			"kitty-runner.nvim",
-		},
-		config = function()
-			require("icek").setup()
+        require("bubblegum").setup()
 		end,
 	})
 end
@@ -562,7 +545,6 @@ M.setup_plugins = function()
 	M.git(use)
 	M.theming(use)
 	M.setup_bubblegum(use)
-	--M.setup_icek(use)
 end
 
 return M

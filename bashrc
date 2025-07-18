@@ -69,4 +69,4 @@ pfreeze () {
   pip freeze > requirements.txt
 }
 
-export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
